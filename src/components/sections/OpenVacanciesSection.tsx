@@ -114,7 +114,7 @@ export default async function OpenVacanciesSection() {
                       )}
                     </div>
 
-                    <p className="text-sm text-gray-900 leading-relaxed mb-4 line-clamp-3 flex-1">
+                    <p className="text-sm text-gray-900 leading-relaxed mb-4 line-clamp-3 flex-1 text-justify">
                       {vacancy.description}
                     </p>
 
@@ -130,7 +130,7 @@ export default async function OpenVacanciesSection() {
                     )}
 
                     {/* Footer */}
-                    <div className="flex items-center justify-between gap-4 pt-4 border-t border-slate-100 mt-auto">
+                    <div className="flex items-center justify-between gap-4 pt-4 border-t border-slate-100 mt-auto min-[320px]:max-[400px]:gap-[10px]">
                       <div className="text-xs text-gray-900 font-mono">
                         {getApplicationAvailabilityLabel(vacancy.applicationDeadline)}
                       </div>

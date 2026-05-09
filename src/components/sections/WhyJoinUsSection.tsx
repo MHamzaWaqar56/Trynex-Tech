@@ -68,7 +68,7 @@ export default async function WhyJoinUsSection() {
                 </div>
                 <div>
                   <h3 className="text-base font-display font-bold text-gray-900 mb-1.5">{title}</h3>
-                  <p className="text-sm text-gray-900 leading-relaxed">{description}</p>
+                  <p className="text-sm text-gray-900 leading-relaxed text-justify">{description}</p>
                 </div>
               </div>
             ))}
