@@ -49,11 +49,11 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center mb-5 min-[320px]:max-[767px]:justify-center">
               <Image
-                src="/trynex-logo.png"
+                src="/Trynex-Logo.png"
                 alt="Trynex Tech"
                 width={130}
                 height={57}
-                className="h-8 w-auto object-contain brightness-0 invert"
+                className="h-16 w-auto object-contain brightness-0 invert"
               />
             </Link>
             <p className="text-white text-sm leading-relaxed mb-6 min-[320px]:max-[767px]:text-center">

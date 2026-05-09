@@ -174,7 +174,7 @@ export default async function PricingPage() {
                 <BadgeDollarSign className="h-3.5 w-3.5" />
                 Currency Switcher
               </div>
-              <p className="text-gray-900 text-base max-w-2xl">
+              <p className="text-gray-900 text-base max-w-2xl min-[320px]:max-[500px]:leading-[22px]">
                 Choose PKR or USD to compare plans in the currency that works best for your team.
               </p>
               <CurrencySwitcher />
@@ -242,7 +242,7 @@ export default async function PricingPage() {
                       </span>
                       <div>
                         <h3 className="text-sm font-display font-bold text-gray-900 mb-1">{title}</h3>
-                        <p className="text-xs text-gray-900 leading-relaxed">{description}</p>
+                        <p className="text-xs text-gray-900 leading-relaxed text-justify">{description}</p>
                       </div>
                     </div>
                   ))}

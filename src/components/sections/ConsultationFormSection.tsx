@@ -20,7 +20,7 @@ const TIME_LABELS: Record<string, string> = {
 };
 
 const consultationInfo = [
-  { icon: Calendar,     label: 'Session Length', value: '30 minutes free',    },
+  { icon: Calendar,     label: 'Session Length', value: '60 minutes free',    },
   { icon: Clock,        label: 'Availability',   value: 'Monday to Friday',   },
   { icon: MessageSquare,label: 'Best For',        value: 'Strategy, scope & planning', },
   { icon: ShieldCheck,  label: 'Response Time',  value: 'Within 24 hours',          },
@@ -176,7 +176,7 @@ export default function  ConsultationFormSection() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                        On the day, we hop on a 30-minute call—no sales pitch, just strategy.
+                        On the day, we hop on a 60-minute call—no sales pitch, just strategy.
                       </li>
                     </ul>
                   </div>
@@ -188,15 +188,15 @@ export default function  ConsultationFormSection() {
             <div className="space-y-8">
 
               {/* Form header card — mirrors contact page's "Send Us a Message" header */}
-              <div className="glass-card p-8">
+              <div className="glass-card p-6">
                 <div className="mb-6">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                       <Calendar className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h2 className="font-display text-2xl font-bold text-gray-900 min-[320px]:max-[500px]:text-[1rem]">Book Your Free Strategy Session</h2>
-                      <p className="text-xs text-gray-900/60 mt-0.5 font-mono">Free · 30 minutes · No obligation</p>
+                      <h2 className="font-display text-2xl font-bold text-gray-900 min-[320px]:max-[500px]:text-[14px]">Book Your Free Strategy Session</h2>
+                      <p className="text-xs text-gray-600 mt-0.5 font-mono">Free · 60 minutes · No obligation</p>
                     </div>
                   </div>
                   <p className="text-sm text-gray-900 mt-2">

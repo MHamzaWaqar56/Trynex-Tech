@@ -21,7 +21,7 @@ export default function CurrencySwitcher() {
               key={option.code}
               type="button"
               onClick={() => setCurrency(option.code)}
-              className={`currency-switcher-option ${active ? 'currency-switcher-option-active' : ''}`}
+              className={`currency-switcher-option ${active ? 'currency-switcher-option-active' : 'text-gray-600'}`}
             >
               <span>{option.label}</span>
               <span className={`ml-2 text-[11px] uppercase tracking-[0.16em] ${active ? 'text-white/80' : 'text-slate-400'}`}>

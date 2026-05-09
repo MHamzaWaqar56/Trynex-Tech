@@ -2,7 +2,6 @@ import { CalendarDays } from 'lucide-react';
 import PageHero from '@/components/sections/PageHero';
 import CTASection from '@/components/sections/CTASection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import StatsSection from '@/components/sections/StatsSection';
 import WhatYouWillGet from '@/components/sections/WhatYouWillGet';
 import ConsultationFormSection from '@/components/sections/ConsultationFormSection';
 
