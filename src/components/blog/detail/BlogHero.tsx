@@ -1,6 +1,5 @@
 import { Calendar, Eye, Newspaper } from 'lucide-react';
 import PageHero from '@/components/sections/PageHero';
-import SinglePageHero from '@/components/sections/SinglePageHero';
 
 interface Props {
   title: string;
