@@ -76,7 +76,7 @@ function FAQItem({ question, answer, open, onToggle }: FAQItemProps) {
       </button>
       <div className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
         <div className="overflow-hidden">
-          <div className="px-6 pb-5 text-sm text-gray-900 leading-relaxed border-t border-slate-100 pt-4">
+          <div className="px-6 pb-5 text-sm text-gray-900 text-justify leading-relaxed border-t border-slate-100 pt-4">
             {answer}
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function FAQSection() {
                   <Icon className={`w-5 h-5 ${iconColor}`} />
                 </div>
                 <h3 className="font-display font-bold text-gray-900 text-base mb-2">{title}</h3>
-                <p className="text-gray-900 text-sm leading-relaxed mb-4">{description}</p>
+                <p className="text-gray-900 text-sm leading-relaxed mb-4 text-justify">{description}</p>
                 {cta && (
                   <Link
                     href={cta.href}

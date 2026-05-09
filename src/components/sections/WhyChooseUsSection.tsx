@@ -100,7 +100,7 @@ export default function WhyChooseUsSection({ showCta = true }: Props) {
               </h3>
 
               {/* Description */}
-              <p className="text-gray-900 text-sm leading-relaxed flex-1">
+              <p className="text-gray-900 text-sm leading-relaxed flex-1 text-justify">
                 {description}
               </p>
 

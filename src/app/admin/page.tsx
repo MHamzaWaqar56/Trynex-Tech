@@ -355,7 +355,7 @@ export default function AdminDashboard() {
           type="button"
           aria-label="Open menu"
           onClick={() => setSidebarOpen(true)}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-gray-600 hover:bg-slate-50 transition-colors shrink-0"
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-primary text-primary hover:bg-slate-50 transition-colors shrink-0"
         >
           <Menu className="w-4 h-4" />
         </button>
@@ -405,7 +405,7 @@ export default function AdminDashboard() {
             <button
               type="button"
               onClick={() => setSidebarOpen(false)}
-              className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+              className="flex h-7 w-7 items-center justify-center rounded-lg text-primary hover:bg-primary/10 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
