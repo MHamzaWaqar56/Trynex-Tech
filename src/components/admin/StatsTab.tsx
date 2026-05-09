@@ -162,7 +162,7 @@ export default function StatsTab() {
                 <BarChart2 className="w-5 h-5 text-primary" />
                 Site Stats
               </CardTitle>
-              <CardDescription className="mt-1">
+              <CardDescription className="mt-1 text-gray-600 text-justify">
                 Manage the numbers shown on the homepage stats section. Years experience auto-calculates from your founded year.
               </CardDescription>
             </div>

@@ -274,7 +274,7 @@ export default function LeadsTab({
                         type="button"
                         size="sm"
                         variant="ghost"
-                        className="h-8 px-3 text-gray-900 hover:text-gray-500 text-xs"
+                        className="h-8 px-3 text-xs"
                         onClick={() => handleView(lead)}
                       >
                         View
@@ -283,8 +283,8 @@ export default function LeadsTab({
                       <Button
                         type="button"
                         size="sm"
-                        variant="secondary"
-                        className="h-8 w-8 justify-center border-primary-200 !text-gray-900 !hover:text-gray-500 !bg-primary-50 !p-0"
+                        variant="default"
+                        className="h-8 w-8 !p-0"
                         onClick={() => handleReply(lead)}
                         aria-label={`Reply to ${lead.name}`}
                       >
@@ -294,8 +294,8 @@ export default function LeadsTab({
                       <Button
                         type="button"
                         size="sm"
-                        variant="ghost"
-                        className="h-8 w-8 !p-0 justify-center !text-red-500"
+                        variant="destructive"
+                        className="h-8 w-8 !p-0 "
                         onClick={() => handleDelete(lead)}
                         aria-label={`Delete lead from ${lead.name}`}
                       >

@@ -43,7 +43,7 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((i) => (
         <Star
           key={i}
-          className={`w-3.5 h-3.5 ${i <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-slate-200'}`}
+          className={`w-3.5 h-3.5 ${i <= rating ? 'text-primary fill-primary' : 'text-primary'}`}
         />
       ))}
       <span className="ml-1 text-[11px] text-slate-400">{rating}/5</span>
@@ -176,7 +176,7 @@ export default function TestimonialsTab({ reviews, onDelete, onRefresh }: Props)
                   : 'text-slate-500 hover:text-gray-700'
               }`}
             >
-              <Filter className="w-3 h-3" />
+              <Filter className="w-3 h-3 min-[320px]:max-[500px]:hidden" />
               {label}
               <span className={`inline-flex items-center justify-center rounded-full min-w-[18px] h-[18px] px-1 text-[10px] font-semibold ${
                 filter === key ? 'bg-primary-100 text-primary-600' : 'bg-primary-200 text-primary-700'
@@ -249,7 +249,7 @@ export default function TestimonialsTab({ reviews, onDelete, onRefresh }: Props)
                     </div>
 
                     {/* Review text */}
-                    <p className="text-sm text-gray-900 leading-relaxed">
+                    <p className="text-sm text-gray-900 leading-relaxed text-justify">
                       &ldquo;{review.review}&rdquo;
                     </p>
                   </div>

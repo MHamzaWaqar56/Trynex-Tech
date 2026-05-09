@@ -190,7 +190,7 @@ export default function NewsletterTab({ onDelete }: Props) {
 
   // ════════════════════════════════════════════════════════════════════════════
   return (
-    <div className="p-5 space-y-5">
+    <div className="p-5 space-y-5 min-[320px]:max-[500px]:p-0">
 
       {/* ── Header ── */}
       <Card>
@@ -285,7 +285,7 @@ export default function NewsletterTab({ onDelete }: Props) {
             </div>
           </CardHeader>
 
-          <CardContent className="p-0 flex-1">
+          <CardContent className="!p-0 flex-1">
             {loading ? (
               <div className="flex items-center justify-center gap-2 py-12 text-gray-600 text-sm">
                 <span className="w-4 h-4 border-2 border-primary-300 border-t-primary rounded-full animate-spin" />

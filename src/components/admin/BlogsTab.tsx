@@ -272,10 +272,10 @@ export default function BlogsTab({
             </span>
           </div>
           <div className="flex gap-2">
-            <Button size="sm" variant="ghost" onClick={onGoToList} className="text-xs">
+            <Button size="sm" variant="ghost" onClick={onGoToList} className="text-xs min-[320px]:max-[500px]:hidden">
               Full Blog Page
             </Button>
-            <Button size="sm" onClick={() => { resetForm(); setView('editor'); }} className="text-xs gap-1.5">
+            <Button size="sm" onClick={() => { resetForm(); setView('editor'); }} className="text-xs gap-1.5 min-[320px]:max-[400px]:text-[10px] min-[320px]:max-[400px]:gap-[2px] min-[320px]:max-[400px]:px-[8px]">
               <Plus className="w-3.5 h-3.5" /> New Post
             </Button>
           </div>
@@ -392,7 +392,7 @@ export default function BlogsTab({
   // EDITOR VIEW
   // ──────────────────────────────────────────────────────────────────────────
   return (
-    <div className="p-5">
+    <div className="p-5 min-[320px]:max-[500px]:p-[6px]">
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">

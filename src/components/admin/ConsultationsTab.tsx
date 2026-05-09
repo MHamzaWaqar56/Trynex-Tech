@@ -162,18 +162,18 @@ export default function ConsultationsTab({
   // RENDER
   // ════════════════════════════════════════════════════════════════════════════
   return (
-    <div className="p-5 space-y-5">
+    <div className="p-5 space-y-5 min-[320px]:max-[500px]:p-[6px]">
 
       {/* ── Header ── */}
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 min-[320px]:max-[500px]:text-[20px]">
                 <Calendar className="w-5 h-5 text-primary" />
                 Consultation Bookings
               </CardTitle>
-              <CardDescription className="mt-1">
+              <CardDescription className="mt-1 min-[320px]:max-[500px]:text-justify">
                 Review, confirm, cancel and reply to client consultation requests.
               </CardDescription>
             </div>
@@ -205,14 +205,14 @@ export default function ConsultationsTab({
               key={key}
               type="button"
               onClick={() => setFilter(key)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all min-[320px]:max-[500px]:px-[8px] ${
                 filter === key
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-slate-500 hover:text-gray-700'
               }`}
             >
-              <Filter className="w-3 h-3" />
-              <span className={filter === key ? '' : cls}>{label}</span>
+              <Filter className="w-3 h-3 min-[320px]:max-[500px]:hidden" />
+              <span className={`${filter === key ? '' : cls} min-[320px]:max-[400px]:text-[10px]`}>{label}</span>
               <span className={`inline-flex items-center justify-center rounded-full min-w-[18px] h-[18px] px-1 text-[10px] font-semibold ${
                 filter === key ? 'bg-primary-100 text-primary-600' : 'bg-primary-200 text-primary-700'
               }`}>

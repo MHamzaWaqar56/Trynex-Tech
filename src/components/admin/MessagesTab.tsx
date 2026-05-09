@@ -223,7 +223,7 @@ export default function MessagesTab({
                         type="button"
                         size="sm"
                         variant="ghost"
-                        className="h-8 px-3 text-gray-900 hover:text-gray-500 text-xs"
+                        className="h-8 px-3 text-xs"
                         onClick={() => handleView(message)}
                       >
                         View
@@ -232,8 +232,8 @@ export default function MessagesTab({
                       <Button
                         type="button"
                         size="sm"
-                        variant="secondary"
-                        className="h-8 w-8 justify-center border-primary-200 !text-gray-900 !hover:text-gray-500 !bg-primary-50 !p-0"
+                        variant="default"
+                        className="h-8 w-8 justify-center !p-0"
                         onClick={() => handleReply(message)}
                         aria-label={`Reply to ${message.name}`}
                       >
@@ -243,8 +243,8 @@ export default function MessagesTab({
                       <Button
                         type="button"
                         size="sm"
-                        variant="ghost"
-                        className="h-8 w-8 !p-0 justify-center !text-red-500"
+                        variant="destructive"
+                        className="h-8 w-8 !p-0 justify-center"
                         onClick={() => handleDelete(message)}
                         aria-label={`Delete message from ${message.name}`}
                       >

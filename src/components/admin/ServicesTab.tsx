@@ -483,7 +483,7 @@ export default function ServicesTab({
   // EDITOR VIEW
   // ════════════════════════════════════════════════════════════════════════════
   return (
-    <div className="p-5">
+    <div className="p-5 min-[320px]:max-[500px]:p-[6px]">
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">

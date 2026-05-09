@@ -91,7 +91,7 @@ export default function CurrencyTab() {
 
   // ════════════════════════════════════════════════════════════════════════════
   return (
-    <div className="p-5 space-y-5">
+    <div className="p-5 space-y-5 min-[320px]:max-[500px]:p-[6px]">
 
       {/* ── Header Card ── */}
       <Card>
