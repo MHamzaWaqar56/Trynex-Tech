@@ -34,7 +34,6 @@ export async function POST(request: Request) {
 const { html } = buildQuoteEmail({
   name: data.name,
   email: data.email,
-  phone: data.phone || undefined,
   company: data.company || undefined,
   service: data.service || 'Custom Package',
   budget: data.budget || undefined,
