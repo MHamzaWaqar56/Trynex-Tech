@@ -1,9 +1,8 @@
 import { Service, PricingPlan, SiteStats } from '@/types';
 
 export const SITE_NAME = 'Trynex Tech';
-export const SITE_TAGLINE = 'Building Digital Futures';
-export const SITE_DESCRIPTION =
-  'Premium software house delivering cutting-edge SEO, Web Development, Data Science, and AI solutions that transform businesses.';
+export const SITE_TAGLINE = 'Your Vision, Engineered to Perform.';
+export const SITE_DESCRIPTION = 'Premium software house delivering cutting-edge SEO, Web Development, Data Science, AI solutions and other services that transform businesses.';
 export const WHATSAPP_NUMBER = '+923001234567';
 
 export const NAV_LINKS = [
@@ -188,12 +187,3 @@ export const PRICING: PricingPlan[] = [
 ];
 
 
-export const CLIENTS = [
-  'TechCorp', 'GrowthHub', 'DataVision', 'NexGen', 'PixelForge', 
-  'CloudScale', 'BrightMind', 'SwiftApps', 'CoreLogic', 'InnovatePK',
-];
-
-export const TECHNOLOGIES = [
-  'Next.js', 'React', 'TypeScript', 'Node.js', 'Python', 'MongoDB',
-  'PostgreSQL', 'TensorFlow', 'OpenAI', 'AWS', 'Docker', 'Kubernetes',
-];

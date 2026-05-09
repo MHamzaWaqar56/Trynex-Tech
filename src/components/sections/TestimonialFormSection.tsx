@@ -81,13 +81,13 @@ export default function TestimonialFormSection() {
               Share Your <span className="gradient-text">Experience</span>
             </h2>
             <p className="text-gray-900 text-base max-w-sm">
-                We’d love your feedback on working with us—it helps us improve and show our value to others.
+                We&apos;d love your feedback on working with us—it helps us improve and show our value to others.
             </p>
         </div>
 
               
 
-              <div className="glass-card p-8 lg:p-10">
+              <div className="glass-card p-8 lg:p-10 min-[320px]:max-[500px]:p-6">
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
                     

@@ -108,7 +108,7 @@ export default function ContactFormSection() {
                 <div className="flex items-center justify-between gap-4 px-5 pt-5 pb-4">
                   <div>
                     <div className="text-xs text-gray-900 font-mono mb-1">Office Map</div>
-                    <h3 className="text-lg font-display font-bold text-gray-900 min-[320px]:max-[500px]:text-[16px]">Chichawatni, Punjab, Pakistan</h3>
+                    <h3 className="text-lg font-display font-bold text-gray-900 min-[320px]:max-[500px]:text-[16px]">Chichawatni, Pakistan</h3>
                   </div>
                   <a
                     href="https://www.google.com/maps?q=Chichawatni%2C%20Punjab%2C%20Pakistan"
@@ -155,7 +155,7 @@ export default function ContactFormSection() {
             </div>
 
             <div className="space-y-8">
-              <div className="glass-card p-8">
+              <div className="glass-card p-8 min-[320px]:max-[500px]:p-6">
                 <div className="mb-6">
                   <h2 className="font-display text-2xl font-bold text-gray-900">Send Us a Message</h2>
                   <p className="text-sm text-gray-900 mt-2">

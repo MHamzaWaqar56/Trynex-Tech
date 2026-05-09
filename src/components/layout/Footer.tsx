@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useState } from 'react';
@@ -65,7 +63,7 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
               {[
                 { icon: Facebook, href: '#', label: 'Facebook' },
                 { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                { icon: Github, href: '#', label: 'GitHub' },
+                { icon: Github, href: 'https://github.com/MHamzaWaqar56/', label: 'GitHub' },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -137,11 +135,11 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
             <ul className="space-y-3 mb-6 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col min-[320px]:max-[767px]:items-center">
               <li className="hover:text-primary">
                 <a
-                  href="mailto:hello@trynextech.com"
+                  href="mailto:trynextech@gmail.com"
                   className="flex items-start gap-3 text-sm text-white hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4 mt-0.5 text-white shrink-0" />
-                  hello@trynextech.com
+                  trynextech@gmail.com
                 </a>
               </li>
               <li>
