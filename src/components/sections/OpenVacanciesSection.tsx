@@ -136,7 +136,7 @@ export default async function OpenVacanciesSection() {
                       </div>
                       <Link
                         href={`/careers/${vacancy.slug}`}
-                        className={`btn-primary inline-flex items-center gap-2 py-2.5 px-5 text-sm ${
+                        className={`btn-primary inline-flex items-center gap-2 min-[320px]:max-[400px]:gap-[0.2rem] py-2.5 px-5 text-sm ${
                           expired ? 'pointer-events-none opacity-60' : ''
                         }`}
                         aria-disabled={expired}
