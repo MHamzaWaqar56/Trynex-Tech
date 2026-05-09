@@ -34,7 +34,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
       </div>
 
       {/* Review */}
-      <p className="text-gray-900 text-sm leading-relaxed line-clamp-4 flex-1">
+      <p className="text-gray-900 text-sm leading-relaxed line-clamp-4 flex-1 text-justify">
         &ldquo;{t.review}&rdquo;
       </p>
 

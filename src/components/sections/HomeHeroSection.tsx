@@ -1,11 +1,40 @@
-'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Play } from 'lucide-react';
 import AppButton from '@/components/shared/AppButton';
 
-export default function HomeHeroSection() {
+// ── Types
+type HeroStats = {
+  projectsCompleted: number;
+  happyClients: number;
+};
+
+// ── Fetch stats from DB (same API as StatsSection)
+async function fetchHeroStats(): Promise<HeroStats> {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/admin/stats`, {
+      next: { revalidate: 3600 }, // 1 hour cache — same as StatsSection
+    });
+    if (!res.ok) throw new Error('Failed to fetch stats');
+    const data = await res.json();
+    return {
+      projectsCompleted: data.projectsCompleted ?? 150,
+      happyClients:      data.happyClients      ?? 80,
+    };
+  } catch {
+    // Fallback defaults if API fails
+    return {
+      projectsCompleted: 150,
+      happyClients:      80,
+    };
+  }
+}
+
+export default async function HomeHeroSection() {
+  const stats = await fetchHeroStats();
+
   return (
     <>
       {/* ══════════ HERO ══════════ */}
@@ -55,15 +84,14 @@ export default function HomeHeroSection() {
 
               {/* CTAs */}
               <div className="flex flex-wrap items-center gap-4 animate-fade-up animation-delay-200">
-                
-<AppButton href="/contact" variant="primary">
-  Start Your Project
-  <ArrowRight className="w-4 h-4" />
-</AppButton>
-<AppButton href="/consultation" variant="secondary">
-  <Play className="w-4 h-4 fill-current" />
-  Free Consultation
-</AppButton>
+                <AppButton href="/contact" variant="primary">
+                  Start Your Project
+                  <ArrowRight className="w-4 h-4" />
+                </AppButton>
+                <AppButton href="/consultation" variant="secondary">
+                  <Play className="w-4 h-4 fill-current" />
+                  Free Consultation
+                </AppButton>
               </div>
             </div>
 
@@ -101,23 +129,27 @@ export default function HomeHeroSection() {
                 />
               </div>
 
-              {/* Floating badge — top left of image */}
+              {/* ── Floating badge — top left (Projects) ── */}
               <div
                 className="glass-card rounded-[100px] absolute top-12 -left-4 z-20 px-4 py-2.5 flex items-center gap-2 animate-float"
                 style={{ animationDelay: '1s', animationDuration: '4s' }}
               >
-                <span className="text-primary font-display font-bold text-xs leading-none">150+ </span>
+                <span className="text-primary font-display font-bold text-xs leading-none">
+                  {stats.projectsCompleted}+
+                </span>
                 <span className="text-xs font-mono text-gray-900 whitespace-nowrap">
-                   Projects Delivered
+                  Projects Delivered
                 </span>
               </div>
 
-              {/* Floating badge — bottom right of image */}
+              {/* ── Floating badge — bottom right (Clients) ── */}
               <div
                 className="glass-card rounded-[100px] absolute bottom-12 -right-2 z-20 px-4 py-2.5 flex items-center gap-2 animate-float"
                 style={{ animationDelay: '2s', animationDuration: '4.5s' }}
               >
-                <span className="text-primary font-display font-bold text-xs leading-none">80+</span>
+                <span className="text-primary font-display font-bold text-xs leading-none">
+                  {stats.happyClients}+
+                </span>
                 <span className="text-xs text-gray-900">Happy Clients</span>
               </div>
 
@@ -125,8 +157,6 @@ export default function HomeHeroSection() {
           </div>
         </div>
       </section>
-
-     
     </>
   );
 }

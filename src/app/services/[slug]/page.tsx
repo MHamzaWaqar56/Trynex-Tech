@@ -140,7 +140,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </span>
         }
         title={<>{service.title}</>}
-        description={service.summary || service.description || ''}
+        description={<p className='min-[320px]:max-[500px]:text-[14px]'>{service.summary || service.description || ''}</p>}
         />
 
       {/* Main Content */}

@@ -1,49 +1,38 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowRight, Play, TrendingUp, Code, Brain, BarChart3 } from 'lucide-react';
 import AppButton from '@/components/shared/AppButton';
 
-const floatingCards = [
-  {
-    icon: TrendingUp,
-    label: 'SEO Growth',
-    value: '+320%',
-    color: 'text-green-500',
-    bg: 'bg-green-50',
-    border: 'border-green-100',
-    delay: '0s',
-  },
-  {
-    icon: Code,
-    label: 'Web Projects',
-    value: '150+',
-    color: 'text-primary',
-    bg: 'bg-primary/10',
-    border: 'border-primary/20',
-    delay: '1.5s',
-  },
-  {
-    icon: Brain,
-    label: 'AI Models',
-    value: '40+',
-    color: 'text-blue-500',
-    bg: 'bg-blue-50',
-    border: 'border-blue-100',
-    delay: '3s',
-  },
-  {
-    icon: BarChart3,
-    label: 'Data Insights',
-    value: '500K+',
-    color: 'text-violet-500',
-    bg: 'bg-violet-50',
-    border: 'border-violet-100',
-    delay: '0.8s',
-  },
-];
+// ── Types
+type HeroStats = {
+  projectsCompleted: number;
+  happyClients: number;
+};
 
-export default function HeroSection() {
+// ── Fetch stats from DB (same API as StatsSection)
+async function fetchHeroStats(): Promise<HeroStats> {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/admin/stats`, {
+      next: { revalidate: 3600 }, // 1 hour cache — same as StatsSection
+    });
+    if (!res.ok) throw new Error('Failed to fetch stats');
+    const data = await res.json();
+    return {
+      projectsCompleted: data.projectsCompleted ?? 150,
+      happyClients:      data.happyClients      ?? 40,
+    };
+  } catch {
+    // Fallback defaults if API fails
+    return {
+      projectsCompleted: 150,
+      happyClients:      40,
+    };
+  }
+}
+
+export default async function HeroSection() {
+  const stats = await fetchHeroStats();
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
 
@@ -56,7 +45,7 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Dark overlay — footer jaisa #0C1324 */}
+      {/* Dark overlay */}
       <div
         className="absolute inset-0"
         style={{ background: '#0c1324a1' }}
@@ -70,30 +59,33 @@ export default function HeroSection() {
             Building Digital Futures Since 2025
           </div>
 
-           {/* Floating badge — top left of image */}
-              <div
-                className="glass-card rounded-[100px] absolute top-20 -left-4 z-20 px-4 py-2.5 flex items-center gap-2 animate-float min-[320px]:max-[767px]:left-[2rem] min-[320px]:max-[767px]:top-[2rem]"
-                style={{ animationDelay: '1s', animationDuration: '4s' }}
-              >
-                <span className="text-primary font-display font-bold text-xs leading-none">150+ </span>
-                <span className="text-xs font-mono text-gray-900 whitespace-nowrap">
-                   Projects Delivered
-                </span>
-              </div>
+          {/* Floating badge — top left (Projects) */}
+          <div
+            className="glass-card rounded-[100px] absolute top-20 -left-4 z-20 px-4 py-2.5 flex items-center gap-2 animate-float min-[320px]:max-[767px]:left-[2rem] min-[320px]:max-[767px]:top-[2rem]"
+            style={{ animationDelay: '1s', animationDuration: '4s' }}
+          >
+            <span className="text-primary font-display font-bold text-xs leading-none">
+              {stats.projectsCompleted}+
+            </span>
+            <span className="text-xs font-mono text-gray-900 whitespace-nowrap">
+              Projects Delivered
+            </span>
+          </div>
 
-              {/* Floating badge — bottom right of image */}
-              <div
-                className="glass-card rounded-[100px] absolute bottom-20 -right-2 z-20 px-4 py-2.5 flex items-center gap-2 animate-float min-[320px]:max-[767px]:bottom-[2rem] min-[320px]:max-[767px]:right-[2rem]"
-                style={{ animationDelay: '2s', animationDuration: '4.5s' }}
-              >
-                <span className="text-primary font-display font-bold text-xs leading-none">40+</span>
-                <span className="text-xs text-gray-900">Happy Clients</span>
-              </div>
-
+          {/* Floating badge — bottom right (Clients) */}
+          <div
+            className="glass-card rounded-[100px] absolute bottom-20 -right-2 z-20 px-4 py-2.5 flex items-center gap-2 animate-float min-[320px]:max-[767px]:bottom-[2rem] min-[320px]:max-[767px]:right-[2rem]"
+            style={{ animationDelay: '2s', animationDuration: '4.5s' }}
+          >
+            <span className="text-primary font-display font-bold text-xs leading-none">
+              {stats.happyClients}+
+            </span>
+            <span className="text-xs text-gray-900">Happy Clients</span>
+          </div>
 
           {/* Headline */}
           <h1
-            className="font-display font-[700] leading-[1.1] tracking-tight text-white mb-6 animate-fade-up animation-delay-100 "
+            className="font-display font-[700] leading-[1.1] tracking-tight text-white mb-6 animate-fade-up animation-delay-100"
             style={{ fontSize: 'clamp(2.0rem, 6vw, 3.30rem)' }}
           >
             We Build{' '}
@@ -120,7 +112,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <p
-            className="text-white text-lg leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up animation-delay-200  min-[320px]:max-[767px]:text-[1rem]"
+            className="text-white text-lg leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up animation-delay-200 min-[320px]:max-[767px]:text-[1rem]"
           >
             From SEO dominance to AI-powered applications — we craft technology solutions
             that transform businesses and deliver measurable growth.
@@ -128,7 +120,7 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-fade-up animation-delay-300">
-           <AppButton href="/contact" variant="primary">
+            <AppButton href="/contact" variant="primary">
               Start Your Project
               <ArrowRight className="w-4 h-4" />
             </AppButton>
@@ -137,8 +129,6 @@ export default function HeroSection() {
               Free Consultation
             </AppButton>
           </div>
-
-          
 
         </div>
       </div>

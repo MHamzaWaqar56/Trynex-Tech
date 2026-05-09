@@ -1,5 +1,6 @@
 import { Calendar, Eye, Newspaper } from 'lucide-react';
 import PageHero from '@/components/sections/PageHero';
+import SinglePageHero from '@/components/sections/SinglePageHero';
 
 interface Props {
   title: string;
@@ -20,7 +21,7 @@ export default function BlogHero({ title, author, coverImage, createdAt, views, 
           {tags?.[0] || 'Blog'}
         </span>
       }
-      title={<>{title}</>}
+      title={<div className='' style={{ fontSize: 'clamp(1.5rem, 6vw, 3.30rem)' }}>{title}</div>}
       description={
         <span className="flex flex-wrap items-center justify-center gap-1 text-sm text-slate-300 mt-2">
           <span className="font-semibold text-white">By {author || 'Trynex Tech'}</span>

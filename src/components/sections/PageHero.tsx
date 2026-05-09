@@ -33,7 +33,7 @@ export default function PageHero({
   const isCentered = align === 'center';
 
   return (
-    <section className={cn('relative overflow-hidden pt-40 pb-24 h-[450px]', className)}>
+    <section className={cn('relative overflow-hidden pt-40 pb-24 h-[450px] flex items-center', className)}>
 
       {/* Background */}
       {bgImage ? (
@@ -92,7 +92,7 @@ export default function PageHero({
           {description && (
             <p
               className={cn(
-                'text-white text-lg leading-relaxed animate-fade-up animation-delay-200',
+                'text-white text-lg leading-relaxed animate-fade-up animation-delay-200 min-[320px]:max-[600px]:text-[16px]',
                 isCentered ? 'mx-auto max-w-2xl' : 'max-w-3xl'
               )}
             >

@@ -59,7 +59,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
             {project.service}
           </span>
         }
-        title={<>{project.title}</>}
+        title={<div style={{ fontSize: 'clamp(1.5rem, 6vw, 3.30rem)' }}>{project.title}</div>}
         description={`A project breakdown for ${project.client} across ${project.service}.`}
       />
 
