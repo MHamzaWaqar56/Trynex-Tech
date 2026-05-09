@@ -21,7 +21,7 @@ export default async function WhoWeAreSection() {
                 Building the Future with{' '}
                 <span className="gradient-text">Passion & Purpose</span>
               </h2>
-              <p className="text-gray-900 leading-relaxed mb-5">
+              <p className="text-gray-900 leading-relaxed mb-5 text-justify">
                 Founded in 2025, Trynex Tech started with a simple mission — help
                 Pakistani businesses compete in the global digital market. Today,
                 we&apos;re a team of <span className="text-gray-900 font-semibold">5+ specialists</span> delivering
