@@ -119,7 +119,7 @@ export default async function CareerDetailPage({ params }: Props) {
 
               {/* Description card */}
               <div className="glass-card p-6 sm:p-8">
-                <p className="text-gray-900 text-base leading-relaxed whitespace-pre-line">
+                <p className="text-gray-900 text-base leading-relaxed whitespace-pre-line text-justify">
                   {vacancy.description}
                 </p>
               </div>
@@ -161,25 +161,25 @@ export default async function CareerDetailPage({ params }: Props) {
                 <div className="space-y-3 text-sm text-gray-900">
                   <div className="flex items-center gap-3 py-2.5 border-b border-slate-100">
                     <MapPin className="w-4 h-4 text-primary shrink-0" />
-                    <span className="font-mono text-xs text-gray-900/60 w-24 shrink-0">Location</span>
+                    <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Location</span>
                     <span className="font-medium">{vacancy.location}</span>
                   </div>
                   <div className="flex items-center gap-3 py-2.5 border-b border-slate-100">
                     <Clock3 className="w-4 h-4 text-primary shrink-0" />
-                    <span className="font-mono text-xs text-gray-900/60 w-24 shrink-0">Type</span>
+                    <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Type</span>
                     <span className="font-medium">{vacancy.employmentType}</span>
                   </div>
                   {vacancy.salary && (
                     <div className="flex items-center gap-3 py-2.5 border-b border-slate-100">
                       <TrendingUp className="w-4 h-4 text-primary shrink-0" />
-                      <span className="font-mono text-xs text-gray-900/60 w-24 shrink-0">Salary</span>
+                      <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Salary</span>
                       <span className="font-medium">{vacancy.salary}</span>
                     </div>
                   )}
                   {vacancy.applicationDeadline && (
                     <div className="flex items-center gap-3 py-2.5">
                       <Clock3 className="w-4 h-4 text-primary shrink-0" />
-                      <span className="font-mono text-xs text-gray-900/60 w-24 shrink-0">Deadline</span>
+                      <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Deadline</span>
                       <span className="font-medium">{vacancy.applicationDeadline}</span>
                     </div>
                   )}
