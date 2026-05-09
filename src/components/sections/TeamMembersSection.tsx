@@ -29,11 +29,10 @@ type Props = {
   members: TeamMember[];
 };
 
-type SocialKey = 'facebook' | 'email' | 'linkedin' | 'github';
+type SocialKey = 'facebook' | 'linkedin' | 'github';
 
 const socialConfig: Record<SocialKey, { label: string; icon: LucideIcon }> = {
   facebook: { label: 'Facebook', icon: Facebook },
-  email: { label: 'Email', icon: Mail },
   linkedin: { label: 'LinkedIn', icon: Linkedin },
   github: { label: 'GitHub', icon: Github },
 };

@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -111,7 +110,7 @@ const TABS: Array<{ key: TabKey; label: string; icon: React.ElementType }> = [
   { key: 'careers',       label: 'Careers',        icon: Briefcase     },
 ];
 
-// ─── SidebarNav — shared between desktop & mobile drawer ─────────────────────
+// ─── SidebarNav ───────────────────────────────────────────────────────────────
 
 function SidebarNav({
   activeTab,
@@ -148,7 +147,7 @@ function SidebarNav({
         })}
       </nav>
 
-      <div className=" border-t border-primary/10">
+      <div className="border-t border-primary/10">
         <button
           type="button"
           onClick={onLogout}
@@ -190,15 +189,15 @@ export default function AdminDashboard() {
   const [editingProjectSlug, setEditingProjectSlug] = useState<string | null>(null);
   const [editingServiceId,   setEditingServiceId]   = useState<string | null>(null);
   const [editingVacancyId,   setEditingVacancyId]   = useState<string | null>(null);
-  const [editingTeamId,      setEditingTeamId]       = useState<string | null>(null);
+  const [editingTeamId,      setEditingTeamId]      = useState<string | null>(null);
 
   // ── Dialogs
   const [deleteDialog, setDeleteDialog] = useState<DeleteDialogState | null>(null);
   const [detailDialog, setDetailDialog] = useState<DetailDialogState | null>(null);
   const [deleteBusy,   setDeleteBusy]   = useState(false);
 
-  const [logoutDialog,  setLogoutDialog]  = useState(false);
-  const [logoutBusy,    setLogoutBusy]    = useState(false);
+  const [logoutDialog, setLogoutDialog] = useState(false);
+  const [logoutBusy,   setLogoutBusy]   = useState(false);
 
   // ─── Fetch all ───────────────────────────────────────────────────────────
 
@@ -264,16 +263,16 @@ export default function AdminDashboard() {
 
   // ─── Reload helpers ──────────────────────────────────────────────────────
 
-  const reloadMessages      = async () => { const r = await fetch('/api/admin/messages');               if (r.ok) { const all = (await r.json()).messages || []; setMessages(all.filter((m: Message) => m.inquiryType !== 'lead')); } };
-  const reloadLeads         = async () => { const r = await fetch('/api/admin/leads');                  if (r.ok) setLeads((await r.json()).leads || []); };
-  const reloadBlogs         = async () => { const r = await fetch('/api/blogs?all=1');                  if (r.ok) setBlogs((await r.json()).posts || []); };
-  const reloadProjects      = async () => { const r = await fetch('/api/portfolio');                    if (r.ok) setProjects((await r.json()).projects || []); };
-  const reloadReviews       = async () => { const r = await fetch('/api/testimonials?all=1');           if (r.ok) setReviews((await r.json()).reviews || []); };
-  const reloadTeam          = async () => { const r = await fetch('/api/admin/team');                   if (r.ok) setTeamMembers((await r.json()).members || []); };
-  const reloadServices      = async () => { const r = await fetch('/api/admin/services');               if (r.ok) setServices((await r.json()).services || []); };
-  const reloadVacancies     = async () => { const r = await fetch('/api/admin/careers');                if (r.ok) setVacancies((await r.json()).vacancies || []); };
-  const reloadApplications  = async () => { const r = await fetch('/api/admin/careers/applications');   if (r.ok) setApplications((await r.json()).applications || []); };
-  const reloadConsultations = async () => { const r = await fetch('/api/admin/consultations');          if (r.ok) setConsultations((await r.json()).consultations || []); };
+  const reloadMessages      = async () => { const r = await fetch('/api/admin/messages');             if (r.ok) { const all = (await r.json()).messages || []; setMessages(all.filter((m: Message) => m.inquiryType !== 'lead')); } };
+  const reloadLeads         = async () => { const r = await fetch('/api/admin/leads');                if (r.ok) setLeads((await r.json()).leads || []); };
+  const reloadBlogs         = async () => { const r = await fetch('/api/blogs?all=1');                if (r.ok) setBlogs((await r.json()).posts || []); };
+  const reloadProjects      = async () => { const r = await fetch('/api/portfolio');                  if (r.ok) setProjects((await r.json()).projects || []); };
+  const reloadReviews       = async () => { const r = await fetch('/api/testimonials?all=1');         if (r.ok) setReviews((await r.json()).reviews || []); };
+  const reloadTeam          = async () => { const r = await fetch('/api/admin/team');                 if (r.ok) setTeamMembers((await r.json()).members || []); };
+  const reloadServices      = async () => { const r = await fetch('/api/admin/services');             if (r.ok) setServices((await r.json()).services || []); };
+  const reloadVacancies     = async () => { const r = await fetch('/api/admin/careers');              if (r.ok) setVacancies((await r.json()).vacancies || []); };
+  const reloadApplications  = async () => { const r = await fetch('/api/admin/careers/applications'); if (r.ok) setApplications((await r.json()).applications || []); };
+  const reloadConsultations = async () => { const r = await fetch('/api/admin/consultations');        if (r.ok) setConsultations((await r.json()).consultations || []); };
 
   // ─── Other helpers ────────────────────────────────────────────────────────
 
@@ -317,24 +316,18 @@ export default function AdminDashboard() {
     router.replace(tab === 'stats' ? '/admin' : `/admin?tab=${tab}`);
   };
 
-  // const handleLogout = async () => {
-  //   await fetch('/api/admin/logout', { method: 'POST' });
-  //   router.push('/admin/login');
-  // };
-
   const confirmLogout = async () => {
-  setLogoutBusy(true);
-  try {
-    await fetch('/api/admin/logout', { method: 'POST' });
-    router.push('/admin/login');
-  } finally {
-    setLogoutBusy(false);
-    setLogoutDialog(false);
-  }
-};
+    setLogoutBusy(true);
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      router.push('/admin/login');
+    } finally {
+      setLogoutBusy(false);
+      setLogoutDialog(false);
+    }
+  };
 
-// Opens the logout confirmation dialog
-const handleLogout = () => setLogoutDialog(true);
+  const handleLogout = () => setLogoutDialog(true);
 
   const currentTab = TABS.find((t) => t.key === activeTab);
 
@@ -351,12 +344,13 @@ const handleLogout = () => setLogoutDialog(true);
   // ─── Render ──────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-[0px]">
+    <div className="min-h-screen bg-slate-50">
 
       {/* ══════════════════════════════════════════════════
           MOBILE TOP BAR  (hidden on lg+)
+          — sits right below the main site navbar (h-16 = 64px)
       ══════════════════════════════════════════════════ */}
-      <div className="lg:hidden fixed top-[64px] left-0 right-0 z-30 flex items-center gap-3 bg-white border-b border-slate-200 px-4 h-12 shadow-sm">
+      <div className="lg:hidden fixed top-16 left-0 right-0 z-30 flex items-center gap-3 bg-white border-b border-slate-200 px-4 h-12 shadow-sm">
         <button
           type="button"
           aria-label="Open menu"
@@ -384,57 +378,63 @@ const handleLogout = () => setLogoutDialog(true);
       />
 
       {/* ══════════════════════════════════════════════════
-          SIDEBAR
-          Mobile  → fixed drawer slides in from left
-          Desktop → sticky, always visible
+          DESKTOP LAYOUT WRAPPER — flex row (sidebar + content)
       ══════════════════════════════════════════════════ */}
-      <aside
-        className={`
-          fixed top-0 left-0 z-50 h-full w-[240px] bg-white flex flex-col
-          transition-transform duration-300 ease-in-out
-          shadow-[4px_0_24px_rgba(0,0,0,0.10)]
-          lg:sticky lg:top-[64px] lg:z-auto
-          lg:h-[calc(100vh-64px)]
-          lg:shadow-[1px_0_0_0_#e2e8f0]
-          lg:translate-x-0
-          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-        `}
-      >
-        {/* Drawer header — mobile only */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-4 border-b border-slate-100">
-          <span className="text-sm font-bold text-gray-900">Admin Panel</span>
-          <button
-            type="button"
-            onClick={() => setSidebarOpen(false)}
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
+      <div className="lg:flex lg:items-start">
 
-        {/* Logo / email row — desktop only */}
-        <div className="hidden lg:flex items-center gap-2.5 px-4 pt-6 pb-2 border-b border-slate-100">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 shrink-0">
-            <BarChart2 className="w-4 h-4 text-primary" />
+        {/* ══════════════════════════════════════════════════
+            SIDEBAR
+            Mobile  → fixed drawer slides in from left
+            Desktop → sticky inside flex row, below 64px navbar
+        ══════════════════════════════════════════════════ */}
+        <aside
+          className={`
+            fixed top-0 left-0 z-50 h-full w-[240px] bg-white flex flex-col
+            transition-transform duration-300 ease-in-out
+            shadow-[4px_0_24px_rgba(0,0,0,0.10)]
+            lg:sticky lg:top-16 lg:z-auto lg:shrink-0
+            lg:h-[calc(100vh-4rem)]
+            lg:shadow-[1px_0_0_0_#e2e8f0]
+            lg:translate-x-0
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          `}
+        >
+          {/* Drawer header — mobile only */}
+          <div className="lg:hidden flex items-center justify-between px-4 py-4 border-b border-slate-100">
+            <span className="text-sm font-bold text-gray-900">Admin Panel</span>
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(false)}
+              className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
-          <span className="text-xs font-semibold text-gray-700 truncate">
-            {adminEmail || 'Admin Panel'}
-          </span>
-        </div>
 
-        <SidebarNav
-          activeTab={activeTab}
-          onNavigate={navigateToTab}
-          onLogout={handleLogout}
-        />
-      </aside>
+          {/* Logo / email row — desktop only */}
+          <div className="hidden lg:flex items-center gap-2.5 px-4 pt-6 pb-2 border-b border-slate-100">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 shrink-0">
+              <BarChart2 className="w-4 h-4 text-primary" />
+            </div>
+            <span className="text-xs font-semibold text-gray-700 truncate">
+              {adminEmail || 'Admin Panel'}
+            </span>
+          </div>
 
-      {/* ══════════════════════════════════════════════════
-          MAIN CONTENT
-      ══════════════════════════════════════════════════ */}
-      <div className="lg:ml-[240px]">
-        {/* pt-14 on mobile = 56px for the fixed topbar above content */}
-        <main className="min-h-[calc(100vh-64px)] p-3 pt-14 sm:p-4 sm:pt-14 lg:p-6 lg:pt-6">
+          <SidebarNav
+            activeTab={activeTab}
+            onNavigate={navigateToTab}
+            onLogout={handleLogout}
+          />
+        </aside>
+
+        {/* ══════════════════════════════════════════════════
+            MAIN CONTENT
+            — mobile: pt-28 for navbar(4rem) + admin bar(3rem)
+            — desktop: pt-6, flex-1 fills remaining width
+        ══════════════════════════════════════════════════ */}
+        <div className="flex-1 min-w-0">
+          <main className="min-h-[100vh] p-3 pt-[8rem] sm:p-4 sm:pt-28 lg:p-6 lg:pt-[9rem] lg:pb-[5rem]">
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
 
             {activeTab === 'stats' && <StatsTab />}
@@ -541,47 +541,48 @@ const handleLogout = () => setLogoutDialog(true);
             )}
 
           </div>
-        </main>
-      </div>
+          </main>
+        </div>
 
-     
-      {/* LOGOUT CONFIRMATION DIALOG */}
-<Dialog open={logoutDialog} onOpenChange={(open) => { if (!open && !logoutBusy) setLogoutDialog(false); }}>
-  <DialogContent className="max-w-sm">
-    <DialogHeader>
-      <DialogTitle className="flex items-center gap-2">
-        <LogOut className="w-4 h-4 text-red-500" />
-        Sign out?
-      </DialogTitle>
-      <DialogDescription>
-        Are you sure you want to sign out of the admin panel?
-      </DialogDescription>
-    </DialogHeader>
-    <DialogFooter className="gap-2 sm:gap-0">
-      <Button
-        variant="ghost"
-        onClick={() => setLogoutDialog(false)}
-        disabled={logoutBusy}
-      >
-        Cancel
-      </Button>
-      <Button
-        variant="destructive"
-        onClick={confirmLogout}
-        disabled={logoutBusy}
-        className="gap-2"
-      >
-        {logoutBusy
-          ? <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          : <LogOut className="w-3.5 h-3.5" />
-        }
-        {logoutBusy ? 'Signing out...' : 'Yes, sign out'}
-      </Button>
-    </DialogFooter>
-  </DialogContent>
-</Dialog>
+      </div>{/* end lg:flex wrapper */}
 
-
+      {/* ══════════════════════════════════════════════════
+          LOGOUT CONFIRMATION DIALOG
+      ══════════════════════════════════════════════════ */}
+      <Dialog open={logoutDialog} onOpenChange={(open) => { if (!open && !logoutBusy) setLogoutDialog(false); }}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <LogOut className="w-4 h-4 text-red-500" />
+              Sign out?
+            </DialogTitle>
+            <DialogDescription>
+              Are you sure you want to sign out of the admin panel?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              variant="ghost"
+              onClick={() => setLogoutDialog(false)}
+              disabled={logoutBusy}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={confirmLogout}
+              disabled={logoutBusy}
+              className="gap-2"
+            >
+              {logoutBusy
+                ? <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                : <LogOut className="w-3.5 h-3.5" />
+              }
+              {logoutBusy ? 'Signing out...' : 'Yes, sign out'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* ══════════════════════════════════════════════════
           DELETE DIALOG
