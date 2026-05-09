@@ -132,7 +132,7 @@ export default function  ConsultationFormSection() {
               Schedule a <span className="gradient-text">Free Call</span>
             </h2>
             <p className="text-gray-900 text-base max-w-sm">
-              Pick a slot that suits you—we'll come prepared with a plan for your project.
+              Pick a slot that suits you. We&apos;ll come prepared with a plan for your project.
             </p>
           </div>
 
@@ -212,7 +212,7 @@ export default function  ConsultationFormSection() {
                     </div>
                     <h3 className="text-xl font-display font-bold text-gray-900 mb-2">Booking Confirmed!</h3>
                     <p className="text-gray-900/70 text-sm mb-6">
-                      Your consultation has been booked. We'll send a confirmation email within a few hours.
+                      Your consultation has been booked. We&apos;ll send a confirmation email within a few hours.
                     </p>
                     <button onClick={() => setSuccess(false)} className="btn-secondary text-sm">
                       Book Another

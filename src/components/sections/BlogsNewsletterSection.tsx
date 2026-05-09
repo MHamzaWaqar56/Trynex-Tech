@@ -118,7 +118,7 @@ export default function BlogsNewsletterSection() {
                     <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
                       <CheckCircle2 className="w-7 h-7 text-primary" />
                     </div>
-                    <p className="font-display font-bold text-xl text-dark">You're subscribed!</p>
+                    <p className="font-display font-bold text-xl text-dark">You&apos;re subscribed!</p>
                     <p className="text-sm text-gray-900">Watch your inbox — great content is on its way.</p>
                     <button
                       onClick={() => setSubscribed(false)}
