@@ -11,7 +11,7 @@ export default function BlogArticle({ content }: Props) {
 
       {/* Blog content */}
       <div id="blog-article-content" className="blog-content max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <div className="text-justify" dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </article>
   );

@@ -74,7 +74,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
               <h2 className="section-title">
                 What This <span className="gradient-text">Project Includes</span>
               </h2>
-              <p className="section-subtitle max-w-[34rem] min-[768px]:max-[875px]:max-w-[24rem]">
+              <p className="section-subtitle max-w-[34rem] min-[768px]:max-[875px]:max-w-[24rem]  min-[320px]:max-[767px]:text-[16px]">
                 A clean case-study layout with the same visual language used across the services detail pages.
               </p>
             </div>
@@ -110,7 +110,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     <Target className="w-4 h-4 text-primary" />
                     <h3 className="text-xl font-display font-bold">Project Details</h3>
                   </div>
-                  <p className="text-gray-900 leading-relaxed whitespace-pre-line">{project.description}</p>
+                  <p className="text-gray-900 leading-relaxed whitespace-pre-line text-justify">{project.description}</p>
                 </div>
 
                 <div className="glass-card p-6">
@@ -169,7 +169,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     <CircleDollarSign className="w-4 h-4 text-primary" />
                     <h3 className="text-xl font-display font-bold">Next Step</h3>
                   </div>
-                  <p className="text-gray-900 leading-relaxed mb-5">
+                  <p className="text-gray-900 leading-relaxed mb-5 text-justify">
                     Want a similar result for your business? Let&apos;s discuss the scope, timeline, and best approach.
                   </p>
                   <Link href="/contact" className="btn-primary w-full justify-center">
@@ -189,7 +189,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                 <h2 className="section-title">
                   Project <span className="gradient-text">Gallery</span>
                 </h2>
-                <p className="section-subtitle !max-w-[34rem] min-[768px]:max-[875px]:max-w-[24rem]">
+                <p className="section-subtitle !max-w-[34rem] min-[768px]:max-[875px]:max-w-[24rem]  min-[320px]:max-[767px]:text-[16px]">
                   Click any image to open the carousel preview, then use the left and right controls to move through all images.
                 </p>
               </div>

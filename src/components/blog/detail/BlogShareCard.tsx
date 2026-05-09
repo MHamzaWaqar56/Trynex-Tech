@@ -42,9 +42,9 @@ export default function BlogShareCard({ title, postUrl }: Props) {
   ];
 
   return (
-    <div className="glass-card p-5 min-[320px]:max-[500px]:p-[12px] min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:justify-center min-[320px]:max-[767px]:gap-[15px] min-[320px]:max-[767px]:items-center">
-      <h3 className="font-display font-bold text-gray-900 text-base mb-3 min-[320px]:max-[767px]:mb-0">Share this post</h3>
-      <div className="flex flex-wrap gap-2">
+    <div className="glass-card p-5 min-[320px]:max-[500px]:p-[10px] min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:justify-center min-[320px]:max-[767px]:gap-[10px] min-[320px]:max-[767px]:items-center">
+      <h3 className="font-display font-bold text-gray-900 text-base mb-3 min-[320px]:max-[767px]:mb-0">Share this post:</h3>
+      <div className="flex flex-wrap gap-2 min-[320px]:max-[400px]:gap-[5px]">
         {shareLinks.map(({ label, href, icon: Icon }) => (
           <a
             key={label}

@@ -50,7 +50,7 @@ export default async function OurValuesSection() {
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display font-bold text-gray-900 text-lg mb-3">{title}</h3>
-                <p className="text-gray-900 text-sm leading-relaxed">{desc}</p>
+                <p className="text-gray-900 text-sm leading-relaxed text-justify">{desc}</p>
               </div>
             ))}
           </div>

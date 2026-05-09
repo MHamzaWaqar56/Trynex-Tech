@@ -166,7 +166,7 @@ export default function BlogsNewsletterSection() {
 
                 {/* Privacy note */}
                 {!subscribed && (
-                  <p className="mt-4 text-xs text-dark-muted/70">
+                  <p className="mt-4 text-xs text-gray-600">
                     No spam. Unsubscribe anytime. Your privacy is protected.
                   </p>
                 )}

@@ -92,7 +92,7 @@ export default function PageHero({
           {description && (
             <p
               className={cn(
-                'text-white text-lg leading-relaxed animate-fade-up animation-delay-200 min-[320px]:max-[600px]:text-[16px]',
+                'text-white text-lg leading-relaxed animate-fade-up animation-delay-200 min-[320px]:max-[600px]:text-[16px] min-[320px]:max-[600px]:leading-[22px]',
                 isCentered ? 'mx-auto max-w-2xl' : 'max-w-3xl'
               )}
             >

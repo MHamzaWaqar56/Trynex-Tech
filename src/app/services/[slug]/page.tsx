@@ -186,7 +186,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <Target className="w-4 h-4 text-primary" />
                   <h3 className="text-xl font-display font-bold">Service Details</h3>
                 </div>
-                <p className="text-gray-900 leading-relaxed whitespace-pre-line">
+                <p className="text-gray-900 leading-relaxed whitespace-pre-line  text-justify">
                   {service.details || service.summary || service.description}
                 </p>
               </div>
@@ -272,7 +272,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h2 className="section-title mb-4">
               Choose the Right <span className="gradient-text">Package</span>
             </h2>
-            <p className="section-subtitle max-w-2xl">
+            <p className="section-subtitle max-w-2xl min-[320px]:max-[767px]:text-[16px]">
               Three clear tiers so clients can pick the fit that matches their scope and budget.
             </p>
           </div>
