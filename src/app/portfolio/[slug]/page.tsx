@@ -316,7 +316,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
-                              <BriefcaseBusiness className="w-5 h-5 text-gray-300" />
+                              <BriefcaseBusiness className="w-5 h-5 text-gray-600" />
                             </div>
                           )}
                         </div>

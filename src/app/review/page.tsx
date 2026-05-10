@@ -97,7 +97,7 @@ export default function ReviewPage() {
           <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-4" />
           <h1 className="text-xl font-display font-bold text-gray-900 mb-2">Thank You!</h1>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Your review has been submitted successfully. Our team will review it and publish it shortly.
+            Your review has been submitted successfully.
           </p>
         </div>
       </div>
@@ -123,11 +123,11 @@ export default function ReviewPage() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div className="bg-white rounded-2xl border border-primary-200 shadow-sm p-6 space-y-5">
 
           {/* Star Rating */}
           <div className="space-y-2">
-            <label className="text-xs font-medium text-gray-700 uppercase tracking-wider">
+            <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">
               Your Rating *
             </label>
             <div className="flex gap-2">
@@ -146,7 +146,7 @@ export default function ReviewPage() {
 
           {/* Name */}
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-gray-700 uppercase tracking-wider">Your Name *</label>
+            <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Your Name *</label>
             <input
               type="text"
               required
@@ -160,7 +160,7 @@ export default function ReviewPage() {
           {/* Company + Role */}
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-gray-700 uppercase tracking-wider">Company *</label>
+              <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Company *</label>
               <input
                 type="text"
                 required
@@ -171,7 +171,7 @@ export default function ReviewPage() {
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-gray-700 uppercase tracking-wider">Role</label>
+              <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Role</label>
               <input
                 type="text"
                 value={form.role}
@@ -184,7 +184,7 @@ export default function ReviewPage() {
 
           {/* Review */}
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-gray-700 uppercase tracking-wider">Your Review *</label>
+            <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Your Review *</label>
             <textarea
               required
               rows={4}
