@@ -56,7 +56,7 @@ export default async function HeroSection() {
 
           {/* Badge */}
           <div className="inline-flex items-center gap-2 section-badge mb-8 animate-fade-up">
-            Building Digital Futures Since 2025
+            Your Vision, Engineered to Perform.
           </div>
 
           {/* Floating badge — top left (Projects) */}

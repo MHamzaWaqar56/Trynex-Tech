@@ -13,7 +13,7 @@ import { Spinner } from '@/components/ui/spinner';
 
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'hello@trynex.com', href: 'mailto:hello@trynex.com' },
+  { icon: Mail, label: 'Email', value: 'trynextech@gmail.com', href: 'mailto:trynextech@gmail.com' },
   { icon: Phone, label: 'WhatsApp', value: WHATSAPP_NUMBER, href: `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}` },
   {
     icon: MapPin,
