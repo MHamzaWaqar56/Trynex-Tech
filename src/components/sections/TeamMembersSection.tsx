@@ -133,7 +133,7 @@ export default function TeamMembersSection({ members }: Props) {
       {/* Dialog */}
       <Dialog open={selectedMember !== null} onOpenChange={(open) => { if (!open) setSelectedIndex(null); }}>
         {selectedMember && (
-          <DialogContent className="!max-w-4xl p-0 overflow-hidden h-[550px] min-[320px]:max-[990px]:h-[90vh] min-[320px]:max-[990px]:w-[90vw] min-[320px]:max-[767px]:overflow-auto">
+          <DialogContent className="!max-w-4xl overflow-hidden h-[550px] min-[320px]:max-[990px]:h-[90vh] min-[320px]:max-[990px]:w-[90vw] min-[320px]:max-[767px]:overflow-auto min-[320px]:max-[767px]:p-4">
             <div className="grid grid-cols-2 lg:grid-cols-[1.05fr_1.15fr] h-full min-[320px]:max-[767px]:grid-cols-1">
 
               {/* Image */}
@@ -154,7 +154,7 @@ export default function TeamMembersSection({ members }: Props) {
               </div>
 
               {/* Info */}
-              <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+              <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center  min-[320px]:max-[767px]:px-4">
                 <DialogHeader className="pr-0">
                   <DialogTitle className="!text-3xl !text-gray-900 sm:text-4xl !font-display">
                     {selectedMember.name}
@@ -172,7 +172,7 @@ export default function TeamMembersSection({ members }: Props) {
                   <div className="text-xs uppercase tracking-widest text-gray-900 font-mono mb-3">
                     Connect
                   </div>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 min-[320px]:max-[767px]:grid min-[320px]:max-[767px]:grid-cols-2">
                     {selectedMember.email && (
                       <a href={`mailto:${selectedMember.email}`}
                         className="inline-flex items-center gap-2 rounded-full border border-gray-900 px-4 py-2 text-sm text-gray-900 hover:border-primary hover:text-primary transition-colors">
