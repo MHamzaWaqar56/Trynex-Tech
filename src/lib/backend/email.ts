@@ -1,6 +1,4 @@
 
-
-
 import nodemailer from "nodemailer";
 
 export async function sendEmailIfConfigured(options: {

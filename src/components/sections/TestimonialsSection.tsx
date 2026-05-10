@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { Star, Quote } from 'lucide-react';
+import { Spinner } from '../ui/spinner';
 
 type Testimonial = {
   _id?: string;
@@ -71,7 +72,17 @@ export default function TestimonialsSection() {
     return () => { active = false; };
   }, []);
 
-  if (loading) return null;
+  
+  if (loading) {
+  return (
+    <section className="py-12 bg-white">
+      <div className="container-custom flex items-center justify-center min-h-[200px]">
+        <Spinner size="lg" />
+      </div>
+    </section>
+  );
+}
+  
   if (testimonials.length === 0) return null;
 
   // Duplicate for seamless loop

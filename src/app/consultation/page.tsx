@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { CalendarDays } from 'lucide-react';
 import PageHero from '@/components/sections/PageHero';
 import CTASection from '@/components/sections/CTASection';
@@ -5,9 +6,20 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import WhatYouWillGet from '@/components/sections/WhatYouWillGet';
 import ConsultationFormSection from '@/components/sections/ConsultationFormSection';
 
+export const metadata: Metadata = {
+  title: 'Free Consultation | Trynex Tech',
+  description: 'Book a free consultation with Trynex Tech. Tell us your goals, timeline, and budget — we will respond within 24 hours with a tailored plan.',
+  alternates: { canonical: '/consultation' },
+  keywords: ['free consultation', 'book consultation', 'software house Pakistan', 'project planning', 'Trynex Tech consultation'],
+  openGraph: {
+    title: 'Book a Free Consultation | Trynex Tech',
+    description: 'Schedule a free consultation with our team. We will review your goals and send a tailored proposal within 24 hours.',
+    url: '/consultation',
+    type: 'website',
+  },
+};
 
 export default function ConsultationPage() {
- 
   return (
     <>
       <PageHero
@@ -21,12 +33,11 @@ export default function ConsultationPage() {
         title={<>Plan Your <span className="gradient-text">Project</span></>}
         description="Choose a date and time that works for you. We'll review your goals, timeline, and budget so the call is focused from the start."
       />
-      
+
       <WhatYouWillGet />
       <TestimonialsSection />
       <ConsultationFormSection />
       <CTASection />
-
     </>
   );
 }

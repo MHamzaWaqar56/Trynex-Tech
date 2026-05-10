@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Mail, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
+import { Spinner } from '../ui/spinner';
 
 export default function NewsletterWidget() {
   const [email, setEmail] = useState('');
@@ -61,7 +62,10 @@ export default function NewsletterWidget() {
           disabled={loading}
           className="btn-primary w-full justify-center text-sm py-2.5 disabled:opacity-60"
         >
-          {loading ? 'Subscribing...' : <><ArrowRight className="w-4 h-4" /> Subscribe</>}
+           {loading
+            ? <><Spinner size="sm" variant="dark" /> Subscribing...</>
+            : <><ArrowRight className="w-4 h-4" /> Subscribe</>
+          }
         </button>
       </form>
     </div>
