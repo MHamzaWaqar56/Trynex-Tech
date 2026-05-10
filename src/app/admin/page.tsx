@@ -587,13 +587,13 @@ export default function AdminDashboard() {
       {/* ══════════════════════════════════════════════════
           DELETE DIALOG
       ══════════════════════════════════════════════════ */}
-      <Dialog open={!!deleteDialog} onOpenChange={(open) => { if (!open && !deleteBusy) setDeleteDialog(null); }}>
-        <DialogContent>
+      <Dialog open={!!deleteDialog} onOpenChange={(open) => { if (!open && !deleteBusy) setDeleteDialog(null); }} >
+        <DialogContent className='min-[320px]:max-[767px]:w-[90vw] min-[320px]:max-[767px]:rounded-[12px]'>
           <DialogHeader>
             <DialogTitle>{deleteDialog?.title}</DialogTitle>
             <DialogDescription>{deleteDialog?.description}</DialogDescription>
           </DialogHeader>
-          <DialogFooter>
+          <DialogFooter className='min-[320px]:max-[767px]:gap-2'>
             <Button variant="ghost" onClick={() => setDeleteDialog(null)} disabled={deleteBusy}>
               Cancel
             </Button>
@@ -609,7 +609,7 @@ export default function AdminDashboard() {
           DETAIL DIALOG
       ══════════════════════════════════════════════════ */}
       <Dialog open={!!detailDialog} onOpenChange={(open) => { if (!open) setDetailDialog(null); }}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-w-lg min-[320px]:max-[767px]:w-[95vw] min-[320px]:max-[767px]:rounded-[12px]">
           <DialogHeader>
             <DialogTitle>{detailDialog?.title}</DialogTitle>
             <DialogDescription>{detailDialog?.subtitle}</DialogDescription>
