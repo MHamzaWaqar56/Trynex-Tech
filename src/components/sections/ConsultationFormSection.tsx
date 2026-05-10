@@ -196,7 +196,7 @@ export default function  ConsultationFormSection() {
                     </div>
                     <div>
                       <h2 className="font-display text-2xl font-bold text-gray-900 min-[320px]:max-[500px]:text-[14px]">Book Your Free Strategy Session</h2>
-                      <p className="text-xs text-gray-600 mt-0.5 font-mono">Free · 60 minutes · No obligation</p>
+                      <p className="text-xs text-gray-600 mt-0.5 font-mono min-[320px]:max-[400px]:text-[11px]">Free · 60 minutes · No obligation</p>
                     </div>
                   </div>
                   <p className="text-sm text-gray-900 mt-2">
