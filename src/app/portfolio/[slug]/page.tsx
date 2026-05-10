@@ -95,18 +95,6 @@ export default async function PortfolioDetailPage({ params }: Props) {
         description={`A complete case study for ${project.client}.`}
       />
 
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-100">
-        <div className="container-custom py-3">
-          <nav className="flex items-center gap-1.5 text-xs text-gray-400 font-mono">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-primary truncate max-w-[200px]">{project.title}</span>
-          </nav>
-        </div>
-      </div>
 
       {/* ── Main Layout */}
       <section className="py-14 bg-white">
@@ -122,7 +110,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                   <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
                     The Challenge
                   </h2>
-                  <p className="text-gray-700 leading-relaxed text-justify whitespace-pre-line">
+                  <p className="text-gray-900 leading-relaxed text-justify whitespace-pre-line">
                     {project.problem}
                   </p>
                 </div>
@@ -134,7 +122,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                   <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
                     The Solution
                   </h2>
-                  <p className="text-gray-700 leading-relaxed text-justify whitespace-pre-line">
+                  <p className="text-gray-900 leading-relaxed text-justify whitespace-pre-line">
                     {project.solution}
                   </p>
                 </div>
@@ -158,7 +146,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {tech.map((t) => (
-                      <div key={t} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-3.5">
+                      <div key={t} className="flex items-center gap-3 rounded-xl border border-primary bg-primary-50/60 p-3.5">
                         <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                           <BriefcaseBusiness className="w-3.5 h-3.5 text-primary" />
                         </div>
