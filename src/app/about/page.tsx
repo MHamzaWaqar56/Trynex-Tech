@@ -9,6 +9,9 @@ import FAQSection from '@/components/sections/FAQSection';
 import OurValuesSection from '@/components/sections/OurValuesSection';
 import OurTeamSection from '@/components/sections/OurTeamSection';
 import WhoWeAreSection from '@/components/sections/WhoWeAreSection';
+import { connectDB } from '@/lib/db';
+import { Testimonial } from '@/models/Testimonial';
+import { SiteStats } from '@/models/SiteStats';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -26,6 +29,24 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
 
+    await connectDB();
+  
+    const [testimonials, stats] = await Promise.all([
+      Testimonial.find({ approved: true}).lean<{ rating: number }[]>(),
+      SiteStats.findOne({ key: 'main' }),
+    ]);
+  
+    const satisfactionScore =
+      testimonials.length > 0
+        ? Math.round(
+            (testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length / 5) * 100
+          )
+        : 0;
+  
+    const clientRetention = stats?.clientRetention ?? 0;
+  
+  
+
   return (
     <>
       {/* Hero */}
@@ -42,7 +63,10 @@ export default async function AboutPage() {
       />
 
       <WhoWeAreSection />     
-      <WhyChooseUsSection showCta={false} />
+      <WhyChooseUsSection
+              satisfactionScore={satisfactionScore}
+              clientRetention={clientRetention}
+            />
       <StatsSection />
       <OurValuesSection />
       <HowWeWorkSection />

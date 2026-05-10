@@ -9,6 +9,8 @@ import ServicesGridClient from '@/components/services/ServicesGridClient';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import WhyChooseUsSection from '@/components/sections/WhyChooseUsSection';
 import FAQSection from '@/components/sections/FAQSection';
+import { Testimonial } from '@/models/Testimonial';
+import { SiteStats } from '@/models/SiteStats';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,6 +63,25 @@ async function getServices(): Promise<PublicService[]> {
 export default async function ServicesPage() {
   const services = await getServices();
 
+
+      await connectDB();
+    
+      const [testimonials, stats] = await Promise.all([
+        Testimonial.find({ approved: true}).lean<{ rating: number }[]>(),
+        SiteStats.findOne({ key: 'main' }),
+      ]);
+    
+      const satisfactionScore =
+        testimonials.length > 0
+          ? Math.round(
+              (testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length / 5) * 100
+            )
+          : 0;
+    
+      const clientRetention = stats?.clientRetention ?? 0;
+    
+    
+
   return (
     <>
       <PageHero
@@ -81,7 +102,10 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      <WhyChooseUsSection />
+      <WhyChooseUsSection
+                    satisfactionScore={satisfactionScore}
+                    clientRetention={clientRetention}
+                  />
       <TestimonialsSection />
       <FAQSection />
       <CTASection />

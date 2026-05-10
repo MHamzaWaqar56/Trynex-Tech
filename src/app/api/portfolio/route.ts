@@ -1,3 +1,4 @@
+
 import { connectDB } from "@/lib/db";
 import { fail, isDuplicateKeyError, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { portfolioSchema } from "@/lib/backend/validators";
@@ -9,7 +10,10 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     await connectDB();
-    const projects = await Portfolio.find({}).sort({ order: 1, featured: -1, createdAt: -1 }).lean();
+    const projects = await Portfolio.find({})
+      .populate('testimonial')
+      .sort({ order: 1, featured: -1, createdAt: -1 })
+      .lean();
 
     return ok({ projects });
   } catch (error) {

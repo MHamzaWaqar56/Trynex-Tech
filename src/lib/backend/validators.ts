@@ -52,14 +52,11 @@ export const portfolioSchema = z.object({
   client: z.string().min(2),
   service: z.string().min(2),
   description: z.string().min(10),
-  results: z
-    .array(
-      z.object({
-        label: z.string().min(1),
-        value: z.string().min(1),
-      }),
-    )
-    .default([]),
+  problem:  z.string().default(''),
+  solution: z.string().default(''),
+  builtBy:     z.array(z.string()).default([]),
+  testimonial: z.string().nullable().optional(),
+  results:  z.string().default(''),
   images: z.array(z.string()).default([]),
   tech: z.array(z.string()).default([]),
   featured: z.boolean().optional().default(false),

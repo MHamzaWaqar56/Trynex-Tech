@@ -1,3 +1,4 @@
+
 import { connectDB } from "@/lib/db";
 import { portfolioSchema } from "@/lib/backend/validators";
 import { fail, isDuplicateKeyError, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
@@ -10,7 +11,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ slug: stri
   try {
     const { slug } = await params;
     await connectDB();
-    const project = await Portfolio.findOne({ slug }).lean();
+    const project = await Portfolio.findOne({ slug }).populate('testimonial').lean();
 
     if (!project) {
       return fail("Project not found.", 404);

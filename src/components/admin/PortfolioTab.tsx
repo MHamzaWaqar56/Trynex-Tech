@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 import {
   Plus, Trash2, Pencil, ArrowLeft,
   FolderOpen, Star, ImagePlus, BarChart2,
-  Layers, X,
+  Layers, X, Users,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -24,12 +24,22 @@ export interface PortfolioProject {
   client: string;
   service: string;
   description: string;
-  results?: Array<{ label: string; value: string }>;
+  problem: string;
+  solution: string;
+  builtBy: string[];
+  results?: string;
   tech?: string[];
   images?: string[];
   featured?: boolean;
   order?: number;
 }
+
+type TeamMember = {
+  _id: string;
+  name: string;
+  designation: string;
+  image?: string;
+};
 
 interface DeleteDialogState {
   title: string;
@@ -49,7 +59,6 @@ interface Props {
 
 // ─── Local helpers ────────────────────────────────────────────────────────────
 
-type ResultRow = { label: string; value: string };
 type ImageSlot = { id: string; file: File | null; preview: string | null };
 
 function uid() {
@@ -112,6 +121,7 @@ async function uploadMultiple(files: File[], folder: string): Promise<string[]> 
 
 const emptyForm = {
   title: '', client: '', service: '', description: '',
+  problem: '', solution: '', results: '',
   tech: '', images: '', featured: false, order: 1,
 };
 
@@ -121,8 +131,11 @@ function normalizeForm(p: PortfolioProject) {
     client:      p.client,
     service:     p.service,
     description: p.description,
-    tech:        (p.tech    || []).join(', '),
-    images:      (p.images  || []).join(', '),
+    problem:     p.problem  || '',
+    solution:    p.solution || '',
+    results:     typeof p.results === 'string' ? p.results : '',
+    tech:        (p.tech   || []).join(', '),
+    images:      (p.images || []).join(', '),
     featured:    Boolean(p.featured),
     order:       normalizeOrder(p.order || 1),
   };
@@ -141,12 +154,21 @@ export default function PortfolioTab({
   onGoToList,
 }: Props) {
 
-  const [view, setView]                       = useState<View>(editingSlug ? 'editor' : 'list');
-  const [form, setForm]                       = useState(emptyForm);
-  const [localSlug, setLocalSlug]             = useState<string | null>(editingSlug ?? null);
-  const [results, setResults]                 = useState<ResultRow[]>([{ label: '', value: '' }]);
-  const [imageSlots, setImageSlots]           = useState<ImageSlot[]>([{ id: uid(), file: null, preview: null }]);
-  const [busy, setBusy]                       = useState(false);
+  const [view, setView]             = useState<View>(editingSlug ? 'editor' : 'list');
+  const [form, setForm]             = useState(emptyForm);
+  const [localSlug, setLocalSlug]   = useState<string | null>(editingSlug ?? null);
+  const [imageSlots, setImageSlots] = useState<ImageSlot[]>([{ id: uid(), file: null, preview: null }]);
+  const [builtBy, setBuiltBy]       = useState<string[]>([]);   // selected member _ids
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [busy, setBusy]             = useState(false);
+
+  // fetch team members for dropdown
+  useEffect(() => {
+    fetch('/api/team')
+      .then((r) => r.json())
+      .then((data) => setTeamMembers(Array.isArray(data?.members) ? data.members : []))
+      .catch(() => {});
+  }, []);
 
   // sync external editingSlug
   useEffect(() => {
@@ -156,37 +178,30 @@ export default function PortfolioTab({
     }
   }, [editingSlug]);
 
-  // existing image URLs from form.images field
   const existingImages = useMemo(() => listToArray(form.images), [form.images]);
-
-  // new files staged in slots
   const newFiles = useMemo(
     () => imageSlots.map((s) => s.file).filter((f): f is File => Boolean(f)),
     [imageSlots],
   );
-
-  // duplicate order check
   const duplicateOrder = useMemo(() => {
     return projects.some(
       (p) => p.slug !== localSlug && normalizeOrder(p.order || 1) === normalizeOrder(form.order),
     );
   }, [projects, localSlug, form.order]);
 
-  // ── Open editor with a project
   function openEditor(p: PortfolioProject) {
     setForm(normalizeForm(p));
     setLocalSlug(p.slug);
-    setResults(p.results?.length ? p.results.map((r) => ({ ...r })) : [{ label: '', value: '' }]);
     setImageSlots([{ id: uid(), file: null, preview: null }]);
+    setBuiltBy(p.builtBy || []);
     setView('editor');
   }
 
-  // ── Reset form
   function resetForm() {
     setForm(emptyForm);
     setLocalSlug(null);
-    setResults([{ label: '', value: '' }]);
     setImageSlots([{ id: uid(), file: null, preview: null }]);
+    setBuiltBy([]);
   }
 
   function handleCancel() {
@@ -195,12 +210,16 @@ export default function PortfolioTab({
     setView('list');
   }
 
-  // ── Image slot management
+  function toggleMember(id: string) {
+    setBuiltBy((cur) =>
+      cur.includes(id) ? cur.filter((m) => m !== id) : [...cur, id]
+    );
+  }
+
   async function addFileToSlot(slotId: string, file: File) {
     const preview = await readPreview(file);
     setImageSlots((cur) => {
       const next = cur.map((s) => s.id === slotId ? { ...s, file, preview } : s);
-      // if this was the last slot, push a new empty one
       const target = next.find((s) => s.id === slotId);
       if (target === next[next.length - 1]) next.push({ id: uid(), file: null, preview: null });
       if (!next.some((s) => !s.file)) next.push({ id: uid(), file: null, preview: null });
@@ -224,7 +243,6 @@ export default function PortfolioTab({
     }));
   }
 
-  // ── Submit
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!form.title.trim()) { toast.error('Title is required.'); return; }
@@ -239,7 +257,10 @@ export default function PortfolioTab({
         client:      form.client,
         service:     form.service,
         description: form.description,
-        results:     results.map((r) => ({ label: r.label.trim(), value: r.value.trim() })).filter((r) => r.label && r.value),
+        problem:     form.problem,
+        solution:    form.solution,
+        builtBy,
+        results:     form.results,
         tech:        listToArray(form.tech),
         images:      uniqueList([...existingImages, ...uploadedUrls]),
         featured:    form.featured,
@@ -266,7 +287,6 @@ export default function PortfolioTab({
     }
   }
 
-  // ── Delete
   function handleDelete(p: PortfolioProject) {
     onDelete({
       title: 'Delete portfolio project?',
@@ -290,8 +310,6 @@ export default function PortfolioTab({
   if (view === 'list') {
     return (
       <div className="flex flex-col gap-4">
-
-        {/* Top bar */}
         <div className="flex items-center justify-between px-4 pt-2 flex-wrap gap-2">
           <div className="flex items-center gap-2 text-xs text-gray-900">
             <FolderOpen className="w-4 h-4" />
@@ -315,7 +333,6 @@ export default function PortfolioTab({
           </div>
         </div>
 
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="min-w-[860px] w-full text-sm">
             <thead>
@@ -343,8 +360,6 @@ export default function PortfolioTab({
               ) : (
                 [...projects].sort((a, b) => (a.order || 1) - (b.order || 1)).map((p) => (
                   <tr key={p._id} className="align-middle hover:bg-primary-100 transition-colors">
-
-                    {/* Title + featured */}
                     <td className="px-4 py-3.5 max-w-[220px]">
                       <div className="flex items-center gap-1.5">
                         {p.featured && <Star className="w-3.5 h-3.5 text-primary flex-shrink-0" />}
@@ -354,18 +369,12 @@ export default function PortfolioTab({
                         <span className="text-[11px] text-gray-600">{p.images.length} image{p.images.length !== 1 ? 's' : ''}</span>
                       )}
                     </td>
-
-                    {/* Client */}
                     <td className="px-4 py-3.5 text-gray-900 text-xs whitespace-nowrap">{p.client || '—'}</td>
-
-                    {/* Service */}
                     <td className="px-4 py-3.5">
-                      <Badge variant="outline" className="max-w-[160px] truncate rounded-full  px-3 py-1 text-xs text-gray-900">
+                      <Badge variant="outline" className="max-w-[160px] truncate rounded-full px-3 py-1 text-xs text-gray-900">
                         {p.service || '—'}
                       </Badge>
                     </td>
-
-                    {/* Tech */}
                     <td className="px-4 py-3.5">
                       <div className="flex flex-wrap gap-1 max-w-[200px]">
                         {p.tech?.slice(0, 3).map((t) => (
@@ -379,15 +388,11 @@ export default function PortfolioTab({
                         {(!p.tech || p.tech.length === 0) && <span className="text-[11px] text-gray-600">—</span>}
                       </div>
                     </td>
-
-                    {/* Order */}
                     <td className="px-4 py-3.5 text-gray-900 text-xs text-center">{p.order ?? 1}</td>
-
-                    {/* Actions */}
                     <td className="px-4 py-3.5">
                       <div className="flex items-center gap-2">
                         <Button type="button" size="sm" variant="ghost"
-                          className="h-8 w-8 !p-0 justify-center "
+                          className="h-8 w-8 !p-0 justify-center"
                           onClick={() => openEditor(p)} aria-label="Edit">
                           <Pencil className="w-3.5 h-3.5" />
                         </Button>
@@ -436,7 +441,7 @@ export default function PortfolioTab({
         <CardContent>
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
 
-            {/* Title / Client / Service */}
+            {/* Title / Client */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Title *</label>
@@ -448,6 +453,7 @@ export default function PortfolioTab({
               </div>
             </div>
 
+            {/* Service */}
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Service</label>
               <Input value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} placeholder="e.g. Web Development" />
@@ -455,8 +461,87 @@ export default function PortfolioTab({
 
             {/* Description */}
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Description</label>
-              <Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} placeholder="Project overview..." rows={4} className="resize-none" />
+              <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Project Overview</label>
+              <Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} placeholder="Short project overview..." rows={3} className="resize-none" />
+            </div>
+
+            {/* Problem + Solution — Case Study Section */}
+            <div className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+              <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
+                <BarChart2 className="w-4 h-4 text-primary" /> Case Study Details
+              </p>
+
+              {/* Problem */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-medium text-gray-900 uppercase tracking-wider flex items-center gap-1">
+                  <span className="w-5 h-5 rounded-full bg-red-100 text-red-500 text-[10px] font-bold flex items-center justify-center">01</span>
+                  The Problem / Challenge
+                </label>
+                <Textarea
+                  value={form.problem}
+                  onChange={(e) => setForm({ ...form, problem: e.target.value })}
+                  placeholder="What was the client's problem? What challenges were they facing?"
+                  rows={3}
+                  className="resize-none"
+                />
+              </div>
+
+              {/* Solution */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-medium text-gray-900 uppercase tracking-wider flex items-center gap-1">
+                  <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center">02</span>
+                  Our Solution / Approach
+                </label>
+                <Textarea
+                  value={form.solution}
+                  onChange={(e) => setForm({ ...form, solution: e.target.value })}
+                  placeholder="What did we do? What approach did we take?"
+                  rows={3}
+                  className="resize-none"
+                />
+              </div>
+            </div>
+
+            {/* Built By — Team Members */}
+            <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+              <div>
+                <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
+                  <Users className="w-4 h-4 text-primary" /> Built By
+                </p>
+                <p className="text-xs text-gray-600 mt-0.5">Which team members worked on this project?</p>
+              </div>
+
+              {teamMembers.length === 0 ? (
+                <p className="text-xs text-gray-600">No team members found. Please add members to the team first.</p>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {teamMembers.map((member) => {
+                    const selected = builtBy.includes(member._id);
+                    return (
+                      <button
+                        key={member._id}
+                        type="button"
+                        onClick={() => toggleMember(member._id)}
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${
+                          selected
+                            ? 'bg-primary text-white border-primary'
+                            : 'bg-white text-gray-900 border-slate-200 hover:border-primary/50'
+                        }`}
+                      >
+                        {member.image && (
+                          <img src={member.image} alt={member.name} className="w-5 h-5 rounded-full object-cover" />
+                        )}
+                        {member.name}
+                        {selected && <X className="w-3 h-3" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {builtBy.length > 0 && (
+                <p className="text-xs text-primary font-medium">{builtBy.length} member{builtBy.length > 1 ? 's' : ''} selected</p>
+              )}
             </div>
 
             {/* Tech stack */}
@@ -468,7 +553,7 @@ export default function PortfolioTab({
               <Input value={form.tech} onChange={(e) => setForm({ ...form, tech: e.target.value })} placeholder="React, Next.js, Tailwind" />
             </div>
 
-            {/* Order */}
+            {/* Display Order */}
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-gray-900 uppercase tracking-wider">Display Order</label>
               <Input
@@ -483,52 +568,29 @@ export default function PortfolioTab({
               )}
             </div>
 
-            {/* ── Result metrics ── */}
-            <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
-                    <BarChart2 className="w-4 h-4 text-primary" /> Project Results
-                  </p>
-                  <p className="text-xs text-gray-600 mt-0.5">Add measurable outcomes. Both fields required per row.</p>
-                </div>
-                <Button type="button" variant="ghost" size="sm" className="text-xs gap-1"
-                  onClick={() => setResults((r) => [...r, { label: '', value: '' }])}>
-                  <Plus className="w-3.5 h-3.5" /> Add Row
-                </Button>
-              </div>
-              <div className="space-y-3">
-                {results.map((row, i) => (
-                  <div key={i} className="grid grid-cols-[1fr_1fr_auto] gap-3 items-center rounded-xl border border-primary-200 bg-white p-3">
-                    <Input
-                      value={row.label}
-                      onChange={(e) => setResults((r) => r.map((item, idx) => idx === i ? { ...item, label: e.target.value } : item))}
-                      placeholder="Label (e.g. Revenue Growth)"
-                    />
-                    <Input
-                      value={row.value}
-                      onChange={(e) => setResults((r) => r.map((item, idx) => idx === i ? { ...item, value: e.target.value } : item))}
-                      placeholder="Value (e.g. +120%)"
-                    />
-                    <Button type="button" size="sm" variant="destructive"
-                      className="h-8 w-8 p-0 justify-center "
-                      onClick={() => setResults((r) => { const n = r.filter((_, idx) => idx !== i); return n.length > 0 ? n : [{ label: '', value: '' }]; })}>
-                      <X className="w-3.5 h-3.5" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
+            {/* Results — paragraph */}
+            <div className="space-y-1.5 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+              <label className="text-xs font-medium text-gray-900 uppercase tracking-wider flex items-center gap-1">
+                <span className="w-5 h-5 rounded-full bg-green-100 text-green-600 text-[10px] font-bold flex items-center justify-center">03</span>
+                The Results
+              </label>
+              <p className="text-xs text-gray-600 mb-2">Describe the project outcomes in a paragraph — e.g. &quot;Organic traffic grew by 320%, bounce rate dropped to 28%...&quot;</p>
+              <Textarea
+                value={form.results}
+                onChange={(e) => setForm({ ...form, results: e.target.value })}
+                placeholder="Describe the measurable results and outcomes achieved for the client..."
+                rows={4}
+                className="resize-none"
+              />
             </div>
 
-            {/* ── New images ── */}
+            {/* New Images */}
             <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
-                    <ImagePlus className="w-4 h-4 text-primary" /> New Images
-                  </p>
-                  <p className="text-xs text-gray-600 mt-0.5">Select multiple images — strip grows as you add more.</p>
-                </div>
+              <div>
+                <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
+                  <ImagePlus className="w-4 h-4 text-primary" /> New Images
+                </p>
+                <p className="text-xs text-gray-600 mt-0.5">Select multiple images — strip grows as you add more.</p>
               </div>
               <div className="flex gap-3 overflow-x-auto pb-1">
                 {imageSlots.map((slot, idx) => (
@@ -577,7 +639,7 @@ export default function PortfolioTab({
               <p className="text-xs text-gray-600">Images upload to Cloudinary on save.</p>
             </div>
 
-            {/* ── Existing images (edit mode) ── */}
+            {/* Existing images */}
             {localSlug && existingImages.length > 0 && (
               <div className="space-y-3 rounded-2xl border border-primary-200 bg-slate-50/50 p-4">
                 <div className="flex items-center justify-between gap-3">
@@ -591,7 +653,7 @@ export default function PortfolioTab({
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-[11px] text-gray-900 truncate" title={url}>{formatFileName(url)}</p>
                         <Button type="button" size="sm" variant="destructive"
-                          className=" h-7 px-2 text-xs gap-1"
+                          className="h-7 px-2 text-xs gap-1"
                           onClick={() => removeExistingImage(url)}>
                           <Trash2 className="w-3 h-3" /> Remove
                         </Button>
@@ -607,7 +669,7 @@ export default function PortfolioTab({
               <input type="checkbox" checked={form.featured}
                 onChange={(e) => setForm({ ...form, featured: e.target.checked })}
                 className="w-4 h-4 rounded border-slate-300 accent-primary" />
-              <Star className="w-4 h-4 text-" /> Featured project
+              <Star className="w-4 h-4" /> Featured project
             </label>
 
             {/* Submit */}
@@ -624,3 +686,5 @@ export default function PortfolioTab({
     </div>
   );
 }
+
+

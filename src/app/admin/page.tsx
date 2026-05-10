@@ -49,8 +49,8 @@ interface BlogPost {
 }
 interface PortfolioProject {
   _id: string; title: string; slug: string; client: string; service: string;
-  description: string; results?: Array<{ label: string; value: string }>;
-  tech?: string[]; images?: string[]; featured?: boolean; order?: number;
+  description: string; problem: string; solution: string; builtBy: string[];
+results?: string; tech?: string[]; images?: string[]; featured?: boolean; order?: number;
 }
 interface Testimonial {
   _id: string; name: string; company: string; role?: string;

@@ -1,33 +1,22 @@
-import Link from 'next/link';
-import { ArrowRight, Play, TrendingUp, Code, Brain, BarChart3 } from 'lucide-react';
-import AppButton from '@/components/shared/AppButton';
 
-// ── Types
+import Link from 'next/link';
+import { ArrowRight, Play } from 'lucide-react';
+import AppButton from '@/components/shared/AppButton';
+import { connectDB } from '@/lib/db';
+import { SiteStats } from '@/models/SiteStats';
+
 type HeroStats = {
   projectsCompleted: number;
   happyClients: number;
 };
 
-// ── Fetch stats from DB (same API as StatsSection)
 async function fetchHeroStats(): Promise<HeroStats> {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/admin/stats`, {
-      next: { revalidate: 3600 }, // 1 hour cache — same as StatsSection
-    });
-    if (!res.ok) throw new Error('Failed to fetch stats');
-    const data = await res.json();
-    return {
-      projectsCompleted: data.projectsCompleted ?? 150,
-      happyClients:      data.happyClients      ?? 40,
-    };
-  } catch {
-    // Fallback defaults if API fails
-    return {
-      projectsCompleted: 150,
-      happyClients:      40,
-    };
-  }
+  await connectDB();
+  const stats = await SiteStats.findOne({ key: 'main' });
+  return {
+    projectsCompleted: stats?.projectsCompleted,
+    happyClients: stats?.happyClients,
+  };
 }
 
 export default async function HeroSection() {

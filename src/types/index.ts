@@ -40,6 +40,8 @@ export interface Project {
   client: string;
   service: string;
   description: string;
+  problem: string;
+  solution: string;
   results: string[];
   tech: string[];
   images: string[];
