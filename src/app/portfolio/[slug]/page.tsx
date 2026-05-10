@@ -81,6 +81,13 @@ export default async function PortfolioDetailPage({ params }: Props) {
   const tech    = project.tech   || [];
   const results = typeof project.results === 'string' ? project.results : '';
 
+  // ── Sidebar card — shadow + hover lift (same effect as glass-card-hover)
+  const sidebarCard = [
+    'rounded-2xl bg-white p-6',
+    'shadow-md hover:shadow-xl hover:-translate-y-1',
+    'transition-all duration-300 ease-in-out',
+  ].join(' ');
+
   return (
     <>
       <PageHero
@@ -95,7 +102,6 @@ export default async function PortfolioDetailPage({ params }: Props) {
         description={`A complete case study for ${project.client}.`}
       />
 
-
       {/* ── Main Layout */}
       <section className="py-14 bg-white">
         <div className="container-custom">
@@ -104,10 +110,22 @@ export default async function PortfolioDetailPage({ params }: Props) {
             {/* ════════════ LEFT COLUMN ════════════ */}
             <div className="space-y-14">
 
+              {/* Project Brief */}
+              {project.description && (
+                <div>
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-primary-100">
+                    Project Brief
+                  </h2>
+                  <p className="text-gray-900 leading-relaxed text-justify whitespace-pre-line">
+                    {project.description}
+                  </p>
+                </div>
+              )}
+
               {/* The Challenge */}
               {project.problem && (
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-primary-100">
                     The Challenge
                   </h2>
                   <p className="text-gray-900 leading-relaxed text-justify whitespace-pre-line">
@@ -119,7 +137,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
               {/* The Solution */}
               {project.solution && (
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-primary-100">
                     The Solution
                   </h2>
                   <p className="text-gray-900 leading-relaxed text-justify whitespace-pre-line">
@@ -131,7 +149,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
               {/* Project Screenshots */}
               {images.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-6 pb-3 border-b border-slate-100">
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-6 pb-3 border-b border-primary-100">
                     Project Screenshots
                   </h2>
                   <PortfolioHoverGallery images={images} title={project.title} />
@@ -141,7 +159,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
               {/* Key Features & Technologies */}
               {tech.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-5 pb-3 border-b border-slate-100">
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-5 pb-3 border-b border-primary-100">
                     Key Features &amp; Technologies
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -160,10 +178,10 @@ export default async function PortfolioDetailPage({ params }: Props) {
               {/* Results & Impact */}
               {results && (
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4 pb-3 border-b border-primary-100">
                     Results &amp; Impact
                   </h2>
-                  <p className="text-gray-700 leading-relaxed text-justify whitespace-pre-line">
+                  <p className="text-gray-900 leading-relaxed text-justify whitespace-pre-line">
                     {results}
                   </p>
                 </div>
@@ -172,8 +190,8 @@ export default async function PortfolioDetailPage({ params }: Props) {
               {/* Built By */}
               {builtByMembers.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-6 pb-3 border-b border-slate-100">
-                    Built By
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-6 pb-3 border-b border-primary-100">
+                    The People Behind It
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {builtByMembers.map((member) => {
@@ -230,19 +248,19 @@ export default async function PortfolioDetailPage({ params }: Props) {
             {/* ════════════ RIGHT SIDEBAR ════════════ */}
             <div className="space-y-6 lg:sticky lg:top-24">
 
-              {/* Project At A Glance */}
-              <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                <h3 className="text-lg font-display font-bold text-gray-900 mb-5 pb-3 border-b border-slate-100">
-                  Project At A Glance
+              {/* Project Overview */}
+              <div className={sidebarCard}>
+                <h3 className="text-lg font-display font-bold text-gray-900 mb-5 pb-3 border-b border-primary-100">
+                  Project Overview
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { label: 'Client Name',       value: project.client },
-                    { label: 'Service',           value: project.service },
-                    { label: 'Key Technologies',  value: tech.slice(0, 3).join(', ') || '—' },
+                    { label: 'Client Name',      value: project.client },
+                    { label: 'Service',          value: project.service },
+                    { label: 'Key Technologies', value: tech.slice(0, 3).join(', ') || '—' },
                   ].map(({ label, value }) => (
-                    <div key={label} className="flex flex-col gap-0.5 text-sm border-b border-slate-50 pb-3 last:border-0 last:pb-0">
-                      <span className="text-gray-400 text-xs font-mono uppercase tracking-wider">{label}</span>
+                    <div key={label} className="flex flex-col gap-0.5 text-sm border-b border-primary-50 pb-3 last:border-0 last:pb-0">
+                      <span className="text-gray-600 text-xs font-mono uppercase tracking-wider">{label}</span>
                       <span className="text-gray-900 font-semibold">{value}</span>
                     </div>
                   ))}
@@ -254,19 +272,19 @@ export default async function PortfolioDetailPage({ params }: Props) {
 
               {/* Client Testimonial */}
               {testimonial && (
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
+                <div className={sidebarCard}>
+                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4 pb-3 border-b border-primary-100">
                     Client Testimonial
                   </h3>
                   <div className="flex gap-0.5 mb-3">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className={`w-4 h-4 ${i < testimonial.rating ? 'fill-primary text-primary' : 'text-gray-200 fill-gray-200'}`} />
+                      <Star key={i} className={`w-4 h-4 ${i < testimonial.rating ? 'fill-primary text-primary' : 'text-primary'}`} />
                     ))}
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed italic mb-4">
+                  <p className="text-sm text-gray-900 leading-relaxed italic mb-4 text-justify">
                     &ldquo;{testimonial.review}&rdquo;
                   </p>
-                  <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
+                  <div className="flex items-center gap-3 pt-3 border-t border-primary-100">
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
                       <span className="text-white text-xs font-bold">
                         {testimonial.name.split(' ').map((p) => p[0]).join('').slice(0, 2).toUpperCase()}
@@ -274,7 +292,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     </div>
                     <div>
                       <p className="text-sm font-bold text-gray-900">{testimonial.name}</p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-600">
                         {testimonial.role ? `${testimonial.role}, ` : ''}{testimonial.company}
                       </p>
                     </div>
@@ -284,14 +302,14 @@ export default async function PortfolioDetailPage({ params }: Props) {
 
               {/* Related Projects */}
               {relatedProjects.length > 0 && (
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4 pb-3 border-b border-slate-100">
+                <div className={sidebarCard}>
+                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4 pb-3 border-b border-primary-100">
                     Related Projects
                   </h3>
                   <div className="space-y-4">
                     {relatedProjects.map((rp) => (
                       <Link key={rp.slug} href={`/portfolio/${rp.slug}`}
-                        className="group flex gap-3 items-start hover:bg-slate-50 rounded-xl p-2 -mx-2 transition-colors">
+                        className="group flex gap-3 items-start hover:bg-primary-50/50 rounded-xl p-2 -mx-2 transition-colors">
                         <div className="w-20 h-16 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200">
                           {rp.images?.[0] ? (
                             <img src={rp.images[0]} alt={rp.title}
@@ -306,7 +324,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                           <p className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
                             {rp.title}
                           </p>
-                          <p className="text-xs text-gray-400 mt-1">{rp.service}</p>
+                          <p className="text-xs text-gray-600 mt-1">{rp.service}</p>
                           <span className="inline-flex items-center gap-1 text-xs text-primary mt-1.5 font-medium">
                             View Project <ArrowRight className="w-3 h-3" />
                           </span>

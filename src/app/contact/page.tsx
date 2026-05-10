@@ -4,7 +4,6 @@ import PageHero from '@/components/sections/PageHero';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
-import TestimonialFormSection from '@/components/sections/TestimonialFormSection';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 
 export const metadata: Metadata = {
@@ -38,7 +37,6 @@ export default function ContactPage() {
       <ContactFormSection />
       <TestimonialsSection />
       <FAQSection />
-      <TestimonialFormSection />
       <CTASection />
     </>
   );
