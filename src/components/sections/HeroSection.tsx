@@ -30,7 +30,7 @@ export default async function HeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "url('https://res.cloudinary.com/da8lxpc3h/image/upload/v1777509170/trynex-home-bg_buerj1.png')",
+            "url('https://res.cloudinary.com/da8lxpc3h/image/upload/v1778481788/home-hero-bg_goijrl.png')",
         }}
       />
 

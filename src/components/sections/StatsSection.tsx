@@ -1,5 +1,7 @@
 
 import AnimatedCounter from '@/components/shared/AnimatedCounter';
+import { connectDB } from '@/lib/db';
+import { SiteStats } from '@/models/SiteStats';
 
 // ── Types
 type StatsData = {
@@ -10,15 +12,22 @@ type StatsData = {
   yearsExperience: number;
 };
 
-// ── Fetch stats from DB (server component)
 async function fetchStats(): Promise<StatsData> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/admin/stats`, {
-      next: { revalidate: 3600 }, // 1 hour cache
-    });
-    if (!res.ok) throw new Error('Failed to fetch stats');
-    return res.json();
+    await connectDB();
+    const stats = await SiteStats.findOne({ key: 'main' }).lean<StatsData | null>();
+
+    if (!stats) {
+      throw new Error('Stats document not found');
+    }
+
+    return {
+      happyClients: stats.happyClients,
+      projectsCompleted: stats.projectsCompleted,
+      clientRetention: stats.clientRetention,
+      foundedYear: stats.foundedYear,
+      yearsExperience: new Date().getFullYear() - stats.foundedYear,
+    };
   } catch {
     // Fallback defaults if API fails
     return {
