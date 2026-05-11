@@ -95,7 +95,7 @@ export default function Navbar() {
             className="lg:hidden p-2 rounded-lg text-primary hover:text-primary/80  transition-colors"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-6 h-6" />}
           </button>
         </nav>
       </header>
