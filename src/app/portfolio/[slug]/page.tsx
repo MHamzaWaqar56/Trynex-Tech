@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import {
   ArrowRight, BriefcaseBusiness, ChevronRight,
@@ -187,7 +188,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Built By */}
+              {/* The People Behind It */}
               {builtByMembers.length > 0 && (
                 <div>
                   <h2 className="text-2xl font-display font-bold text-gray-900 mb-6 pb-3 border-b border-primary-100">
@@ -199,8 +200,14 @@ export default async function PortfolioDetailPage({ params }: Props) {
                       return (
                         <div key={String(member._id)} className="glass-card p-5 flex items-center gap-4">
                           {member.image ? (
-                            <img src={member.image} alt={member.name}
-                              className="w-14 h-14 rounded-full object-cover shrink-0 border-2 border-primary/20" />
+                            <div className="relative w-14 h-14 shrink-0">
+                              <Image
+                                src={member.image}
+                                alt={member.name}
+                                fill
+                                className="rounded-full object-cover border-2 border-primary/20"
+                              />
+                            </div>
                           ) : (
                             <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20">
                               <span className="text-primary font-bold text-base">{initials}</span>
@@ -310,10 +317,15 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     {relatedProjects.map((rp) => (
                       <Link key={rp.slug} href={`/portfolio/${rp.slug}`}
                         className="group flex gap-3 items-start hover:bg-primary-50/50 rounded-xl p-2 -mx-2 transition-colors">
-                        <div className="w-20 h-16 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200">
+                        <div className="relative w-20 h-16 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200">
                           {rp.images?.[0] ? (
-                            <img src={rp.images[0]} alt={rp.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                            <Image
+                              src={rp.images[0]}
+                              alt={rp.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              sizes="80px"
+                            />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
                               <BriefcaseBusiness className="w-5 h-5 text-gray-600" />

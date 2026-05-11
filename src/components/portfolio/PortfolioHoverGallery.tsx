@@ -1,7 +1,9 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 
 type PortfolioHoverGalleryProps = {
@@ -69,11 +71,13 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
             className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,212,255,0.18)] focus:outline-none focus:ring-2 focus:ring-primary/30"
             onClick={() => openImage(index)}
           >
-            <div className="aspect-[4/3] overflow-hidden bg-slate-100">
-              <img
+            <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+              <Image
                 src={image}
                 alt={`${title} gallery image ${index + 1}`}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -95,7 +99,7 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
               onClick={() => setActiveIndex(null)}
             />
 
-            <div className="relative z-10 w-full max-w-6xl rounded-[2rem] border border-slate-200 bg-white p-3 shadow-2xl shadow-black/20">
+            <div className="relative z-10 w-[50vw] max-w-6xl rounded-[2rem] border border-slate-200 bg-white p-3 shadow-2xl shadow-black/20">
               <div className="flex items-center justify-between gap-4 px-3 py-2">
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-[0.25em] text-gray-900">
@@ -134,11 +138,13 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
-                <div className="overflow-hidden rounded-[1.25rem] bg-white">
-                  <img
+                <div className="relative overflow-hidden rounded-[1.25rem] bg-white" style={{ minHeight: '300px', maxHeight: '90vh' }}>
+                  <Image
                     src={activeImage}
                     alt={title}
-                    className="max-h-[80vh] w-full object-contain"
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
                   />
                 </div>
 
