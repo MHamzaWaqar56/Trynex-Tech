@@ -401,11 +401,11 @@ function ReviewForm() {
                     <Briefcase className="w-4 h-4 text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-400 font-mono uppercase tracking-wider">Project</p>
+                    <p className="text-xs text-gray-600 font-mono uppercase tracking-wider">Project</p>
                     <p className="text-sm font-bold text-gray-900 leading-tight">{tokenInfo?.projectTitle}</p>
                   </div>
                 </div>
-                <div className="h-px bg-slate-100 mb-4" />
+                <div className="h-px bg-primary-100 mb-4" />
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Your feedback helps us grow and helps other businesses make informed
                   decisions. We appreciate you taking a few minutes to share your experience.
@@ -431,7 +431,7 @@ function ReviewForm() {
 
               {/* Live rating preview */}
               <div className="glass-card p-6">
-                <p className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-3">
+                <p className="text-xs font-mono text-gray-900 uppercase tracking-wider mb-3">
                   Your current rating
                 </p>
                 <div className="flex items-center gap-2">
@@ -442,7 +442,7 @@ function ReviewForm() {
                   ))}
                   <span className="ml-2 text-sm font-bold text-gray-900">{form.rating}/5</span>
                 </div>
-                <p className="text-xs text-gray-400 mt-2">
+                <p className="text-xs text-gray-600 mt-2">
                   {['', 'Needs Improvement', 'Fair', 'Good', 'Great!', 'Excellent! 🎉'][form.rating]}
                 </p>
               </div>
@@ -478,7 +478,7 @@ function ReviewForm() {
                   Your Name <span className="text-red-400">*</span>
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none" />
                   <input type="text" required value={form.name}
                     onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                     placeholder="John Doe"
@@ -493,7 +493,7 @@ function ReviewForm() {
                     Company <span className="text-red-400">*</span>
                   </label>
                   <div className="relative">
-                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none" />
                     <input type="text" required value={form.company}
                       onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
                       placeholder="Your Company"
@@ -502,7 +502,7 @@ function ReviewForm() {
                 </div>
                 <div>
                   <label className="block text-sm text-gray-900 mb-2 font-medium">
-                    Role <span className="text-gray-400 text-xs">(optional)</span>
+                    Role <span className="text-gray-600 text-xs">(optional)</span>
                   </label>
                   <input type="text" value={form.role}
                     onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
@@ -520,7 +520,7 @@ function ReviewForm() {
                   onChange={(e) => setForm((f) => ({ ...f, review: e.target.value }))}
                   placeholder="Share your experience — what problem did we solve, how was the process, would you recommend us?"
                   className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors resize-none" />
-                <p className="text-xs text-gray-400 mt-1">{form.review.length} characters</p>
+                <p className="text-xs text-gray-600 mt-1">{form.review.length} characters</p>
               </div>
 
               {/* Submit */}
@@ -533,7 +533,7 @@ function ReviewForm() {
                 }
               </button>
 
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-gray-600 text-center">
                 By submitting, you agree that your review may be published on our website.
               </p>
             </div>
