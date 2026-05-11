@@ -335,7 +335,7 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <Spinner size="lg" />
       </div>
     );
@@ -344,18 +344,18 @@ export default function AdminDashboard() {
   // ─── Render ──────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
 
       {/* ══════════════════════════════════════════════════
           MOBILE TOP BAR  (hidden on lg+)
           — sits right below the main site navbar (h-16 = 64px)
       ══════════════════════════════════════════════════ */}
-      <div className="lg:hidden fixed top-16 left-0 right-0 z-30 flex items-center gap-3 bg-white border-b border-slate-200 px-4 h-12 shadow-sm">
+      <div className="lg:hidden fixed top-16 left-0 right-0 z-30 flex items-center gap-3 bg-white border-b border-gray-200 px-4 h-12 shadow-sm">
         <button
           type="button"
           aria-label="Open menu"
           onClick={() => setSidebarOpen(true)}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-primary text-primary hover:bg-slate-50 transition-colors shrink-0"
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-primary text-primary hover:bg-gray-50 transition-colors shrink-0"
         >
           <Menu className="w-4 h-4" />
         </button>
@@ -400,7 +400,7 @@ export default function AdminDashboard() {
           `}
         >
           {/* Drawer header — mobile only */}
-          <div className="lg:hidden flex items-center justify-between px-4 py-4 border-b border-slate-100">
+          <div className="lg:hidden flex items-center justify-between px-4 py-4 border-b border-gray-100">
             <span className="text-sm font-bold text-gray-900">Admin Panel</span>
             <button
               type="button"
@@ -412,7 +412,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Logo / email row — desktop only */}
-          <div className="hidden lg:flex items-center gap-2.5 px-4 pt-6 pb-2 border-b border-slate-100">
+          <div className="hidden lg:flex items-center gap-2.5 px-4 pt-6 pb-2 border-b border-gray-100">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 shrink-0">
               <BarChart2 className="w-4 h-4 text-primary" />
             </div>
@@ -435,7 +435,7 @@ export default function AdminDashboard() {
         ══════════════════════════════════════════════════ */}
         <div className="flex-1 min-w-0">
           <main className="min-h-[100vh] p-3 pt-[8rem] sm:p-4 sm:pt-28 lg:p-6 lg:pt-[9rem] lg:pb-[5rem]">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
 
             {activeTab === 'stats' && <StatsTab />}
 
@@ -622,7 +622,7 @@ export default function AdminDashboard() {
                   <span className="text-gray-600 break-all">{value}</span>
                 </div>
               ))}
-              <div className="border-t border-slate-100 pt-3 space-y-1.5">
+              <div className="border-t border-gray-100 pt-3 space-y-1.5">
                 <span className="text-gray-900 font-mono text-xs uppercase tracking-wider">
                   {detailDialog.messageLabel}
                 </span>

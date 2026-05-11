@@ -130,7 +130,7 @@ textarea:focus {
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-900 hover:text-primary font-semibold rounded-lg transition-all duration-200;
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-white border border-primary-200 text-gray-900 hover:text-primary font-semibold rounded-lg transition-all duration-200;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
