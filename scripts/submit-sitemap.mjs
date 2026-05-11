@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://trynex.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://trynextech.com';
 const SITEMAP_URL = new URL('/sitemap.xml', SITE_URL).toString();
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY;
 const INDEXNOW_KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION || new URL('/indexnow-key', SITE_URL).toString();
