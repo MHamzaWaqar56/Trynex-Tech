@@ -99,7 +99,7 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
               onClick={() => setActiveIndex(null)}
             />
 
-            <div className="relative z-10 w-[50vw] max-w-6xl rounded-[2rem] border border-slate-200 bg-white p-3 shadow-2xl shadow-black/20">
+            <div className="relative z-10 w-[50vw] min-[768px]:max-[1130px]:w-[75vw] min-[320px]:max-[767px]:w-[90vw] max-w-6xl rounded-[2rem] border border-slate-200 bg-white p-3 shadow-2xl shadow-black/20">
               <div className="flex items-center justify-between gap-4 px-3 py-2">
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-[0.25em] text-gray-900">
@@ -138,7 +138,7 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
-                <div className="relative overflow-hidden rounded-[1.25rem] bg-white" style={{ minHeight: '300px', maxHeight: '90vh' }}>
+                <div className="relative overflow-hidden rounded-[1.25rem] bg-white min-[1024px]:!min-h-[360px] min-[320px]:max-[450px]:!min-h-[190px]" style={{ minHeight: '300px', maxHeight: '90vh' }}>
                   <Image
                     src={activeImage}
                     alt={title}
