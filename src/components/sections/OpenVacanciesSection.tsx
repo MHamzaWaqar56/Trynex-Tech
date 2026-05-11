@@ -74,7 +74,7 @@ export default async function OpenVacanciesSection() {
                 </p>
               </div>
               <Link href="/contact" className="btn-primary mt-2">
-                Send Us Your CV <ArrowRight className="w-4 h-4" />
+                Contact Us <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           ) : (

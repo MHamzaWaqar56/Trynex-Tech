@@ -18,10 +18,10 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Location',
-    value: 'Chichawatni, Punjab, Pakistan',
+    value: 'Chichawatni, Pakistan',
     href: 'https://www.google.com/maps?q=Chichawatni%2C%20Punjab%2C%20Pakistan&output=embed',
   },
-  { icon: Clock, label: 'Working Hours', value: 'Mon–Fri, 9am–6pm PKT', href: '#' },
+  { icon: Clock, label: 'Working Hours', value: 'Mon–Fri, 9am–6pm PKT',  href: '#contact-form' },
 ];
 
 export default function ContactFormSection() {
@@ -154,7 +154,7 @@ export default function ContactFormSection() {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-8" id='contact-form'>
               <div className="glass-card p-8 min-[320px]:max-[500px]:p-6">
                 <div className="mb-6">
                   <h2 className="font-display text-2xl font-bold text-gray-900">Send Us a Message</h2>
