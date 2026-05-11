@@ -174,7 +174,7 @@ export default function NewsletterSubscribersPage() {
           {/* Left: Subscribers list */}
           <div className="glass-card overflow-hidden">
             {/* List header */}
-            <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-slate-100">
+            <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-gray-100">
               <div>
                 <div className="mb-1">
                   <span className="section-badge text-[10px] py-1 px-2.5">
