@@ -49,7 +49,7 @@ export default async function PortfolioSection() {
 
         {/* Cards */}
         {projects.length === 0 ? (
-          <div className="text-center py-16 text-slate-400">
+          <div className="text-center py-16 text-gray-900">
             No portfolio projects published yet.
           </div>
         ) : (
@@ -63,7 +63,7 @@ export default async function PortfolioSection() {
                   className="portfolio-card group block bg-white rounded-2xl overflow-hidden"
                 >
                   {/* Image */}
-                  <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                     {image ? (
                       <img
                         src={image}

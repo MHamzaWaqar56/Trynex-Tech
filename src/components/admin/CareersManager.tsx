@@ -354,7 +354,7 @@ export default function CareersManager({ view = 'form' }: CareersManagerProps) {
                     )}
 
                     {/* Footer */}
-                    <div className="flex items-center justify-between gap-4 pt-4 border-t border-slate-100 mt-auto">
+                    <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-100 mt-auto">
                       <div className="text-xs text-gray-900 font-mono">
                         {getApplicationAvailabilityLabel(vacancy.applicationDeadline)}
                       </div>
@@ -522,7 +522,7 @@ export default function CareersManager({ view = 'form' }: CareersManagerProps) {
             </div>
 
             {/* Submit */}
-            <div className="flex flex-wrap gap-3 pt-2 border-t border-slate-100">
+            <div className="flex flex-wrap gap-3 pt-2 border-t border-gray-100">
               <button type="submit" disabled={saving} className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed">
                 {saving ? 'Saving...' : (
                   <><Plus className="w-4 h-4" /> {editingId ? 'Update Vacancy' : 'Add Vacancy'}</>

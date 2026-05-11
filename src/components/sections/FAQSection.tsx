@@ -76,7 +76,7 @@ function FAQItem({ question, answer, open, onToggle }: FAQItemProps) {
       </button>
       <div className={`grid transition-all duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
         <div className="overflow-hidden">
-          <div className="px-6 pb-5 text-sm text-gray-900 text-justify leading-relaxed border-t border-slate-100 pt-4">
+          <div className="px-6 pb-5 text-sm text-gray-900 text-justify leading-relaxed border-t border-gray-100 pt-4">
             {answer}
           </div>
         </div>

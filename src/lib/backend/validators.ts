@@ -122,12 +122,6 @@ export const pricingCustomSchema = z.object({
   message: z.string().min(10),
 });
 
-export const trackSchema = z.object({
-  event: z.string().min(1),
-  path: z.string().optional().or(z.literal("")),
-  referrer: z.string().optional().or(z.literal("")),
-  metadata: z.record(z.string(), z.unknown()).optional(),
-});
 
 export const adminLoginSchema = z.object({
   email: z.string().email(),

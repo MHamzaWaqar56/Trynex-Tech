@@ -22,8 +22,6 @@ export default function PageHero({
   title,
   description,
   align = 'center',
-  backHref,
-  backLabel = 'Back',
   primaryAction,
   secondaryAction,
   className,
@@ -57,18 +55,7 @@ export default function PageHero({
       <div className="container-custom relative z-10">
         <div className={cn('mx-auto', isCentered ? 'max-w-[52rem] text-center' : 'max-w-[64rem]')}>
 
-          {/* Back link */}
-          {backHref && (
-            <Link
-              href={backHref}
-              className={cn(
-                'inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm mb-8 transition-colors animate-fade-up',
-                isCentered && 'justify-center'
-              )}
-            >
-              <ArrowLeft className="w-4 h-4" /> {backLabel}
-            </Link>
-          )}
+         
 
           {/* Badge */}
           {badge && (

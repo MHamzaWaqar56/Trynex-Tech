@@ -219,25 +219,25 @@ export default async function PortfolioDetailPage({ params }: Props) {
                             <div className="flex items-center gap-2 mt-2">
                               {member.linkedin && (
                                 <a href={member.linkedin} target="_blank" rel="noreferrer"
-                                  className="w-6 h-6 rounded bg-slate-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                  className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
                                   <Linkedin className="w-3 h-3 text-gray-600" />
                                 </a>
                               )}
                               {member.github && (
                                 <a href={member.github} target="_blank" rel="noreferrer"
-                                  className="w-6 h-6 rounded bg-slate-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                  className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
                                   <Github className="w-3 h-3 text-gray-600" />
                                 </a>
                               )}
                               {member.facebook && (
                                 <a href={member.facebook} target="_blank" rel="noreferrer"
-                                  className="w-6 h-6 rounded bg-slate-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                  className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
                                   <Facebook className="w-3 h-3 text-gray-600" />
                                 </a>
                               )}
                               {member.email && (
                                 <a href={`mailto:${member.email}`}
-                                  className="w-6 h-6 rounded bg-slate-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                  className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center hover:bg-primary/10 transition-colors">
                                   <Mail className="w-3 h-3 text-gray-600" />
                                 </a>
                               )}
@@ -317,7 +317,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     {relatedProjects.map((rp) => (
                       <Link key={rp.slug} href={`/portfolio/${rp.slug}`}
                         className="group flex gap-3 items-start hover:bg-primary-50/50 rounded-xl p-2 -mx-2 transition-colors">
-                        <div className="relative w-20 h-16 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200">
+                        <div className="relative w-20 h-16 rounded-lg overflow-hidden shrink-0 bg-gray-100 border border-gray-200">
                           {rp.images?.[0] ? (
                             <Image
                               src={rp.images[0]}

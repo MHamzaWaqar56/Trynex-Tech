@@ -111,7 +111,7 @@ function SocialRow({ icon, value, placeholder, onChange }: {
 }) {
   return (
     <div className="flex items-center gap-2.5">
-      <span className="flex-shrink-0 text-slate-400">{icon}</span>
+      <span className="flex-shrink-0 text-gray-400">{icon}</span>
       <Input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="flex-1" />
     </div>
   );
@@ -300,7 +300,7 @@ export default function TeamTab({
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-1 border-t border-slate-100 p-2">
+                  <div className="flex items-center gap-1 border-t border-gray-100 p-2">
                     <Button type="button" size="sm" variant="ghost"
                       className="flex-1 h-8 text-xs  gap-1"
                       onClick={() => openEditor(m)}>
@@ -382,7 +382,7 @@ export default function TeamTab({
                 rows={4}
                 className="resize-none"
               />
-              <p className="text-[11px] text-slate-400">Minimum 10 characters.</p>
+              <p className="text-[11px] text-gray-400">Minimum 10 characters.</p>
             </div>
 
             {/* Profile image */}
@@ -419,7 +419,7 @@ export default function TeamTab({
             </div>
 
             {/* Social links */}
-            <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+            <div className="space-y-3 rounded-2xl border border-gray-200 bg-gray-50/50 p-4">
               <p className="text-xs font-medium text-gray-900 uppercase tracking-wider">Social Links</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <SocialRow icon={<Mail     className="w-4 h-4 text-gray-900" />} value={form.email}    placeholder="Email address"   onChange={(v) => setForm({ ...form, email: v })}    />

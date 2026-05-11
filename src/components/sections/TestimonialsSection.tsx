@@ -39,7 +39,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         &ldquo;{t.review}&rdquo;
       </p>
 
-      <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
+      <div className="flex items-center gap-3 pt-2 border-t border-primary-100">
         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-white text-sm shrink-0">
           {initials}
         </div>

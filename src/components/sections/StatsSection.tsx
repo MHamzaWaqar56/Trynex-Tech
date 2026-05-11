@@ -102,7 +102,7 @@ export default async function StatsSection() {
                 />
                 {/* Vertical divider */}
                 {i < statItems.length - 1 && (
-                  <div className="hidden lg:block absolute right-0 top-0 h-full w-px bg-slate-100" />
+                  <div className="hidden lg:block absolute right-0 top-0 h-full w-px bg-gray-100" />
                 )}
               </div>
             ))}

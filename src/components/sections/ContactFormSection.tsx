@@ -119,7 +119,7 @@ export default function ContactFormSection() {
                     Open Maps
                   </a>
                 </div>
-                <div className="h-64 border-t border-slate-100 bg-white">
+                <div className="h-64 border-t border-gray-100 bg-white">
                   <iframe
                     title="Trynex Tech location map"
                     src="https://www.google.com/maps?q=Chichawatni%2C%20Punjab%2C%20Pakistan&output=embed"
@@ -174,7 +174,7 @@ export default function ContactFormSection() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                     <div>
@@ -186,7 +186,7 @@ export default function ContactFormSection() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                   </div>
@@ -200,7 +200,7 @@ export default function ContactFormSection() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+92 300 1234567"
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                     <div>
@@ -236,7 +236,7 @@ export default function ContactFormSection() {
                         value={form.company}
                         onChange={handleChange}
                         placeholder="Your company name"
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                     <div>
@@ -247,7 +247,7 @@ export default function ContactFormSection() {
                         value={form.budget}
                         onChange={handleChange}
                         placeholder="e.g. PKR 150k - 250k"
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
                   </div>
@@ -260,7 +260,7 @@ export default function ContactFormSection() {
                       value={form.deadline}
                       onChange={handleChange}
                       placeholder="e.g. 2 weeks"
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                     />
                   </div>
 
@@ -273,7 +273,7 @@ export default function ContactFormSection() {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell us about your project, goals, and timeline..."
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors resize-none"
                     />
                   </div>
 

@@ -26,7 +26,7 @@ export default function ConfirmDialog({ open, title, description, busy, onConfir
       <DialogContent className="border-white/10 bg-[#07111f] text-white">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription className="text-dark-muted">
+          <DialogDescription className="text-gray-900">
             {description}
           </DialogDescription>
         </DialogHeader>

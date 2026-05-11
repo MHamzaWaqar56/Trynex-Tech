@@ -22,7 +22,7 @@ export default function BlogHero({ title, author, coverImage, createdAt, views, 
       }
       title={<div className='' style={{ fontSize: 'clamp(1.5rem, 6vw, 3.30rem)' }}>{title}</div>}
       description={
-        <span className="flex flex-wrap items-center justify-center gap-1 text-sm text-slate-300 mt-2">
+        <span className="flex flex-wrap items-center justify-center gap-1 text-sm text-gray-400 mt-2">
           <span className="font-semibold text-white">By {author || 'Trynex Tech'}</span>
           <span className="text-white"> | </span>
           <span className="flex items-center text-white gap-1">

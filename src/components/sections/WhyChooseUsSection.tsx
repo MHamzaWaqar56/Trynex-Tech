@@ -48,10 +48,10 @@ function AnimatedProgressBar({
   return (
     <div>
       <div className="flex items-center justify-between mb-1.5">
-        <span className="text-xs text-slate-400">{metric}</span>
+        <span className="text-xs text-gray-600">{metric}</span>
         <span className="text-xs font-bold text-primary">{count}%</span>
       </div>
-      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+      <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
         <div
           className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
           style={{ width: inView ? `${percentage}%` : '0%' }}

@@ -68,13 +68,13 @@ const statusConfig: Record<string, { label: string; icon: React.ReactNode; cls: 
   contacted:     { label: 'Contacted',   icon: <PhoneCall className="w-3 h-3" />,     cls: 'text-sky-600 bg-sky-50' },
   'in-progress': { label: 'In Progress', icon: <TrendingUp className="w-3 h-3" />,    cls: 'text-purple-600 bg-purple-50' },
   done:          { label: 'Done',        icon: <CheckCircle2 className="w-3 h-3" />,  cls: 'text-green-600 bg-green-50' },
-  closed:        { label: 'Closed',      icon: <XCircle className="w-3 h-3" />,       cls: 'text-slate-500 bg-slate-100' },
+  closed:        { label: 'Closed',      icon: <XCircle className="w-3 h-3" />,       cls: 'text-gray-500 bg-gray-100' },
 };
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function LeadTypeBadge({ type }: { type: string }) {
-  const cls = leadTypeColors[type] ?? 'bg-slate-50 text-slate-500 border-slate-100';
+  const cls = leadTypeColors[type] ?? 'bg-gray-50 text-gray-500 border-gray-100';
   return (
     <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium capitalize ${cls}`}>
       {type}
@@ -246,7 +246,7 @@ export default function LeadsTab({
                       value={lead.status}
                       onValueChange={(value) => handleStatusChange(lead._id, value)}
                     >
-                      <SelectTrigger className="h-8 min-w-[140px] text-xs border-slate-200 bg-white text-gray-900 rounded-lg focus:outline-none focus:border-primary/50">
+                      <SelectTrigger className="h-8 min-w-[140px] text-xs border-gray-200 bg-white text-gray-900 rounded-lg focus:outline-none focus:border-primary/50">
                         <SelectValue placeholder="Status" />
                       </SelectTrigger>
                       <SelectContent>

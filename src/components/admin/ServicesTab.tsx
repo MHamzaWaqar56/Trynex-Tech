@@ -162,7 +162,7 @@ function PackageCard({
   const pkg = form[slot];
   const slotLabels: Record<PackageSlot, string> = { basic: 'Basic', standard: 'Standard', premium: 'Premium' };
   const slotColors: Record<PackageSlot, string> = {
-    basic:    'border-slate-200 bg-slate-50/50',
+    basic:    'border-gray-200 bg-gray-50/50',
     standard: 'border-primary/30 bg-primary/5',
     premium:  'border-yellow-200 bg-yellow-50/30',
   };
@@ -420,7 +420,7 @@ export default function ServicesTab({
                     <td className="px-4 py-3.5">
                       <div className="flex flex-wrap gap-1 max-w-[200px]">
                         {s.tags?.slice(0, 3).map((t) => (
-                          <span key={t} className="inline-flex items-center gap-0.5 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-gray-600">
+                          <span key={t} className="inline-flex items-center gap-0.5 rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">
                             <Tag className="w-2.5 h-2.5" />{t}
                           </span>
                         ))}
@@ -440,7 +440,7 @@ export default function ServicesTab({
                             className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${
                               pkg.highlighted
                                 ? 'bg-primary/10 text-primary border border-primary/20'
-                                : 'bg-slate-100 text-gray-600'
+                                : 'bg-gray-100 text-gray-600'
                             }`}
                           >
                             {pkg.highlighted && <Star className="w-2.5 h-2.5 mr-1" />}
@@ -549,7 +549,7 @@ export default function ServicesTab({
               {form.coverImage && !coverFile && (
                 <div className="relative overflow-hidden rounded-xl border border-primary/30">
                   <img src={form.coverImage} alt="Current cover" className="h-40 w-full object-cover" />
-                  <div className="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-1 rounded-full bg-black/60 text-slate-300 border border-white/10">
+                  <div className="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-1 rounded-full bg-black/60 text-gray-300 border border-white/10">
                     Current Image
                   </div>
                 </div>

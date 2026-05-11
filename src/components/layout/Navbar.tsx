@@ -113,7 +113,7 @@ export default function Navbar() {
         />
         <div
           className={cn(
-            'absolute top-16 left-0 right-0 bg-white border-b border-slate-100 shadow-lg p-6 transition-transform duration-300',
+            'absolute top-16 left-0 right-0 bg-white border-b border-gray-100 shadow-lg p-6 transition-transform duration-300',
             mobileOpen ? 'translate-y-0' : '-translate-y-4'
           )}
         >
@@ -128,7 +128,7 @@ export default function Navbar() {
                       'flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg transition-all',
                       isActive
                         ? 'text-primary bg-primary/5 font-semibold'
-                        : 'text-gray-900 hover:text-gray-900 hover:bg-slate-50'
+                        : 'text-gray-900 hover:text-gray-900 hover:bg-gray-100'
                     )}
                   >
                     {link.label}

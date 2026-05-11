@@ -208,7 +208,7 @@ export default function ConsultationsTab({
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all min-[320px]:max-[500px]:px-[8px] ${
                 filter === key
                   ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-slate-500 hover:text-gray-700'
+                  : 'text-gray-500 hover:text-gray-700'
               }`}
             >
               <Filter className="w-3 h-3 min-[320px]:max-[500px]:hidden" />
@@ -328,7 +328,7 @@ export default function ConsultationsTab({
                   >
                     <SelectTrigger className="flex-1 h-9 text-xs border-primary-200 bg-white text-gray-900 rounded-xl focus:border-primary/50 disabled:opacity-60">
                       {isSaving
-                        ? <span className="flex items-center gap-2"><span className="w-3 h-3 border-2 border-slate-300 border-t-primary rounded-full animate-spin" /> Saving...</span>
+                        ? <span className="flex items-center gap-2"><span className="w-3 h-3 border-2 border-gray-300 border-t-primary rounded-full animate-spin" /> Saving...</span>
                         : <SelectValue placeholder="Update status" />
                       }
                     </SelectTrigger>

@@ -5,7 +5,6 @@ import { Contact } from "@/models/Contact";
 import { Lead } from "@/models/Lead";
 import { Portfolio } from "@/models/Portfolio";
 import { Testimonial } from "@/models/Testimonial";
-import { TrackEvent } from "@/models/TrackEvent";
 
 export const dynamic = "force-dynamic";
 
@@ -33,28 +32,6 @@ export async function GET() {
     });
   } catch (error) {
     console.error("/api/stats GET error:", error);
-    return fail("Internal Server Error", 500);
-  }
-}
-
-export async function POST(request: Request) {
-  try {
-    const body = await readJson<{ event?: string; path?: string; referrer?: string; metadata?: Record<string, unknown> }>(request);
-    if (!body.event) {
-      return fail("Event is required.", 400);
-    }
-
-    await connectDB();
-    await TrackEvent.create({
-      event: body.event,
-      path: body.path,
-      referrer: body.referrer,
-      metadata: body.metadata,
-    });
-
-    return ok({ message: "Tracked." }, 201);
-  } catch (error) {
-    console.error("/api/stats POST error:", error);
     return fail("Internal Server Error", 500);
   }
 }

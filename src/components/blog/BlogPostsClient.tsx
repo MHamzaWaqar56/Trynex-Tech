@@ -116,7 +116,7 @@ export default function BlogPostsClient({ posts }: BlogPostsClientProps) {
       </div>
 
       {currentPosts.length === 0 ? (
-        <div className="rounded-2xl border border-slate-200 bg-white p-8 text-slate-500">No blog posts yet.</div>
+        <div className="rounded-2xl border border-gray-200 bg-white p-8 text-gray-900">No blog posts yet.</div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentPosts.map((post) => (
@@ -125,7 +125,7 @@ export default function BlogPostsClient({ posts }: BlogPostsClientProps) {
               href={`/blog/${post.slug}`}
               className="portfolio-card group block bg-white rounded-2xl overflow-hidden"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                 {post.coverImage ? (
                   <>
                     <img

@@ -57,7 +57,7 @@ function StarRating({ rating }: { rating: number }) {
           className={`w-3.5 h-3.5 ${i <= rating ? 'text-primary fill-primary' : 'text-primary'}`}
         />
       ))}
-      <span className="ml-1 text-[11px] text-slate-400">{rating}/5</span>
+      <span className="ml-1 text-[11px] text-gray-400">{rating}/5</span>
     </div>
   );
 }
@@ -302,7 +302,7 @@ export default function TestimonialsTab({ reviews, onDelete, onRefresh }: Props)
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 filter === key
                   ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-slate-500 hover:text-gray-700'
+                  : 'text-gray-500 hover:text-gray-700'
               }`}
             >
               <Filter className="w-3 h-3 min-[320px]:max-[500px]:hidden" />

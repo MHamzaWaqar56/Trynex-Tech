@@ -68,10 +68,10 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
           <button
             key={image}
             type="button"
-            className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,212,255,0.18)] focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white text-left shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,212,255,0.18)] focus:outline-none focus:ring-2 focus:ring-primary/30"
             onClick={() => openImage(index)}
           >
-            <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+            <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
               <Image
                 src={image}
                 alt={`${title} gallery image ${index + 1}`}
@@ -99,7 +99,7 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
               onClick={() => setActiveIndex(null)}
             />
 
-            <div className="relative z-10 w-[50vw] min-[768px]:max-[1130px]:w-[75vw] min-[320px]:max-[767px]:w-[90vw] max-w-6xl rounded-[2rem] border border-slate-200 bg-white p-3 shadow-2xl shadow-black/20">
+            <div className="relative z-10 w-[50vw] min-[768px]:max-[1130px]:w-[75vw] min-[320px]:max-[767px]:w-[90vw] max-w-6xl rounded-[2rem] border border-gray-200 bg-white p-3 shadow-2xl shadow-black/20">
               <div className="flex items-center justify-between gap-4 px-3 py-2">
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-[0.25em] text-gray-900">
@@ -119,7 +119,7 @@ export default function PortfolioHoverGallery({ images, title }: PortfolioHoverG
                 </button>
               </div>
 
-              <div className="relative rounded-[1.5rem] bg-slate-100 p-2">
+              <div className="relative rounded-[1.5rem] bg-gray-100 p-2">
                 <button
                   type="button"
                   aria-label="Previous image"

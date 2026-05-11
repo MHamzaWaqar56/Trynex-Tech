@@ -139,7 +139,7 @@ export default function MessagesTab({
       {/* ── Summary bar ── */}
       {messages.length > 0 && (
         <div className="flex items-center gap-3 px-4 pt-2">
-          <span className="text-xs text-slate-900">
+          <span className="text-xs text-gray-900">
             <span className="font-semibold text-gray-900">{messages.length}</span> total
           </span>
           {newCount > 0 && (

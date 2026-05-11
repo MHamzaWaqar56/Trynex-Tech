@@ -245,7 +245,7 @@ export default function ApplicationsManager() {
                   </div>
 
                   {/* Cover letter */}
-                  <div className="bg-slate-50 rounded-xl p-3 flex-1">
+                  <div className="bg-gray-50 rounded-xl p-3 flex-1">
                     <p className="text-xs text-gray-900 leading-relaxed line-clamp-4">
                       {application.coverLetter}
                     </p>
@@ -271,7 +271,7 @@ export default function ApplicationsManager() {
                   </div>
 
                   {/* Status dropdown */}
-                  <div className="pt-3 border-t border-slate-100">
+                  <div className="pt-3 border-t border-gray-100">
                     <Select
                       value={application.status}
                       disabled={savingId === application._id}

@@ -130,7 +130,7 @@ textarea:focus {
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-gray-900 hover:text-primary font-semibold rounded-lg transition-all duration-200;
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-900 hover:text-primary font-semibold rounded-lg transition-all duration-200;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
@@ -141,7 +141,7 @@ textarea:focus {
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 px-4 py-2 text-slate-500 font-medium rounded-lg transition-colors hover:text-primary hover:bg-primary/5;
+    @apply inline-flex items-center gap-2 px-4 py-2 text-gray-500 font-medium rounded-lg transition-colors hover:text-primary hover:bg-primary/5;
   }
 
   /* Section text */
@@ -168,15 +168,15 @@ textarea:focus {
   }
 
   .currency-switcher-label {
-    @apply px-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500;
+    @apply px-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-500;
   }
 
   .currency-switcher-group {
-    @apply flex rounded-full bg-slate-100 p-1;
+    @apply flex rounded-full bg-gray-100 p-1;
   }
 
   .currency-switcher-option {
-    @apply rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-all;
+    @apply rounded-full px-4 py-2 text-sm font-medium text-gray-600 transition-all;
   }
 
   .currency-switcher-option-active {
@@ -185,7 +185,7 @@ textarea:focus {
 
   /* Tag */
   .tag {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-[#00AACC] border border-slate-200;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-[#00AACC] border border-primary-200;
   }
 
 
@@ -224,11 +224,11 @@ textarea:focus {
 
   /* Blog quill editor */
   .blog-quill-wrapper .ql-toolbar {
-    @apply border border-slate-200 rounded-t-lg bg-slate-50;
+    @apply border border-gray-200 rounded-t-lg bg-gray-50;
   }
 
   .blog-quill-wrapper .ql-toolbar.ql-snow {
-    @apply border-slate-200;
+    @apply border-gray-200;
   }
 
   .blog-quill-wrapper .ql-snow .ql-picker,
@@ -252,7 +252,7 @@ textarea:focus {
   }
 
   .blog-quill-wrapper .ql-container {
-    @apply border border-primary-200 border-t-0 rounded-b-lg bg-white text-gray-900;
+    @apply border border-gray-200 border-t-0 rounded-b-lg bg-white text-gray-900;
     min-height: 320px;
     font-family: var(--font-body);
     font-size: 15px;
@@ -317,12 +317,12 @@ textarea:focus {
 
   .blog-quill-wrapper .ql-editor pre,
   .blog-content pre {
-    @apply overflow-x-auto rounded-2xl border border-slate-200 bg-slate-50 p-5 my-6 text-sm text-gray-900;
+    @apply overflow-x-auto rounded-2xl border border-gray-200 bg-gray-50 p-5 my-6 text-sm text-gray-900;
   }
 
   .blog-quill-wrapper .ql-editor code,
   .blog-content code {
-    @apply rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.9em] text-gray-900;
+    @apply rounded-md bg-gray-100 px-1.5 py-0.5 text-[0.9em] text-gray-900;
   }
 
   .blog-quill-wrapper .ql-editor a,
@@ -337,7 +337,7 @@ textarea:focus {
 
   .blog-quill-wrapper .ql-editor img,
   .blog-content img {
-    @apply my-6 rounded-2xl border border-slate-200;
+    @apply my-6 rounded-2xl border border-gray-200;
   }
 
   .blog-content {

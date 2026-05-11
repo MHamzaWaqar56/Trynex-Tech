@@ -101,7 +101,7 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Right border */}
-        <div className="absolute right-0 top-16 bottom-16 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent" />
+        <div className="absolute right-0 top-16 bottom-16 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
       </div>
 
       {/* ── Right panel — form ── */}
@@ -139,7 +139,7 @@ export default function AdminLoginPage() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="admin@trynex.com"
-                className="w-full px-4 py-3 bg-white border rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary transition-colors"
+                className="w-full px-4 py-3 bg-white border rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary transition-colors"
               />
             </div>
 
@@ -154,12 +154,12 @@ export default function AdminLoginPage() {
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 pr-12 bg-white border rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary transition-colors"
+                  className="w-full px-4 py-3 pr-12 bg-white border rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary transition-colors"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-gray-900 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-900 transition-colors"
                 >
                   {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>

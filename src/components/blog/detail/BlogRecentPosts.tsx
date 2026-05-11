@@ -28,7 +28,7 @@ export default function BlogRecentPosts({ posts }: Props) {
             className="flex items-start gap-3 group"
           >
             {/* Thumbnail */}
-            <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-slate-50">
+            <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-100 bg-gray-50">
               {post.coverImage ? (
                 <img
                   src={post.coverImage}

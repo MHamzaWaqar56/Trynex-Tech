@@ -52,7 +52,7 @@ export default function BlogShareCard({ title, postUrl }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Share on ${label}`}
-            className="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 text-gray-900 hover:border-primary hover:text-primary transition-all duration-200"
+            className="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 text-gray-900 hover:border-primary hover:text-primary transition-all duration-200"
           >
             <Icon className="h-4 w-4" />
           </a>

@@ -75,7 +75,7 @@ export default function CookieConsent() {
             type="button"
             onClick={handleDecline}
             aria-label="Decline cookies"
-            className="w-6 h-6 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-slate-100 transition-colors shrink-0 mt-0.5"
+            className="w-6 h-6 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors shrink-0 mt-0.5"
           >
             <X className="w-3.5 h-3.5" />
           </button>

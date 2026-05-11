@@ -24,7 +24,7 @@ export default function CurrencySwitcher() {
               className={`currency-switcher-option ${active ? 'currency-switcher-option-active' : 'text-gray-600'}`}
             >
               <span>{option.label}</span>
-              <span className={`ml-2 text-[11px] uppercase tracking-[0.16em] ${active ? 'text-white/80' : 'text-slate-400'}`}>
+              <span className={`ml-2 text-[11px] uppercase tracking-[0.16em] ${active ? 'text-white/80' : 'text-gray-400'}`}>
                 {option.helper}
               </span>
             </button>

@@ -102,12 +102,6 @@ export const SERVICES: Service[] = [
   }
 ];
 
-export const STATS: SiteStats = {
-  projectsCompleted: 150,
-  happyClients: 80,
-  yearsExperience: 5,
-  teamMembers: 25,
-};
 
 export const PRICING: PricingPlan[] = [
   {

@@ -437,7 +437,7 @@ export default function CareersTab({
                             <CheckCircle2 className="w-3 h-3" /> Open
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-500">
+                          <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-medium text-gray-500">
                             <XCircle className="w-3 h-3" /> Closed
                           </span>
                         )}
@@ -451,7 +451,7 @@ export default function CareersTab({
                             {new Date(v.applicationDeadline).toLocaleDateString()}
                           </span>
                         ) : (
-                          <span className="text-slate-400">—</span>
+                          <span className="text-gray-400">—</span>
                         )}
                       </td>
 
@@ -544,7 +544,7 @@ export default function CareersTab({
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-gray-100">
                 {filteredApps.map((app) => {
                   const cfg = statusConfig[app.status] || statusConfig.new;
                   return (
@@ -699,7 +699,7 @@ export default function CareersTab({
                 <FileText className="w-3 h-3" /> Description *
               </label>
               <Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={5} placeholder="Role overview, what you'll be doing..." className="resize-none" />
-              <p className="text-[11px] text-slate-400">Minimum 20 characters.</p>
+              <p className="text-[11px] text-gray-400">Minimum 20 characters.</p>
             </div>
 
             {/* Responsibilities, Requirements, Perks */}
@@ -711,7 +711,7 @@ export default function CareersTab({
               <div key={key} className="space-y-1.5">
                 <label className="text-xs font-medium text-gray-900 uppercase tracking-wider flex items-center gap-1">
                   {icon} {label}
-                  <span className="normal-case font-normal text-slate-400 ml-1">(comma separated)</span>
+                  <span className="normal-case font-normal text-gray-400 ml-1">(comma separated)</span>
                 </label>
                 <Input value={form[key]} onChange={(e) => setForm({ ...form, [key]: e.target.value })} placeholder={placeholder} />
               </div>

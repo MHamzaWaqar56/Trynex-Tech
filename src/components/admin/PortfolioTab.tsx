@@ -378,7 +378,7 @@ export default function PortfolioTab({
                     <td className="px-4 py-3.5">
                       <div className="flex flex-wrap gap-1 max-w-[200px]">
                         {p.tech?.slice(0, 3).map((t) => (
-                          <span key={t} className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-gray-600">
+                          <span key={t} className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">
                             {t}
                           </span>
                         ))}
@@ -466,7 +466,7 @@ export default function PortfolioTab({
             </div>
 
             {/* Problem + Solution — Case Study Section */}
-            <div className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+            <div className="space-y-4 rounded-2xl border border-gray-200 bg-gray-50/50 p-4">
               <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
                 <BarChart2 className="w-4 h-4 text-primary" /> Case Study Details
               </p>
@@ -503,7 +503,7 @@ export default function PortfolioTab({
             </div>
 
             {/* Built By — Team Members */}
-            <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+            <div className="space-y-3 rounded-2xl border border-gray-200 bg-gray-50/50 p-4">
               <div>
                 <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
                   <Users className="w-4 h-4 text-primary" /> Built By
@@ -525,7 +525,7 @@ export default function PortfolioTab({
                         className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${
                           selected
                             ? 'bg-primary text-white border-primary'
-                            : 'bg-white text-gray-900 border-slate-200 hover:border-primary/50'
+                            : 'bg-white text-gray-900 border-gray-200 hover:border-primary/50'
                         }`}
                       >
                         {member.image && (
@@ -569,7 +569,7 @@ export default function PortfolioTab({
             </div>
 
             {/* Results — paragraph */}
-            <div className="space-y-1.5 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+            <div className="space-y-1.5 rounded-2xl border border-gray-200 bg-gray-50/50 p-4">
               <label className="text-xs font-medium text-gray-900 uppercase tracking-wider flex items-center gap-1">
                 <span className="w-5 h-5 rounded-full bg-green-100 text-green-600 text-[10px] font-bold flex items-center justify-center">03</span>
                 The Results
@@ -585,7 +585,7 @@ export default function PortfolioTab({
             </div>
 
             {/* New Images */}
-            <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/50 p-4">
+            <div className="space-y-3 rounded-2xl border border-gray-200 bg-gray-50/50 p-4">
               <div>
                 <p className="text-sm font-medium text-gray-900 flex items-center gap-1.5">
                   <ImagePlus className="w-4 h-4 text-primary" /> New Images
@@ -604,14 +604,14 @@ export default function PortfolioTab({
                             <Trash2 className="h-3.5 w-3.5" />
                           </button>
                         </div>
-                        <p className="mt-2 truncate text-[11px] text-slate-500" title={slot.file.name}>{slot.file.name}</p>
+                        <p className="mt-2 truncate text-[11px] text-gray-500" title={slot.file.name}>{slot.file.name}</p>
                       </>
                     ) : (
                       <div className="flex flex-col h-[160px] items-center justify-center rounded-xl border-2 border-dashed border-primary-200 bg-white/50 px-3 gap-2 text-center">
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <Plus className="h-5 w-5" />
                         </div>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-gray-500">
                           {idx === imageSlots.length - 1 ? 'Add image' : 'Empty slot'}
                         </p>
                         <Input
@@ -641,7 +641,7 @@ export default function PortfolioTab({
 
             {/* Existing images */}
             {localSlug && existingImages.length > 0 && (
-              <div className="space-y-3 rounded-2xl border border-primary-200 bg-slate-50/50 p-4">
+              <div className="space-y-3 rounded-2xl border border-primary-200 bg-gray-50/50 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-medium text-gray-900">Existing Images</p>
                   <p className="text-xs text-gray-600">Remove any before saving.</p>
@@ -668,7 +668,7 @@ export default function PortfolioTab({
             <label className="flex items-center gap-2.5 text-sm text-gray-900 cursor-pointer select-none">
               <input type="checkbox" checked={form.featured}
                 onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-                className="w-4 h-4 rounded border-slate-300 accent-primary" />
+                className="w-4 h-4 rounded border-gray-300 accent-primary" />
               <Star className="w-4 h-4" /> Featured project
             </label>
 

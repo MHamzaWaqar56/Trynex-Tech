@@ -55,7 +55,7 @@ export default function NewsletterWidget() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email address"
           disabled={loading}
-          className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60 bg-white"
+          className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-60 bg-white"
         />
         <button
           type="submit"

@@ -46,7 +46,7 @@ function StatCard({
   const isValid = Number.isFinite(parsed) && parsed >= (min ?? 0) && (max === undefined || parsed <= max);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3">
+    <div className="rounded-2xl border border-gray-200 bg-white p-5 space-y-3">
       <div className="flex items-center gap-2.5">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary flex-shrink-0">
           {icon}
@@ -176,8 +176,8 @@ export default function StatsTab() {
       </Card>
 
       {loading ? (
-        <div className="flex items-center justify-center gap-2 py-20 text-slate-400 text-sm">
-          <span className="w-5 h-5 border-2 border-slate-300 border-t-primary rounded-full animate-spin" />
+        <div className="flex items-center justify-center gap-2 py-20 text-gray-400 text-sm">
+          <span className="w-5 h-5 border-2 border-gray-300 border-t-primary rounded-full animate-spin" />
           Loading stats...
         </div>
       ) : (
@@ -214,7 +214,7 @@ export default function StatsTab() {
             />
 
             {/* Founded year — special card with live preview */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3">
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 space-y-3">
               <div className="flex items-center gap-2.5">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary flex-shrink-0">
                   <Clock className="w-4 h-4" />
@@ -251,7 +251,7 @@ export default function StatsTab() {
           </div>
 
           {/* ── Live preview strip ── */}
-          <Card className="border-slate-200 bg-slate-50/50">
+          <Card className="border-gray-200 bg-gray-50/50">
             <CardContent className="!p-5">
               <p className="text-[11px] uppercase tracking-[0.2em] font-mono text-gray-900 mb-4">
                 Live Preview — as shown on website
@@ -263,7 +263,7 @@ export default function StatsTab() {
                   { label: 'Years Experience',   value: String(previewYears ?? '—'), suffix: ' yr' },
                   { label: 'Client Retention',   value: form.clientRetention,   suffix: '%' },
                 ].map(({ label, value, suffix }) => (
-                  <div key={label} className="text-center rounded-xl border border-slate-200 bg-white p-4">
+                  <div key={label} className="text-center rounded-xl border border-gray-200 bg-white p-4">
                     <div className="text-3xl font-bold text-primary tabular-nums">
                       {Number.isFinite(Number(value)) ? Number(value) : value}{suffix}
                     </div>

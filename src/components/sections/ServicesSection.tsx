@@ -45,7 +45,7 @@ export default async function ServicesSection() {
 
         {/* Cards */}
         {services.length === 0 ? (
-          <div className="text-center py-16 text-slate-400">
+          <div className="text-center py-16 text-gray-900">
             No featured services published yet.
           </div>
         ) : (
@@ -57,7 +57,7 @@ export default async function ServicesSection() {
                 className="portfolio-card group block bg-white rounded-2xl overflow-hidden"
               >
                 {/* Image */}
-                <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+                <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                   {service.coverImage ? (
                     <img
                       src={service.coverImage}

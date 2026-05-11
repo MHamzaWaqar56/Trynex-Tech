@@ -1,108 +1,4 @@
 
-
-// 'use client';
-
-// import { useState } from 'react';
-// import type { ChangeEvent, FormEvent } from 'react';
-// import { Send } from 'lucide-react';
-// import { toast } from 'sonner';
-
-// type Props = {
-//   vacancySlug: string;
-//   vacancyTitle: string;
-//   disabled?: boolean;
-//   closedMessage?: string;
-// };
-
-// const initialForm = {
-//   fullName: '',
-//   email: '',
-//   phone: '',
-//   linkedin: '',
-//   portfolioUrl: '',
-//   yearsOfExperience: '',
-//   coverLetter: '',
-// };
-
-// export default function CareerApplicationForm({ vacancySlug, vacancyTitle, disabled = false, closedMessage }: Props) {
-//   const [loading, setLoading] = useState(false);
-//   const [form, setForm] = useState(initialForm);
-//   const [cvFile, setCvFile] = useState<File | null>(null);
-
-//   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     setForm({ ...form, [event.target.name]: event.target.value });
-//   };
-
-//   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-//     event.preventDefault();
-//     setLoading(true);
-
-//     try {
-//       const payload = new FormData();
-//       payload.append('fullName', form.fullName);
-//       payload.append('email', form.email);
-//       payload.append('phone', form.phone);
-//       payload.append('linkedin', form.linkedin);
-//       payload.append('portfolioUrl', form.portfolioUrl);
-//       payload.append('yearsOfExperience', form.yearsOfExperience);
-//       payload.append('coverLetter', form.coverLetter);
-//       if (cvFile) payload.append('cv', cvFile);
-
-//       const response = await fetch(`/api/careers/${vacancySlug}/apply`, {
-//         method: 'POST',
-//         body: payload,
-//       });
-
-//       if (response.ok) {
-//         toast.success('Application submitted successfully.');
-//         setForm(initialForm);
-//         setCvFile(null);
-//       } else {
-//         toast.error('Application submission failed.');
-//       }
-//     } catch {
-//       toast.error('Network error. Please try again.');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-//       {closedMessage && (
-//         <div className="md:col-span-2 rounded-xl border border-amber-400/20 bg-amber-400/10 px-4 py-3 text-sm text-amber-200">
-//           {closedMessage}
-//         </div>
-//       )}
-//       <input disabled={disabled} type="text" name="fullName" value={form.fullName} onChange={handleChange} required placeholder="Full name" className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60" />
-//       <input disabled={disabled} type="email" name="email" value={form.email} onChange={handleChange} required placeholder="Email address" className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60" />
-//       <input disabled={disabled} type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="Phone number" className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60" />
-//       <input disabled={disabled} type="text" name="linkedin" value={form.linkedin} onChange={handleChange} placeholder="LinkedIn profile URL" className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60" />
-//       <input disabled={disabled} type="text" name="portfolioUrl" value={form.portfolioUrl} onChange={handleChange} placeholder="Portfolio / website URL" className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60" />
-//       <input disabled={disabled} type="text" name="yearsOfExperience" value={form.yearsOfExperience} onChange={handleChange} placeholder="Years of experience" className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60" />
-//       <textarea disabled={disabled} name="coverLetter" value={form.coverLetter} onChange={handleChange} required rows={6} placeholder={`Why are you a fit for ${vacancyTitle}?`} className="w-full px-4 py-3 bg-dark border border-dark-border rounded-lg text-white placeholder:text-dark-muted focus:outline-none focus:border-primary/50 transition-colors resize-none md:col-span-2 disabled:cursor-not-allowed disabled:opacity-60" />
-//       <div className="md:col-span-2 space-y-2">
-//         <label className="block text-sm text-dark-muted">Upload CV / Resume *</label>
-//         <input disabled={disabled} type="file" accept=".pdf,.doc,.docx" onChange={(event) => setCvFile(event.target.files?.[0] || null)} required className="w-full text-sm text-dark-muted file:mr-4 file:rounded-lg file:border-0 file:bg-primary file:px-4 file:py-2 file:text-dark file:font-semibold disabled:cursor-not-allowed disabled:opacity-60" />
-//       </div>
-//       <button type="submit" disabled={loading || disabled} className="btn-primary md:col-span-2 justify-center disabled:opacity-60">
-//         {disabled ? 'Applications Closed' : loading ? 'Submitting...' : <><Send className="w-4 h-4" /> Submit Application</>}
-//       </button>
-//     </form>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 'use client';
 
 import { useState } from 'react';
@@ -130,7 +26,7 @@ const initialForm = {
 
 // Shared input class — matches contact page style
 const inputClass =
-  'w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60';
+  'w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors disabled:cursor-not-allowed disabled:opacity-60';
 
 export default function CareerApplicationForm({
   vacancySlug,

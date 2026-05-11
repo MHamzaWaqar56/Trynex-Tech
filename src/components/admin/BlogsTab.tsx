@@ -261,13 +261,13 @@ export default function BlogsTab({
         <div className="flex items-center justify-between px-4 pt-4">
           <div className="flex items-center gap-2 text-xs text-gray-900">
             <BookOpen className="w-4 h-4" />
-            <span><span className="font-semibold text-slate-700">{blogs.length}</span> posts</span>
+            <span><span className="font-semibold text-gray-700">{blogs.length}</span> posts</span>
             <span className="mx-1 text-gray-900">·</span>
             <span className="text-green-600 font-medium">
               {blogs.filter((b) => b.published).length} published
             </span>
             <span className="mx-1 text-gray-900">·</span>
-            <span className="text-slate-400">
+            <span className="text-gray-600">
               {blogs.filter((b) => !b.published).length} draft
             </span>
           </div>
@@ -285,7 +285,7 @@ export default function BlogsTab({
         <div className="overflow-x-auto">
           <table className="min-w-[820px] w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100">
+              <tr className="border-b border-gray-100">
                 {['Title', 'Author', 'Tags', 'Status', 'Date', 'Actions'].map((h) => (
                   <th key={h} className="text-left px-4 py-3.5 text-gray-900 font-mono text-xs uppercase tracking-[0.18em]">
                     {h}
@@ -326,7 +326,7 @@ export default function BlogsTab({
                     <td className="px-4 py-3.5">
                       <div className="flex flex-wrap gap-1 max-w-[200px]">
                         {post.tags?.slice(0, 3).map((tag) => (
-                          <span key={tag} className="inline-flex items-center gap-0.5 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-gray-600">
+                          <span key={tag} className="inline-flex items-center gap-0.5 rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">
                             <Tag className="w-2.5 h-2.5" />{tag}
                           </span>
                         ))}
@@ -346,7 +346,7 @@ export default function BlogsTab({
                           <Eye className="w-3 h-3" /> Published
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-500">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2.5 py-0.5 text-[11px] font-medium text-gray-500">
                           <EyeOff className="w-3 h-3" /> Draft
                         </span>
                       )}
@@ -450,7 +450,7 @@ export default function BlogsTab({
                 placeholder="auto-generated-from-title"
                 className="font-mono text-xs"
               />
-              <p className="text-[11px] text-slate-400">Auto-generated from title. Edit if needed.</p>
+              <p className="text-[11px] text-gray-400">Auto-generated from title. Edit if needed.</p>
             </div>
 
             {/* Tags */}
@@ -478,7 +478,7 @@ export default function BlogsTab({
                 onChange={(e) => setCoverFile(e.target.files?.[0] || null)}
                 className="w-full text-sm text-gray-900 file:mr-4 file:rounded-lg file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white file:font-semibold file:text-sm file:cursor-pointer cursor-pointer"
               />
-              <p className="text-[11px] text-slate-400">Selected image uploads to Cloudinary when you save.</p>
+              <p className="text-[11px] text-gray-400">Selected image uploads to Cloudinary when you save.</p>
               {form.coverImage && !coverFile && (
                 <div className="rounded-xl overflow-hidden border border-primary-200">
                   <img src={form.coverImage} alt="Cover" className="w-full h-44 object-cover" />

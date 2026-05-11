@@ -229,7 +229,7 @@ export default function  ConsultationFormSection() {
                           type="text" name="name" required
                           value={form.name} onChange={handleChange}
                           placeholder="John Doe"
-                          className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                         />
                       </div>
                       <div>
@@ -238,7 +238,7 @@ export default function  ConsultationFormSection() {
                           type="email" name="email" required
                           value={form.email} onChange={handleChange}
                           placeholder="john@example.com"
-                          className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -251,7 +251,7 @@ export default function  ConsultationFormSection() {
                           type="tel" name="phone"
                           value={form.phone} onChange={handleChange}
                           placeholder="+92 300 1234567"
-                          className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors"
+                          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                         />
                       </div>
                       <div>
@@ -291,7 +291,7 @@ export default function  ConsultationFormSection() {
                         max={getMaxDateString()}
                         value={selectedDate}
                         onChange={(e) => setSelectedDate(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:border-primary/50 transition-colors"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:border-primary/50 transition-colors"
                       />
                     </div>
 
@@ -321,22 +321,22 @@ export default function  ConsultationFormSection() {
                                 className={`
                                   px-2 py-2.5 rounded-lg text-xs font-mono text-center transition-all duration-150 border
                                   ${isBooked
-                                    ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed line-through'
+                                    ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed line-through'
                                     : isCancelled
                                       ? 'bg-red-50 border-red-200 text-red-400 cursor-not-allowed line-through'
                                       : isTooSoon
-                                        ? 'bg-slate-50 border-slate-200 text-slate-300 cursor-not-allowed opacity-60'
+                                        ? 'bg-gray-50 border-gray-200 text-gray-300 cursor-not-allowed opacity-60'
                                         : isSelected
                                           ? 'bg-primary border-primary text-white font-bold shadow-btn'
-                                          : 'bg-white border-slate-200 text-gray-900 hover:border-primary/40 hover:text-primary cursor-pointer'
+                                          : 'bg-white border-gray-200 text-gray-900 hover:border-primary/40 hover:text-primary cursor-pointer'
                                   }
                                 `}
                               >
                                 {TIME_LABELS[time]}
-                                {isBooked && <div className="text-[9px] mt-0.5 text-slate-400 no-underline">Booked</div>}
+                                {isBooked && <div className="text-[9px] mt-0.5 text-gray-400 no-underline">Booked</div>}
                                 {isCancelled && <div className="text-[9px] mt-0.5 text-red-400 no-underline">Cancelled</div>}
                                 {isTooSoon && !isBooked && !isCancelled && (
-                                  <div className="text-[9px] mt-0.5 text-slate-300">Unavailable</div>
+                                  <div className="text-[9px] mt-0.5 text-gray-300">Unavailable</div>
                                 )}
                               </button>
                             );
@@ -349,16 +349,16 @@ export default function  ConsultationFormSection() {
                             <span className="w-3 h-3 rounded bg-primary inline-block" /> Selected
                           </span>
                           <span className="flex items-center gap-1.5">
-                            <span className="w-3 h-3 rounded bg-slate-100 border border-slate-200 inline-block" /> Booked
+                            <span className="w-3 h-3 rounded bg-gray-100 border border-gray-200 inline-block" /> Booked
                           </span>
                           <span className="flex items-center gap-1.5">
                             <span className="w-3 h-3 rounded bg-red-50 border border-red-200 inline-block" /> Cancelled
                           </span>
                           <span className="flex items-center gap-1.5">
-                            <span className="w-3 h-3 rounded bg-slate-50 border border-slate-200 opacity-60 inline-block" /> Unavailable
+                            <span className="w-3 h-3 rounded bg-gray-50 border border-gray-200 opacity-60 inline-block" /> Unavailable
                           </span>
                           <span className="flex items-center gap-1.5">
-                            <span className="w-3 h-3 rounded bg-white border border-slate-200 inline-block" /> Available
+                            <span className="w-3 h-3 rounded bg-white border border-gray-200 inline-block" /> Available
                           </span>
                         </div>
                       </div>
@@ -373,7 +373,7 @@ export default function  ConsultationFormSection() {
                         name="message" rows={3}
                         value={form.message} onChange={handleChange}
                         placeholder="Tell us briefly what you'd like to discuss..."
-                        className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors resize-none"
                       />
                     </div>
 
