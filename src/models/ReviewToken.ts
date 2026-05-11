@@ -9,7 +9,7 @@ const ReviewTokenSchema = new Schema(
     projectId: { type: mongoose.Schema.Types.ObjectId, ref: 'Portfolio', required: true },
     projectTitle: { type: String, required: true },
     used:      { type: Boolean, default: false, index: true },
-    expiresAt: { type: Date, required: true, index: true },
+    expiresAt: { type: Date, required: true, expires: 86400 },
   },
   { timestamps: true },
 );

@@ -35,7 +35,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         <Quote className="w-8 h-8 text-primary" />
       </div>
 
-      <p className="text-gray-900 text-sm leading-relaxed line-clamp-4 flex-1 text-justify">
+      <p className="text-gray-900 text-sm leading-relaxed line-clamp-5 flex-1 text-justify">
         &ldquo;{t.review}&rdquo;
       </p>
 
