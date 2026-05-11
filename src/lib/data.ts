@@ -3,7 +3,7 @@ import { Service, PricingPlan, SiteStats } from '@/types';
 export const SITE_NAME = 'Trynex Tech';
 export const SITE_TAGLINE = 'Your Vision, Engineered to Perform.';
 export const SITE_DESCRIPTION = 'Premium software house delivering cutting-edge SEO, Web Development, Data Science, AI solutions and other services that transform businesses.';
-export const WHATSAPP_NUMBER = '+923001234567';
+export const WHATSAPP_NUMBER = '+923191637629';
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
