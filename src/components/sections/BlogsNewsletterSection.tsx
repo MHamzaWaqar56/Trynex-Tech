@@ -133,7 +133,7 @@ export default function BlogsNewsletterSection() {
                     className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
                   >
                     <div className="relative flex-1">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-dark-muted pointer-events-none" />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none" />
                       <input
                         type="email"
                         required
@@ -141,8 +141,8 @@ export default function BlogsNewsletterSection() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         disabled={loading}
-                        className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-primary/30 bg-white text-sm text-dark placeholder:text-dark-muted/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all disabled:opacity-60 shadow-sm"
-                      />
+                        className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-primary/30 bg-white text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-colors disabled:opacity-60 shadow-sm"
+                      />           
                     </div>
                     <button
                       type="submit"

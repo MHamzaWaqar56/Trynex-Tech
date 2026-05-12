@@ -10,7 +10,7 @@ export default function NotFound() {
           <Zap className="w-8 h-8 text-primary" />
         </div>
         <h1 className="text-2xl font-display font-bold mb-3">Page Not Found</h1>
-        <p className="text-dark-muted mb-8 max-w-sm mx-auto">
+        <p className="text-gray-900 mb-8 max-w-sm mx-auto">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <Link href="/" className="btn-primary">

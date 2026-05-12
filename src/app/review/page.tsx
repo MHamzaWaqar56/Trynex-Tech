@@ -110,11 +110,11 @@ function ReviewForm() {
       <div className="min-h-screen bg-white flex items-center justify-center p-4 pt-28">
         <div className="max-w-md w-full text-center">
           <div className="glass-card p-10">
-            <div className="w-16 h-16 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-5">
-              <CheckCircle2 className="w-8 h-8 text-green-600" />
+            <div className="w-16 h-16 rounded-2xl bg-primary-50 border border-primary-200 flex items-center justify-center mx-auto mb-5">
+              <CheckCircle2 className="w-8 h-8 text-primary-600" />
             </div>
             <div className="section-badge mb-4 justify-center inline-flex">
-              <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
               Review Submitted
             </div>
             <h1 className="text-2xl font-display font-bold text-gray-900 mb-3">
