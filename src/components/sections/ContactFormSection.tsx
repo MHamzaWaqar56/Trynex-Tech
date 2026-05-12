@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, Star, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { WHATSAPP_NUMBER } from '@/lib/data';
 import { usePublicServices } from '@/components/shared/usePublicServices';
