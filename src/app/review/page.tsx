@@ -114,7 +114,7 @@ function ReviewForm() {
               <CheckCircle2 className="w-8 h-8 text-green-600" />
             </div>
             <div className="section-badge mb-4 justify-center inline-flex">
-              <span className="w-2 h-2 rounded-full bg-green-50 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
               Review Submitted
             </div>
             <h1 className="text-2xl font-display font-bold text-gray-900 mb-3">
