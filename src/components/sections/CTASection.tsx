@@ -7,7 +7,7 @@ export default function CTASection() {
   return (
     <section className="py-12 ">
       <div className="container-custom">
-        <div className="rounded-2xl bg-[#111827] px-8 py-16 text-center">
+        <div className="rounded-2xl bg-dark px-8 py-16 text-center">
 
           {/* Icon */}
           <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-6">

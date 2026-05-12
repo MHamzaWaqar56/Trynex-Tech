@@ -278,7 +278,7 @@ function ReviewForm() {
                   <input type="text" value={form.role}
                     onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
                     placeholder="CEO, Manager..."
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors" />
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors" />
                 </div>
               </div>
 

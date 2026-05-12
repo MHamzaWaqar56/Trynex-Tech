@@ -48,7 +48,7 @@ export default function PricingPackageCard({
           </li>
         ))}
       </ul>
-      <Link href={actionHref} className={plan.highlighted ? 'btn-primary w-full justify-center' : 'btn-secondary hover:bg-[#0ac] hover:text-white w-full justify-center'}>
+      <Link href={actionHref} className={plan.highlighted ? 'btn-primary w-full justify-center' : 'btn-secondary hover:bg-primary-600 hover:text-white w-full justify-center'}>
         {actionLabel} <ArrowRight className="w-4 h-4" />
       </Link>
     </div>

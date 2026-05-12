@@ -64,7 +64,7 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
   };
 
   return (
-    <footer className="bg-[#111827] text-white">
+    <footer className="bg-dark text-white">
 
       {/* Main Footer */}
       <div className="container-custom py-16">
