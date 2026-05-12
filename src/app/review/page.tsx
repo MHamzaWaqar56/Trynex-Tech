@@ -89,11 +89,11 @@ function ReviewForm() {
       <div className="min-h-screen bg-white flex items-center justify-center p-4 pt-28">
         <div className="max-w-md w-full text-center">
           <div className="glass-card p-10">
-            <div className="w-16 h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mx-auto mb-5">
+            <div className="w-16 h-16 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center mx-auto mb-5">
               <XCircle className="w-8 h-8 text-red-400" />
             </div>
             <div className="section-badge mb-4 justify-center inline-flex">
-              <span className="w-2 h-2 rounded-full bg-red-400" />
+              <span className="w-2 h-2 rounded-full bg-red-50" />
               {msg.title}
             </div>
             <h1 className="text-xl font-display font-bold text-gray-900 mb-3">{msg.title}</h1>
@@ -110,11 +110,11 @@ function ReviewForm() {
       <div className="min-h-screen bg-white flex items-center justify-center p-4 pt-28">
         <div className="max-w-md w-full text-center">
           <div className="glass-card p-10">
-            <div className="w-16 h-16 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center mx-auto mb-5">
-              <CheckCircle2 className="w-8 h-8 text-green-500" />
+            <div className="w-16 h-16 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-5">
+              <CheckCircle2 className="w-8 h-8 text-green-600" />
             </div>
             <div className="section-badge mb-4 justify-center inline-flex">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-green-50 animate-pulse" />
               Review Submitted
             </div>
             <h1 className="text-2xl font-display font-bold text-gray-900 mb-3">
@@ -253,7 +253,7 @@ function ReviewForm() {
                   <input type="text" required value={form.name}
                     onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                     placeholder="John Doe"
-                    className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors" />
+                    className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors" />
                 </div>
               </div>
 
@@ -268,7 +268,7 @@ function ReviewForm() {
                     <input type="text" required value={form.company}
                       onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
                       placeholder="Your Company"
-                      className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/50 transition-colors" />
+                      className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary/50 transition-colors" />
                   </div>
                 </div>
                 <div>

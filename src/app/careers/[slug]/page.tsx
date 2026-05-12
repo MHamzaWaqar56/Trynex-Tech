@@ -159,18 +159,18 @@ export default async function CareerDetailPage({ params }: Props) {
                   <h3 className="text-lg font-display font-bold text-gray-900">Role Snapshot</h3>
                 </div>
                 <div className="space-y-3 text-sm text-gray-900">
-                  <div className="flex items-center gap-3 py-2.5 border-b border-slate-100">
+                  <div className="flex items-center gap-3 py-2.5 border-b border-gray-100">
                     <MapPin className="w-4 h-4 text-primary shrink-0" />
                     <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Location</span>
                     <span className="font-medium">{vacancy.location}</span>
                   </div>
-                  <div className="flex items-center gap-3 py-2.5 border-b border-slate-100">
+                  <div className="flex items-center gap-3 py-2.5 border-b border-gray-100">
                     <Clock3 className="w-4 h-4 text-primary shrink-0" />
                     <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Type</span>
                     <span className="font-medium">{vacancy.employmentType}</span>
                   </div>
                   {vacancy.salary && (
-                    <div className="flex items-center gap-3 py-2.5 border-b border-slate-100">
+                    <div className="flex items-center gap-3 py-2.5 border-b border-gray-100">
                       <TrendingUp className="w-4 h-4 text-primary shrink-0" />
                       <span className="font-mono text-xs text-gray-900 w-24 shrink-0">Salary</span>
                       <span className="font-medium">{vacancy.salary}</span>

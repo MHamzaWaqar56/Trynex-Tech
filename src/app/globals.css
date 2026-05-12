@@ -53,7 +53,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #f3f4f6;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -267,7 +267,7 @@ textarea:focus {
   }
 
   .blog-quill-wrapper .ql-editor.ql-blank::before {
-    color: #94a3b8;
+    color: #9ca3af;
   }
 
   .blog-quill-wrapper .ql-editor h1,

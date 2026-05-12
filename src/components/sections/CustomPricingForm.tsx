@@ -133,7 +133,7 @@ export default function CustomPricingForm() {
                 <SelectItem value="Other">Other / Not Sure</SelectItem>
               </SelectContent>
             </Select>
-            {servicesError && <p className="mt-1.5 text-xs text-red-500">{servicesError}</p>}
+            {servicesError && <p className="mt-1.5 text-xs text-red-400">{servicesError}</p>}
           </div>
         </div>
 
