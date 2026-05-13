@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { connectDB } from '@/lib/db';
 import { Service as ServiceModel } from '@/models/Service';
-import { SERVICES, PRICING } from '@/lib/data';
 import CTASection from '@/components/sections/CTASection';
 import PricingPackageCard from '@/components/shared/PricingPackageCard';
 import CurrencySwitcher from '@/components/shared/CurrencySwitcher';
@@ -47,8 +46,7 @@ type PublicService = {
 export async function generateStaticParams() {
   await connectDB();
   const services = await ServiceModel.find({}).select({ slug: 1 }).lean<{ slug: string }[]>();
-  if (services.length > 0) return services.map((s) => ({ slug: s.slug }));
-  return SERVICES.map((s) => ({ slug: s.slug }));
+  return services.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -59,45 +57,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 
-function fallbackService(slug: string): PublicService | null {
-  const service = SERVICES.find((item) => item.slug === slug);
-  if (!service) return null;
-
-  const fallbackPackages = PRICING.filter((plan) =>
-    plan.service === (slug === 'web-development' ? 'Web' : slug === 'seo' ? 'SEO' : '')
-  ).slice(0, 3).map((plan) => ({
-    name: plan.name,
-    price: plan.price,
-    period: plan.period,
-    description: plan.description,
-    features: plan.features,
-    highlighted: plan.highlighted,
-    cta: plan.cta,
-  }));
-
-  const generatedPackages = fallbackPackages.length > 0 ? fallbackPackages : [
-    { name: 'Basic', price: 'Custom', period: 'starter', description: 'Entry package for small projects.', features: service.features.slice(0, 3), highlighted: false, cta: 'Choose Basic' },
-    { name: 'Standard', price: 'Custom', period: 'popular', description: 'Balanced package for most businesses.', features: service.features.slice(1, 5), highlighted: true, cta: 'Choose Standard' },
-    { name: 'Premium', price: 'Custom', period: 'advanced', description: 'Full-scale package with the most value.', features: service.features.slice(0, 6), highlighted: false, cta: 'Choose Premium' },
-  ];
-
-  return {
-    title: service.title,
-    slug: service.slug,
-    summary: service.description,
-    details: service.description,
-    bullets: service.features,
-    tags: service.technologies,
-    features: service.features,
-    technologies: service.technologies,
-    packages: generatedPackages,
-  };
-}
-
 async function getService(slug: string): Promise<PublicService | null> {
   await connectDB();
-  const service = await ServiceModel.findOne({ slug }).lean<PublicService>();
-  return service || fallbackService(slug);
+  return await ServiceModel.findOne({ slug }).lean<PublicService>();
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -242,6 +204,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Packages */}
+      {packages.length > 0 && (
       <section className="container-custom pb-24 pt-4">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-12">
           <div>
@@ -273,6 +236,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           ))}
         </div>
       </section>
+      )}
 
       <TestimonialsSection />
       <CTASection />

@@ -1,4 +1,4 @@
-import { PRICING } from "@/lib/data";
+
 import { connectDB } from '@/lib/db';
 import { Service as ServiceModel, type ServiceDocument } from '@/models/Service';
 import { ok } from "@/lib/backend/route-utils";
@@ -10,7 +10,7 @@ export async function GET() {
   const services = await ServiceModel.find({}).sort({ order: 1, createdAt: -1 }).lean<ServiceDocument[]>();
 
   if (services.length === 0) {
-    return ok({ plans: PRICING });
+    return ok({ plans: [] });
   }
 
   const plans = services.flatMap((service) =>
