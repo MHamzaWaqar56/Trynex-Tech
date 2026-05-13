@@ -7,7 +7,7 @@ import {
   BookOpen, Briefcase, Calendar, DollarSign,
   FolderOpen, LogOut, Mail, MessageSquare,
   Settings, Star, TrendingUp, UserCircle, BarChart2,
-  Menu, X,
+  Menu, X, HelpCircle,
 } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -26,13 +26,14 @@ import TeamTab          from '@/components/admin/TeamTab';
 import TestimonialsTab  from '@/components/admin/TestimonialsTab';
 import CareersTab       from '@/components/admin/CareersTab';
 import StatsTab         from '@/components/admin/StatsTab';
+import FAQTab from '@/components/admin/FAQTab';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type TabKey =
   | 'newsletter' | 'messages' | 'leads' | 'currency'
   | 'consultations' | 'blogs' | 'portfolio' | 'services'
-  | 'careers' | 'team' | 'testimonials' | 'stats';
+  | 'careers' | 'team' | 'testimonials' | 'stats' | 'faq';
 
 interface Message {
   _id: string; name: string; email: string; service?: string;
@@ -107,6 +108,7 @@ const TABS: Array<{ key: TabKey; label: string; icon: React.ElementType }> = [
   { key: 'services',      label: 'Services',       icon: Settings      },
   { key: 'team',          label: 'Team',           icon: UserCircle    },
   { key: 'testimonials',  label: 'Testimonials',   icon: Star          },
+  { key: 'faq',           label: 'FAQ',            icon: HelpCircle },
   { key: 'careers',       label: 'Careers',        icon: Briefcase     },
 ];
 
@@ -517,6 +519,10 @@ export default function AdminDashboard() {
                 onCancelEdit={() => setEditingTeamId(null)}
                 onGoToList={() => router.push('/admin/team')}
               />
+            )}
+
+            {activeTab === 'faq' && (
+              <FAQTab onDelete={openDeleteDialog} />
             )}
 
             {activeTab === 'testimonials' && (

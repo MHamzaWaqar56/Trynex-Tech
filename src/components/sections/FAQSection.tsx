@@ -1,33 +1,9 @@
 
-
 'use client';
 
-import { useState } from 'react';
-import { ChevronDown, Clock, MessageCircle, ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ChevronDown, Clock, MessageCircle, ArrowRight, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
-
-const faqs = [
-  {
-    question: 'What services does Trynex Tech provide?',
-    answer: 'We provide SEO, web development, AI solutions, data science, design support, and full digital strategy services tailored to business goals.',
-  },
-  {
-    question: 'How do you price projects?',
-    answer: 'Pricing depends on scope, timeline, and complexity. We can start with a fixed package, custom quote, or a consultation-based proposal.',
-  },
-  {
-    question: 'Can you work with international clients?',
-    answer: 'Yes. We work with local and international clients and can communicate across time zones using email, chat, and scheduled calls.',
-  },
-  {
-    question: 'How long does a project usually take?',
-    answer: 'Timelines vary by project size. Small engagements may take a few days, while larger builds can take several weeks or months.',
-  },
-  {
-    question: 'Do you offer support after launch?',
-    answer: 'Yes. We offer post-launch support, maintenance, iterations, and growth-focused improvements depending on your plan.',
-  },
-];
 
 const infoCards = [
   {
@@ -40,7 +16,7 @@ const infoCards = [
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
   },
-   {
+  {
     icon: MessageCircle,
     title: 'Free Consultation',
     description: 'Not sure where to start? Book a free 30-minute consultation and we will map out the best approach for your project.',
@@ -50,8 +26,9 @@ const infoCards = [
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
   },
-  
 ];
+
+type FAQItem = { _id: string; question: string; answer: string };
 
 type FAQItemProps = {
   question: string;
@@ -86,7 +63,17 @@ function FAQItem({ question, answer, open, onToggle }: FAQItemProps) {
 }
 
 export default function FAQSection() {
+  const [faqs,      setFaqs]      = useState<FAQItem[]>([]);
   const [openIndex, setOpenIndex] = useState(0);
+
+  useEffect(() => {
+    fetch('/api/faq')
+      .then((r) => r.json())
+      .then((data) => {
+        setFaqs(data.faqs ?? []);
+      })
+      .catch(() => setFaqs([]));
+  }, []);
 
   return (
     <section className="py-12 bg-white">
@@ -110,24 +97,28 @@ export default function FAQSection() {
 
           {/* Left — FAQs */}
           <div className="space-y-3">
-            {faqs.map((faq, index) => (
-              <FAQItem
-                key={faq.question}
-                question={faq.question}
-                answer={faq.answer}
-                open={openIndex === index}
-                onToggle={() => setOpenIndex((current) => (current === index ? -1 : index))}
-              />
-            ))}
+            {faqs.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16 text-center gap-3 rounded-2xl border border-dashed border-gray-200">
+                <HelpCircle className="w-8 h-8 text-gray-300" />
+                <p className="text-gray-900 text-sm">No FAQs available at the moment.</p>
+              </div>
+            ) : (
+              faqs.map((faq, index) => (
+                <FAQItem
+                  key={faq._id}
+                  question={faq.question}
+                  answer={faq.answer}
+                  open={openIndex === index}
+                  onToggle={() => setOpenIndex((current) => (current === index ? -1 : index))}
+                />
+              ))
+            )}
           </div>
 
           {/* Right — Info Cards */}
           <div className="flex flex-col gap-4 lg:sticky lg:top-28 min-[768px]:max-[1023px]:!flex-row">
             {infoCards.map(({ icon: Icon, title, description, cta, bg, border, iconBg, iconColor }) => (
-              <div
-                key={title}
-                className={`rounded-2xl border ${border} ${bg} p-6`}
-              >
+              <div key={title} className={`rounded-2xl border ${border} ${bg} p-6`}>
                 <div className={`w-10 h-10 rounded-xl ${iconBg} flex items-center justify-center mb-4`}>
                   <Icon className={`w-5 h-5 ${iconColor}`} />
                 </div>
