@@ -13,13 +13,13 @@ import { Testimonial } from '@/models/Testimonial';
 import { SiteStats } from '@/models/SiteStats';
 
 export const metadata: Metadata = {
-  title: 'Trynex Tech — Premium Software House',
+  title: 'Trynex Tech — Your Digital Growth Partner',
   description:
     'Pakistan\'s leading software house. Expert SEO, Web Development, Data Science, and AI solutions that grow your business.',
   alternates: { canonical: '/' },
   keywords: ['Trynex Tech', 'software house Pakistan', 'SEO services', 'web development', 'AI solutions'],
   openGraph: {
-    title: 'Trynex Tech — Premium Software House',
+    title: 'Trynex Tech — Your Digital Growth Partner',
     description:
       'Expert SEO, web development, data science, and AI solutions for growing businesses in Pakistan.',
     url: '/',

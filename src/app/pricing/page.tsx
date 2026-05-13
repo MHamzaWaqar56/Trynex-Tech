@@ -1,9 +1,11 @@
+
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BadgeDollarSign, Clock3, Sparkles, ShieldCheck, CheckCircle2, Star, Send, Globe } from 'lucide-react';
 import { connectDB } from '@/lib/db';
 import { Service as ServiceModel } from '@/models/Service';
-import { PRICING, SITE_NAME } from '@/lib/data';
+import { SITE_NAME } from '@/lib/data';
 import PricingPackageCard from '@/components/shared/PricingPackageCard';
 import CurrencySwitcher from '@/components/shared/CurrencySwitcher';
 import CustomPricingForm from '@/components/sections/CustomPricingForm';
@@ -85,23 +87,7 @@ async function getPricingGroups(): Promise<PricingGroup[]> {
   await connectDB();
   const services = await ServiceModel.find({}).sort({ order: 1, createdAt: -1 }).lean<any[]>();
 
-  if (services.length === 0) {
-    return [
-      {
-        title: 'Fallback Pricing',
-        slug: 'pricing',
-        packages: PRICING.map((plan) => ({
-          name: plan.name,
-          price: plan.price,
-          period: plan.period,
-          description: plan.description,
-          features: plan.features,
-          highlighted: plan.highlighted,
-          cta: plan.cta,
-        })),
-      },
-    ];
-  }
+  if (services.length === 0) return [];
 
   return services
     .filter((service) => (service.packages || []).length > 0)
@@ -168,7 +154,7 @@ export default async function PricingPage() {
         <div className="container-custom space-y-16">
 
           {/* Currency switcher card */}
-          <div className="glass-card p-6 md:p-8">
+          {groups.length > 0 && <div className="glass-card p-6 md:p-8">
             <div className="flex flex-col items-center text-center gap-4">
               <div className="section-badge">
                 <BadgeDollarSign className="h-3.5 w-3.5" />
@@ -179,10 +165,16 @@ export default async function PricingPage() {
               </p>
               <CurrencySwitcher />
             </div>
-          </div>
+          </div>}
 
           {/* Pricing groups */}
-          {groups.map((group) => (
+          {groups.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
+              <BadgeDollarSign className="w-10 h-10 text-primary/40" />
+              <p className="text-gray-900 text-lg font-medium">No pricing available</p>
+              <p className="text-gray-900 text-sm max-w-xs">Pricing plans are being updated. Please contact us for a custom quote.</p>
+            </div>
+          ) : groups.map((group) => (
             <div key={group.slug}>
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
                 <div>
@@ -210,6 +202,7 @@ export default async function PricingPage() {
               </div>
             </div>
           ))}
+
 
           {/* ── Custom Pricing — two-column (contact page pattern) ── */}
           <div>

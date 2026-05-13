@@ -1,8 +1,9 @@
+
+
 import type { Metadata } from 'next';
 import { connectDB } from '@/lib/db';
 import { Settings } from 'lucide-react';
 import { Service as ServiceModel } from '@/models/Service';
-import { SERVICES } from '@/lib/data';
 import CTASection from '@/components/sections/CTASection';
 import PageHero from '@/components/sections/PageHero';
 import ServicesGridClient from '@/components/services/ServicesGridClient';
@@ -40,23 +41,12 @@ type PublicService = {
   technologies?: string[];
 };
 
-function fallbackServices(): PublicService[] {
-  return SERVICES.map((service) => ({
-    title: service.title,
-    slug: service.slug,
-    description: service.description,
-    features: service.features,
-    technologies: service.technologies,
-  }));
-}
-
 async function getServices(): Promise<PublicService[]> {
   try {
     await connectDB();
-    const services = await ServiceModel.find({}).sort({ order: 1, createdAt: -1 }).lean<PublicService[]>();
-    return services.length > 0 ? services : fallbackServices();
+    return await ServiceModel.find({}).sort({ order: 1, createdAt: -1 }).lean<PublicService[]>();
   } catch {
-    return fallbackServices();
+    return [];
   }
 }
 
@@ -98,7 +88,15 @@ export default async function ServicesPage() {
 
       <section className="py-12 bg-white">
         <div className="container-custom">
-          <ServicesGridClient services={services} />
+          {services.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-24 text-center gap-4">
+              <Settings className="w-10 h-10 text-primary/40" />
+              <p className="text-gray-900 text-lg font-medium">No services available</p>
+              <p className="text-gray-900 text-sm max-w-xs">Please check back later or contact us directly for assistance.</p>
+            </div>
+          ) : (
+            <ServicesGridClient services={services} />
+          )}
         </div>
       </section>
 
