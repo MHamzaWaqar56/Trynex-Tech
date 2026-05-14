@@ -12,6 +12,7 @@ import WhoWeAreSection from '@/components/sections/WhoWeAreSection';
 import { connectDB } from '@/lib/db';
 import { Testimonial } from '@/models/Testimonial';
 import { SiteStats } from '@/models/SiteStats';
+import CEOIntroSection from '@/components/sections/CEOIntroSection';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -51,7 +52,7 @@ export default async function AboutPage() {
     <>
       {/* Hero */}
       <PageHero
-        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778777730/about_bg_uofwo4.png"
         badge={
           <span className="flex items-center gap-2">
             <Users className="h-4 w-4 animate-pulse" />
@@ -70,6 +71,7 @@ export default async function AboutPage() {
       <StatsSection />
       <OurValuesSection />
       <HowWeWorkSection />
+      <CEOIntroSection />
       <OurTeamSection />
       <FAQSection />
       <CTASection />

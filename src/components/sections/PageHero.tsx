@@ -40,7 +40,7 @@ export default function PageHero({
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('${bgImage}')` }}
           />
-          <div className="absolute inset-0" style={{ background: '#0c1324a1' }} />
+          <div className="absolute inset-0" style={{ background: 'rgba(12, 19, 36, 0.70)' }} />
         </>
       ) : (
         <div className="absolute inset-0 bg-grid-pattern opacity-100" />

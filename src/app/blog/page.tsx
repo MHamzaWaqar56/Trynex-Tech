@@ -56,7 +56,7 @@ export default async function BlogPage() {
   return (
     <>
       <PageHero
-       bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+       bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778777706/blog_bg_zz6aal.png"
         badge={
     <span className="flex items-center gap-2">
       <Newspaper className="h-4 w-4 animate-pulse" />

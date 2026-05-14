@@ -37,7 +37,7 @@ export default async function HeroSection() {
       {/* Dark overlay */}
       <div
         className="absolute inset-0"
-        style={{ background: '#0c1324a1' }}
+        style={{ background: 'rgba(12, 19, 36, 0.70)' }}
       />
 
       <div className="container-custom relative z-10 py-24">

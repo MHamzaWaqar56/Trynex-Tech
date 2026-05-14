@@ -23,7 +23,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778778079/contact_bg_hno4at.png"
         badge={
           <span className="flex items-center gap-2">
             <Mail className="h-4 w-4 animate-pulse" />

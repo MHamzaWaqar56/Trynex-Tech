@@ -112,7 +112,7 @@ export default async function PricingPage() {
   return (
     <>
       <PageHero
-        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778777931/pricing_bg_toinsj.png"
         badge={<><BadgeDollarSign className="w-4 h-4" /> Transparent Pricing</>}
         title={<>Simple, Clear <span className="gradient-text">Pricing</span></>}
         description="No hidden charges, no surprises. Pick a package that fits your budget or request a custom quote tailored to your project scope."

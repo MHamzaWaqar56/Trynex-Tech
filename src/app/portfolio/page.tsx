@@ -48,7 +48,7 @@ export default async function PortfolioPage() {
   return (
     <>
       <PageHero
-         bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+         bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778777951/portfolio_bg2_gyepov.png"
         badge={
           <span className="flex items-center gap-2">
             <BriefcaseBusiness className="h-4 w-4 animate-pulse" />
