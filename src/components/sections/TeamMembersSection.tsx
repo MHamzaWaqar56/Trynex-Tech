@@ -133,11 +133,11 @@ export default function TeamMembersSection({ members }: Props) {
       {/* Dialog */}
       <Dialog open={selectedMember !== null} onOpenChange={(open) => { if (!open) setSelectedIndex(null); }}>
         {selectedMember && (
-          <DialogContent className="!max-w-4xl overflow-hidden h-[550px] min-[320px]:max-[990px]:h-[90vh] min-[320px]:max-[990px]:w-[90vw] min-[320px]:max-[767px]:overflow-auto min-[320px]:max-[767px]:p-4">
-            <div className="grid grid-cols-2 lg:grid-cols-[1.05fr_1.15fr] h-full min-[320px]:max-[767px]:grid-cols-1">
+          <DialogContent className="!max-w-4xl overflow-hidden h-[550px] min-[320px]:max-[990px]:h-[90vh] min-[320px]:max-[990px]:w-[90vw] min-[320px]:max-[767px]:!overflow-auto min-[320px]:max-[767px]:p-4">
+            <div className="grid grid-cols-2 overflow-hidden lg:grid-cols-[1.05fr_1.15fr] h-full min-[320px]:max-[767px]:grid-cols-1 min-[320px]:max-[767px]:!overflow-visible">
 
               {/* Image */}
-              <div className="bg-gray-100 overflow-hidden rounded-2xl">
+              <div className="bg-gray-100 overflow-hidden rounded-2xl ">
                 {imgErrors[selectedIndex!] ? (
                   <div className="h-full w-full flex items-center justify-center bg-primary/10">
                     <span className="text-6xl font-black text-primary">
@@ -148,13 +148,13 @@ export default function TeamMembersSection({ members }: Props) {
                   <img
                     src={selectedMember.image}
                     alt={selectedMember.name}
-                    className="h-full w-full object-cover rounded-2xl"
+                    className="h-full w-full object-cover rounded-2xl min-[320px]:max-[510px]:h-[20rem] min-[511px]:max-[767px]:h-[30rem]"
                   />
                 )}
               </div>
 
               {/* Info */}
-              <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center  min-[320px]:max-[767px]:px-4">
+              <div className="p-6 !py-2 lg:p-10 flex flex-col justify-center  min-[320px]:max-[767px]:px-4 min-[320px]:max-[767px]:!py-6">
                 <DialogHeader className="pr-0">
                   <DialogTitle className="!text-3xl !text-gray-900 sm:text-4xl !font-display">
                     {selectedMember.name}
@@ -164,7 +164,7 @@ export default function TeamMembersSection({ members }: Props) {
                   </DialogDescription>
                 </DialogHeader>
 
-                <p className="mt-6 text-gray-900 leading-relaxed text-base sm:text-lg">
+                <p className="mt-6 text-gray-900 leading-relaxed text-base sm:text-lg min-[768px]:max-[1023px]:text-[1rem] min-[768px]:max-[1023px]:leading-[1.5rem]">
                   {selectedMember.coverText}
                 </p>
 
