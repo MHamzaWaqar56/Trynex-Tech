@@ -356,8 +356,8 @@ export default function CEOIntroSection() {
                 className="relative
                   w-60 h-60
                   min-[768px]:max-[1023px]:w-full min-[768px]:max-[1023px]:h-[45rem]
-                  min-[500px]:max-[767px]:w-full  min-[500px]:max-[767px]:h-[40rem]
-                  min-[320px]:max-[499px]:w-full  min-[320px]:max-[499px]:h-[30rem]
+                  min-[500px]:max-[767px]:w-full  min-[550px]:max-[767px]:h-[35rem]  min-[450px]:max-[549px]:h-[25rem]
+                  min-[320px]:max-[499px]:w-full  min-[320px]:max-[449px]:h-[18rem]
                 "
               >
                 <div
