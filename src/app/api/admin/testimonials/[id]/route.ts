@@ -1,6 +1,8 @@
 import { connectDB } from "@/lib/db";
 import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { Testimonial } from "@/models/Testimonial";
+import { revalidatePath } from "next/cache";
+
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +26,9 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
     if (!review) {
       return fail("Testimonial not found.", 404);
     }
-
+    
+    revalidatePath('/');
+    revalidatePath('/testimonials');
     return ok({ review });
   } catch (error) {
     console.error("/api/admin/testimonials/[id] PUT error:", error);
@@ -45,7 +49,9 @@ export async function DELETE(_: Request, { params }: { params: Promise<Params> }
     if (!review) {
       return fail("Testimonial not found.", 404);
     }
-
+    
+    revalidatePath('/');
+    revalidatePath('/testimonials');
     return ok({ message: "Deleted.", review });
   } catch (error) {
     console.error("/api/admin/testimonials/[id] DELETE error:", error);

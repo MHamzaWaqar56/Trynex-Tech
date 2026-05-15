@@ -1,7 +1,8 @@
-
 import AnimatedCounter from '@/components/shared/AnimatedCounter';
-import { connectDB } from '@/lib/db';
+import { unstable_noStore as noStore } from 'next/cache';
 import { SiteStats } from '@/models/SiteStats';
+import { connectDB } from '@/lib/db';
+
 
 // ── Types
 type StatsData = {
@@ -14,6 +15,7 @@ type StatsData = {
 
 async function fetchStats(): Promise<StatsData> {
   try {
+    noStore();
     await connectDB();
     const stats = await SiteStats.findOne({ key: 'main' }).lean<StatsData | null>();
 
@@ -34,8 +36,8 @@ async function fetchStats(): Promise<StatsData> {
       happyClients:      80,
       projectsCompleted: 250,
       clientRetention:   98,
-      foundedYear:       2020,
-      yearsExperience:   new Date().getFullYear() - 2020,
+      foundedYear:       2021,
+      yearsExperience:   new Date().getFullYear() - 2021,
     };
   }
 }

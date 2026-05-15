@@ -1,7 +1,9 @@
 import {  Users,  CheckCircle2 } from 'lucide-react';
-import { connectDB } from '@/lib/db';
 import { TeamMember as TeamMemberModel } from '@/models/TeamMember';
 import TeamMembersSection from '@/components/sections/TeamMembersSection';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
 
 
 type TeamMemberRecord = {
@@ -17,6 +19,7 @@ type TeamMemberRecord = {
 };
 
 async function getTeamMembers(): Promise<TeamMemberRecord[]> {
+  noStore();
   await connectDB();
   return TeamMemberModel.find({}).sort({ order: 1, createdAt: -1 }).lean<TeamMemberRecord[]>();
 }

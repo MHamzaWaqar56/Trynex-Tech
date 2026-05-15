@@ -1,6 +1,8 @@
 import { connectDB } from "@/lib/db";
 import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { FAQ } from "@/models/FAQ";
+import { revalidatePath } from "next/cache";
+
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +28,11 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
     const faq = await FAQ.findByIdAndUpdate(id, update, { new: true }).lean();
     if (!faq) return fail("FAQ not found.", 404);
 
+    revalidatePath('/');
+    revalidatePath('/about');
+    revalidatePath('/services');
+    revalidatePath('/contact');
+    revalidatePath('/pricing');
     return ok({ faq });
   } catch (error) {
     console.error("/api/admin/faq/[id] PUT error:", error);
@@ -41,7 +48,12 @@ export async function DELETE(_: Request, { params }: { params: Promise<Params> }
     const { id } = await params;
     const faq = await FAQ.findByIdAndDelete(id).lean();
     if (!faq) return fail("FAQ not found.", 404);
-
+    
+    revalidatePath('/');
+    revalidatePath('/about');
+    revalidatePath('/services');
+    revalidatePath('/contact');
+    revalidatePath('/pricing');
     return ok({ message: "Deleted.", faq });
   } catch (error) {
     console.error("/api/admin/faq/[id] DELETE error:", error);

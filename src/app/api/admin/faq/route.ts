@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/db";
 import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { FAQ } from "@/models/FAQ";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,11 @@ export async function POST(request: Request) {
       order:    body.order ?? 0,
       isActive: body.isActive ?? true,
     });
+    revalidatePath('/');
+    revalidatePath('/about');
+    revalidatePath('/services');
+    revalidatePath('/contact');
+    revalidatePath('/pricing');
     return ok({ faq }, 201);
   } catch (error) {
     console.error("/api/admin/faq POST error:", error);

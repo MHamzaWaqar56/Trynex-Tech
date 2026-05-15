@@ -6,9 +6,12 @@ import {
   MapPin,
   TrendingUp,
 } from 'lucide-react';
-import { connectDB } from '@/lib/db';
 import { CareerVacancy } from '@/models/CareerVacancy';
 import { getApplicationAvailabilityLabel, isDeadlineExpired } from '@/lib/careers';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
+
 
 type PublicVacancy = {
   _id: string;
@@ -28,6 +31,7 @@ type PublicVacancy = {
 };
 
 async function getVacancies(): Promise<PublicVacancy[]> {
+  noStore();
   await connectDB();
   return CareerVacancy.find({ open: true })
     .sort({ featured: -1, order: 1, createdAt: -1 })

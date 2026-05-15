@@ -3,6 +3,8 @@ import { fail, ok, readJson, requireAdmin } from '@/lib/backend/route-utils';
 import { slugify } from '@/lib/utils';
 import { CareerVacancy } from '@/models/CareerVacancy';
 import { z } from 'zod';
+import { revalidatePath } from "next/cache";
+
 
 export const dynamic = 'force-dynamic';
 
@@ -56,7 +58,8 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
     if (!vacancy) {
       return fail('Vacancy not found.', 404);
     }
-
+    
+    revalidatePath('/careers');
     return ok({ vacancy });
   } catch (error) {
     console.error('/api/admin/careers/[id] PUT error:', error);
@@ -77,7 +80,8 @@ export async function DELETE(_: Request, { params }: { params: Promise<Params> }
     if (!vacancy) {
       return fail('Vacancy not found.', 404);
     }
-
+  
+    revalidatePath('/careers');
     return ok({ message: 'Deleted.', vacancy });
   } catch (error) {
     console.error('/api/admin/careers/[id] DELETE error:', error);

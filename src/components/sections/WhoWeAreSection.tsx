@@ -1,10 +1,14 @@
 import Image from 'next/image';
 import { Brain } from 'lucide-react';
-import { connectDB } from '@/lib/db';
 import { TeamMember } from '@/models/TeamMember';
 import { SiteStats } from '@/models/SiteStats';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
+
 
 async function fetchData(): Promise<{ teamCount: number; foundedYear: number | null }> {
+  noStore();
   await connectDB();
   const [teamCount, stats] = await Promise.all([
     TeamMember.countDocuments(),

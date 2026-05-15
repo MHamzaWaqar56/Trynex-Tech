@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Briefcase } from 'lucide-react';
 import CTASection from '@/components/sections/CTASection';
@@ -8,6 +7,8 @@ import HiringProcessSection from '@/components/sections/HiringProcessSection';
 import OpenVacanciesSection from '@/components/sections/OpenVacanciesSection';
 import OurTeamSection from '@/components/sections/OurTeamSection';
 
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Careers',

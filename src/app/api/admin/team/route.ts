@@ -2,6 +2,7 @@ import { connectDB } from "@/lib/db";
 import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { teamMemberSchema } from "@/lib/backend/validators";
 import { TeamMember } from "@/models/TeamMember";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
     }
 
     const member = await TeamMember.create(parsed.data);
+    revalidatePath("/about");
     return ok({ member }, 201);
   } catch (error) {
     console.error("/api/admin/team POST error:", error);

@@ -2,6 +2,7 @@ import { connectDB } from "@/lib/db";
 import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { teamMemberSchema } from "@/lib/backend/validators";
 import { TeamMember } from "@/models/TeamMember";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +34,8 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
     if (!member) {
       return fail("Team member not found.", 404);
     }
-
+    
+    revalidatePath("/about");
     return ok({ member });
   } catch (error) {
     console.error("/api/admin/team/[id] PUT error:", error);
@@ -55,6 +57,7 @@ export async function DELETE(_: Request, { params }: { params: Promise<Params> }
       return fail("Team member not found.", 404);
     }
 
+    revalidatePath("/about");
     return ok({ message: "Deleted.", member });
   } catch (error) {
     console.error("/api/admin/team/[id] DELETE error:", error);

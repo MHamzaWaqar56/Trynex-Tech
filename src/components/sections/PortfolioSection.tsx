@@ -1,9 +1,12 @@
 
 import Link from 'next/link';
 import { ArrowRight, BriefcaseBusiness } from 'lucide-react';
-import { connectDB } from '@/lib/db';
 import AppButton from '@/components/shared/AppButton';
 import { Portfolio } from '@/models/Portfolio';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
+
 
 type PortfolioCard = {
   _id?: string;
@@ -20,6 +23,7 @@ type PortfolioCard = {
 };
 
 async function getProjects(): Promise<PortfolioCard[]> {
+  noStore();
   await connectDB();
   return Portfolio.find({ featured: true })
     .sort({ order: 1, createdAt: -1 })

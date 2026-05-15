@@ -3,6 +3,7 @@ import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { serviceSchema } from "@/lib/backend/validators";
 import { Service } from "@/models/Service";
 import { slugify } from "@/lib/utils";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -47,6 +48,8 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
       return fail("Service not found.", 404);
     }
 
+    revalidatePath('/');
+    revalidatePath('/services');
     return ok({ service });
   } catch (error) {
     console.error("/api/admin/services/[id] PUT error:", error);
@@ -68,6 +71,8 @@ export async function DELETE(_: Request, { params }: { params: Promise<Params> }
       return fail("Service not found.", 404);
     }
 
+    revalidatePath('/');
+    revalidatePath('/services');
     return ok({ message: "Deleted.", service });
   } catch (error) {
     console.error("/api/admin/services/[id] DELETE error:", error);

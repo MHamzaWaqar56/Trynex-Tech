@@ -1,9 +1,11 @@
 
 import Link from 'next/link';
 import { ArrowRight, Package } from 'lucide-react';
-import { connectDB } from '@/lib/db';
 import AppButton from '@/components/shared/AppButton';
 import { Service as ServiceModel } from '@/models/Service';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
 
 type ServiceCard = {
   _id?: string;
@@ -16,6 +18,7 @@ type ServiceCard = {
 };
 
 async function getServices(): Promise<ServiceCard[]> {
+  noStore();
   await connectDB();
   return ServiceModel.find({ featured: true })
     .sort({ order: 1, createdAt: -1 })

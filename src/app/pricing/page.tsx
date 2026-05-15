@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BadgeDollarSign, Clock3, Sparkles, ShieldCheck, CheckCircle2, Star, Send, Globe } from 'lucide-react';
@@ -12,6 +10,9 @@ import CustomPricingForm from '@/components/sections/CustomPricingForm';
 import PageHero from '@/components/sections/PageHero';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FAQSection from '@/components/sections/FAQSection';
+
+
+export const dynamic = 'force-dynamic';
 
 const pricingHighlights = [
   {

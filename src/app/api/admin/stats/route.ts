@@ -1,6 +1,7 @@
 import { connectDB } from '@/lib/db';
 import { ok, fail, readJson } from '@/lib/backend/route-utils';
 import { SiteStats } from '@/models/SiteStats';
+import { revalidatePath } from "next/cache";
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +22,7 @@ export async function GET() {
       });
     }
 
+    
     return ok({
       happyClients:      stats.happyClients,
       projectsCompleted: stats.projectsCompleted,
@@ -70,6 +72,8 @@ export async function PUT(request: Request) {
       { upsert: true, new: true },
     );
 
+    revalidatePath('/');
+    revalidatePath('/about');
     return ok({
       happyClients:      stats.happyClients,
       projectsCompleted: stats.projectsCompleted,

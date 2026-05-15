@@ -2,8 +2,10 @@
 import Link from 'next/link';
 import { ArrowRight, Play } from 'lucide-react';
 import AppButton from '@/components/shared/AppButton';
-import { connectDB } from '@/lib/db';
 import { SiteStats } from '@/models/SiteStats';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
 
 type HeroStats = {
   projectsCompleted: number;
@@ -11,6 +13,7 @@ type HeroStats = {
 };
 
 async function fetchHeroStats(): Promise<HeroStats> {
+  noStore();
   await connectDB();
   const stats = await SiteStats.findOne({ key: 'main' });
   return {

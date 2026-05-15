@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { connectDB } from '@/lib/db';
 import { fail, ok, readJson, requireAdmin } from '@/lib/backend/route-utils';
 import { CurrencyRate } from '@/models/CurrencyRate';
+import { revalidatePath } from "next/cache";
 
 export const dynamic = 'force-dynamic';
 
@@ -47,7 +48,9 @@ export async function PUT(request: Request) {
       { key: 'usd-to-pkr', usdToPkrRate: parsed.data.usdToPkrRate },
       { new: true, upsert: true },
     ).lean() as CurrencyRateRecord | null;
-
+ 
+    revalidatePath('/pricing');
+    revalidatePath('/services');
     return ok({ rate: record?.usdToPkrRate || parsed.data.usdToPkrRate, updatedAt: record?.updatedAt || null });
   } catch (error) {
     console.error('/api/admin/currency-rate PUT error:', error);

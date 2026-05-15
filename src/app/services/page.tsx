@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from 'next';
 import { connectDB } from '@/lib/db';
 import { Settings } from 'lucide-react';

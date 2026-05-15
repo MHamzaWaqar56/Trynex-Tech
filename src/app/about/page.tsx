@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import {  Users } from 'lucide-react';
 import CTASection from '@/components/sections/CTASection';
 import StatsSection from '@/components/sections/StatsSection'

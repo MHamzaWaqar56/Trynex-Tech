@@ -6,6 +6,9 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 
+
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Contact Us | Trynex Tech',
   description: 'Get in touch with Trynex Tech. Send us your project details and we will get back to you within 24 hours with a custom proposal.',

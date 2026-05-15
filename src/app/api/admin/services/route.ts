@@ -3,6 +3,7 @@ import { fail, ok, readJson, requireAdmin } from "@/lib/backend/route-utils";
 import { serviceSchema } from "@/lib/backend/validators";
 import { Service } from "@/models/Service";
 import { slugify } from "@/lib/utils";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -52,6 +53,8 @@ export async function POST(request: Request) {
     }
 
     const service = await Service.create(parsed.data);
+    revalidatePath('/');
+    revalidatePath('/services');
     return ok({ service }, 201);
   } catch (error) {
     console.error("/api/admin/services POST error:", error);

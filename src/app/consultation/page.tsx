@@ -6,6 +6,9 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import WhatYouWillGet from '@/components/sections/WhatYouWillGet';
 import ConsultationFormSection from '@/components/sections/ConsultationFormSection';
 
+
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Free Consultation | Trynex Tech',
   description: 'Book a free consultation with Trynex Tech. Tell us your goals, timeline, and budget — we will respond within 24 hours with a tailored plan.',

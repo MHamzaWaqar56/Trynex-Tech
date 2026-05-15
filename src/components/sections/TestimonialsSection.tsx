@@ -1,6 +1,8 @@
 import { Star, Quote } from 'lucide-react';
-import { connectDB } from '@/lib/db';
 import { Testimonial as TestimonialModel } from '@/models/Testimonial';
+import { unstable_noStore as noStore } from 'next/cache';
+import { connectDB } from '@/lib/db';
+
 
 type Testimonial = {
   _id?: string;
@@ -13,6 +15,7 @@ type Testimonial = {
 };
 
 async function getTestimonials(): Promise<Testimonial[]> {
+  noStore();
   await connectDB();
   return TestimonialModel.find({}).lean<Testimonial[]>();
 }

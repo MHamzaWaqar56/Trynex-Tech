@@ -3,6 +3,8 @@ import { fail, ok, readJson, requireAdmin } from '@/lib/backend/route-utils';
 import { slugify } from '@/lib/utils';
 import { CareerVacancy } from '@/models/CareerVacancy';
 import { z } from 'zod';
+import { revalidatePath } from "next/cache";
+
 
 export const dynamic = 'force-dynamic';
 
@@ -64,6 +66,7 @@ export async function POST(request: Request) {
 
     await connectDB();
     const vacancy = await CareerVacancy.create(parsed.data);
+    revalidatePath('/careers');
     return ok({ vacancy }, 201);
   } catch (error) {
     console.error('/api/admin/careers POST error:', error);
