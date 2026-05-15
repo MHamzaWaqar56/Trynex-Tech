@@ -9,6 +9,7 @@ import WhyChooseUsSection from '@/components/sections/WhyChooseUsSection';
 import FAQSection from '@/components/sections/FAQSection';
 import OurValuesSection from '@/components/sections/OurValuesSection';
 import OurTeamSection from '@/components/sections/OurTeamSection';
+import AboutHashScroll from '@/components/sections/AboutHashScroll';
 import WhoWeAreSection from '@/components/sections/WhoWeAreSection';
 import { connectDB } from '@/lib/db';
 import { Testimonial } from '@/models/Testimonial';
@@ -51,6 +52,8 @@ export default async function AboutPage() {
 
   return (
     <>
+      <AboutHashScroll />
+
       {/* Hero */}
       <PageHero
         bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778777730/about_bg_uofwo4.png"
@@ -64,17 +67,33 @@ export default async function AboutPage() {
         description={<>Trynex Tech empowers businesses globally through accessible, impactful technology solutions.</>}
       />
 
-      <WhoWeAreSection />     
-      <WhyChooseUsSection
-              satisfactionScore={satisfactionScore}
-              clientRetention={clientRetention}
-            />
-      <StatsSection />
-      <OurValuesSection />
-      <HowWeWorkSection />
-      <CEOIntroSection />
-      <OurTeamSection />
-      <FAQSection />
+      <div id="who-we-are" className="scroll-mt-28">
+        <WhoWeAreSection />
+      </div>
+      <div id="why-choose-us" className="scroll-mt-28">
+        <WhyChooseUsSection
+          satisfactionScore={satisfactionScore}
+          clientRetention={clientRetention}
+        />
+      </div>
+      <div id="stats" className="scroll-mt-28">
+        <StatsSection />
+      </div>
+      <div id="our-values" className="scroll-mt-28">
+        <OurValuesSection />
+      </div>
+      <div id="how-we-work" className="scroll-mt-28">
+        <HowWeWorkSection />
+      </div>
+      <div id="ceo-intro" className="scroll-mt-28">
+        <CEOIntroSection />
+      </div>
+      <div id="our-team" className="scroll-mt-28">
+        <OurTeamSection />
+      </div>
+      <div id="faq" className="scroll-mt-28">
+        <FAQSection />
+      </div>
       <CTASection />
   
     </>
