@@ -9,8 +9,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 import PageHero from '@/components/sections/PageHero';
 import CTASection from '@/components/sections/CTASection';
 import {
-  BookOpen, Clock, Users, Star,
-  ArrowRight, GraduationCap, ChevronRight,
+  BookOpen, Clock, Star, GraduationCap, ChevronRight,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -108,17 +107,6 @@ export default async function CoursesPage() {
                       <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {course.duration}</span>
                       {course.totalLectures && <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" /> {course.totalLectures} lectures</span>}
                     </div>
-
-                    {/* Instructor */}
-                    {/* <div className="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100">
-                      {course.instructor?.image && (
-                        <Image src={course.instructor.image} alt={course.instructor.name} width={28} height={28} className="rounded-full object-cover w-7 h-7" />
-                      )}
-                      <div>
-                        <p className="text-xs font-semibold text-gray-900">{course.instructor?.name}</p>
-                        <p className="text-[10px] text-gray-400">{course.instructor?.designation}</p>
-                      </div>
-                    </div> */}
 
                     {/* Fee + CTA */}
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
