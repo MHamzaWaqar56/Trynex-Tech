@@ -127,3 +127,38 @@ export const adminLoginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
 });
+
+
+
+export const courseSchema = z.object({
+  title:          z.string().min(3),
+  slug:           z.string().optional(),
+  coverImage:     z.string().url().or(z.literal("")),
+  summary:        z.string().min(10),
+  description:    z.string().min(20),
+  category:       z.string().min(2),
+  level:          z.enum(['Beginner', 'Intermediate', 'Advanced', 'All Levels']).optional(),
+  language:       z.string().optional().or(z.literal("")),
+  duration:       z.string().min(2),
+  hoursPerWeek:   z.string().optional().or(z.literal("")),
+  totalLectures:  z.coerce.number().int().optional(),
+  instructor:     z.string().min(1),
+  fees: z.array(z.object({
+    label:       z.string().min(1),
+    amount:      z.union([z.string().min(1), z.coerce.number()]),
+    currency:    z.string().optional(),
+    description: z.string().optional().or(z.literal("")),
+  })).optional(),
+  curriculum: z.array(z.object({
+    week:    z.string().min(1),
+    topic:   z.string().min(1),
+    details: z.string().optional().or(z.literal("")),
+  })).optional(),
+  learningPoints: z.array(z.string()).optional(),
+  requirements:   z.array(z.string()).optional(),
+  tags:           z.array(z.string()).optional(),
+  featured:       z.boolean().optional().default(false),
+  isActive:       z.boolean().optional().default(true),
+  order:          z.coerce.number().int().positive(),
+  enrollmentLink: z.string().optional().or(z.literal("")),
+});

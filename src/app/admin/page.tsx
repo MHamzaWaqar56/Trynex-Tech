@@ -27,13 +27,14 @@ import TestimonialsTab  from '@/components/admin/TestimonialsTab';
 import CareersTab       from '@/components/admin/CareersTab';
 import StatsTab         from '@/components/admin/StatsTab';
 import FAQTab from '@/components/admin/FAQTab';
+import CoursesTab from '@/components/admin/CoursesTab';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type TabKey =
   | 'newsletter' | 'messages' | 'leads' | 'currency'
   | 'consultations' | 'blogs' | 'portfolio' | 'services'
-  | 'careers' | 'team' | 'testimonials' | 'stats' | 'faq';
+  | 'careers' | 'courses' | 'team' | 'testimonials' | 'stats' | 'faq';
 
 interface Message {
   _id: string; name: string; email: string; service?: string;
@@ -106,9 +107,10 @@ const TABS: Array<{ key: TabKey; label: string; icon: React.ElementType }> = [
   { key: 'blogs',         label: 'Blogs',          icon: BookOpen      },
   { key: 'portfolio',     label: 'Portfolio',      icon: FolderOpen    },
   { key: 'services',      label: 'Services',       icon: Settings      },
+  { key: 'courses',       label: 'Courses',        icon: BookOpen      },
   { key: 'team',          label: 'Team',           icon: UserCircle    },
   { key: 'testimonials',  label: 'Testimonials',   icon: Star          },
-  { key: 'faq',           label: 'FAQ',            icon: HelpCircle },
+  { key: 'faq',           label: 'FAQ',            icon: HelpCircle    },
   { key: 'careers',       label: 'Careers',        icon: Briefcase     },
 ];
 
@@ -509,6 +511,10 @@ export default function AdminDashboard() {
                 onGoToList={() => router.push('/admin/services')}
               />
             )}
+
+            {activeTab === 'courses' && (
+                <CoursesTab onDelete={openDeleteDialog} />
+              )}
 
             {activeTab === 'team' && (
               <TeamTab
