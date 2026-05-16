@@ -1,5 +1,6 @@
 import mongoose, { Schema, models, model } from "mongoose";
 
+
 const CourseFeeSchema = new Schema(
   {
     label:       { type: String, required: true },  // e.g. "One-time", "Monthly"

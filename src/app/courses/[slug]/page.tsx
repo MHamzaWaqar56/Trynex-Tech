@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { connectDB } from '@/lib/db';
 import { Course } from '@/models/Course';
+import '@/models/TeamMember';
 import { unstable_noStore as noStore } from 'next/cache';
 import CTASection from '@/components/sections/CTASection';
 import PageHero from '@/components/sections/PageHero';
@@ -289,3 +291,4 @@ export default async function CourseDetailPage({ params }: Props) {
     </>
   );
 }
+

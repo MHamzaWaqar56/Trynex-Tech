@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 import { connectDB } from '@/lib/db';
 import { Course } from '@/models/Course';
+import '@/models/TeamMember';
 import { unstable_noStore as noStore } from 'next/cache';
 import PageHero from '@/components/sections/PageHero';
 import CTASection from '@/components/sections/CTASection';
@@ -149,3 +150,5 @@ export default async function CoursesPage() {
     </>
   );
 }
+
+
