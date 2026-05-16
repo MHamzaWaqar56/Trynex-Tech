@@ -144,7 +144,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {bullets.map((bullet) => (
-                      <div key={bullet} className="rounded-2xl border border-gray-200 bg-white p-4 flex items-start gap-3 shadow-sm">
+                      <div key={bullet} className="rounded-2xl border border-primary/20 bg-white p-4 flex items-start gap-3 shadow-sm">
                         <Check className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
                         <span className="text-sm text-gray-900 leading-relaxed">{bullet}</span>
                       </div>
@@ -169,7 +169,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 )}
               </div>
 
-              <div className={`rounded-2xl border border-gray-200 bg-gradient-to-br ${gradientColor} to-transparent p-6`}>
+              <div className={`rounded-2xl border border-primary/20 bg-gradient-to-br ${gradientColor} to-transparent p-6`}>
                 <h3 className="text-xl font-display font-bold mb-4 text-primary">Why Choose Us?</h3>
                 <ul className="space-y-3 text-gray-900 text-sm">
                   {[

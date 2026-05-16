@@ -26,7 +26,7 @@ export default function ConsultationPage() {
   return (
     <>
       <PageHero
-        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778946677/consultation_bg_v3cqo4.png"
         badge={
           <span className="flex items-center gap-2">
             <CalendarDays className="h-4 w-4 animate-pulse" />

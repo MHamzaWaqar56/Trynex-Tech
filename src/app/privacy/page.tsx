@@ -151,7 +151,7 @@ export default function PrivacyPage() {
     <>
       {/* Hero */}
       <PageHero
-        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1777513166/trynex-about-bg_tpbpqq.png"
+        bgImage="https://res.cloudinary.com/da8lxpc3h/image/upload/v1778946699/privacy_policy_bg_lcz98j.png"
         badge={
           <span className="flex items-center gap-2">
             <Shield className="h-4 w-4 animate-pulse" />

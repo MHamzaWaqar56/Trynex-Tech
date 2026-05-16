@@ -86,7 +86,7 @@ export default function CoursesGridClient({ courses }: CoursesGridClientProps) {
               className="h-11 pl-10 text-sm"
             />
           </div>
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-gray-600">
             Showing {filteredCourses.length} of {courses.length} course{courses.length !== 1 ? 's' : ''}.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function CoursesGridClient({ courses }: CoursesGridClientProps) {
         <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white py-24 text-center gap-4">
           <BookOpen className="w-10 h-10 text-primary/40" />
           <p className="text-gray-900 text-lg font-medium">No courses matched your search</p>
-          <p className="text-gray-500 text-sm max-w-xs">
+          <p className="text-gray-600 text-sm max-w-xs">
             Try a different keyword, category, or instructor name.
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function CoursesGridClient({ courses }: CoursesGridClientProps) {
               href={`/courses/${course.slug}`}
               className="portfolio-card group flex flex-col overflow-hidden rounded-2xl bg-white"
             >
-              <div className="relative h-48 overflow-hidden bg-gray-100">
+              <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                 <Image
                   src={course.coverImage}
                   alt={course.title}
@@ -130,23 +130,13 @@ export default function CoursesGridClient({ courses }: CoursesGridClientProps) {
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-primary">
                   {course.category}
                 </p>
-                <h3 className="mb-2 line-clamp-2 font-display text-base font-bold leading-snug text-gray-900 group-hover:text-primary transition-colors">
+                <h3 className="mb-2 line-clamp-2 font-display text-base font-bold leading-snug text-gray-900  transition-colors">
                   {course.title}
                 </h3>
-                <p className="mb-4 flex-1 line-clamp-2 text-xs text-gray-500">
+                <p className="mb-4 flex-1 line-clamp-2 text-xs text-gray-900">
                   {course.summary}
                 </p>
 
-                <div className="mb-2 flex items-center gap-4 text-xs text-gray-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" /> {course.duration}
-                  </span>
-                  {course.totalLectures && (
-                    <span className="flex items-center gap-1">
-                      <BookOpen className="h-3 w-3" /> {course.totalLectures} lectures
-                    </span>
-                  )}
-                </div>
 
                 <div className="flex items-center justify-between border-t border-gray-100 pt-4">
                   <div>

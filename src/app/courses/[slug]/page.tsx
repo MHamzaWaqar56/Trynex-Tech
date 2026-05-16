@@ -90,7 +90,7 @@ export default async function CourseDetailPage({ params }: Props) {
             <div className="space-y-8">
 
               {/* Quick Stats */}
-              <div className="glass-card p-6">
+              <div className="glass-card glass-card-hover p-6">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {[
                     { icon: Clock,    label: 'Duration',  value: course.duration },
@@ -100,7 +100,7 @@ export default async function CourseDetailPage({ params }: Props) {
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="glass-card p-4 text-center">
                       <Icon className="w-4 h-4 text-primary mx-auto mb-1" />
-                      <p className="text-[10px] uppercase tracking-wide text-gray-500 mb-0.5">{label}</p>
+                      <p className="text-[10px] uppercase tracking-wide text-gray-600 mb-0.5">{label}</p>
                       <p className="text-sm font-semibold text-gray-900">{value}</p>
                     </div>
                   ))}
@@ -123,7 +123,7 @@ export default async function CourseDetailPage({ params }: Props) {
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {course.learningPoints.map((pt, i) => (
-                      <div key={i} className="flex items-start gap-3 rounded-xl border border-gray-100 bg-white p-3 shadow-sm">
+                      <div key={i} className="flex items-start gap-3 rounded-xl border border-primary/20 bg-white p-3 shadow-sm">
                         <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-900 leading-relaxed">{pt}</span>
                       </div>
@@ -157,12 +157,12 @@ export default async function CourseDetailPage({ params }: Props) {
                   </h2>
                   <div className="space-y-3">
                     {course.curriculum.map((row, i) => (
-                      <div key={i} className="rounded-xl border border-gray-100 bg-white p-4">
+                      <div key={i} className="rounded-xl border border-primary/20 bg-white p-4">
                         <div className="flex items-center gap-3 mb-1">
                           <span className="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">{row.week}</span>
                           <p className="font-semibold text-gray-900 text-sm">{row.topic}</p>
                         </div>
-                        {row.details && <p className="text-xs text-gray-500 leading-relaxed pl-1">{row.details}</p>}
+                        {row.details && <p className="text-xs text-gray-600 leading-relaxed pl-1">{row.details}</p>}
                       </div>
                     ))}
                   </div>
@@ -194,13 +194,13 @@ export default async function CourseDetailPage({ params }: Props) {
                   <DollarSign className="w-5 h-5" /> Fee Structure
                 </h3>
                 {course.fees.length === 0 ? (
-                  <p className="text-sm text-gray-500">Contact us for pricing.</p>
+                  <p className="text-sm text-gray-600">Contact us for pricing.</p>
                 ) : (
                   <div className="space-y-3">
                     {course.fees.map((fee, i) => (
-                      <div key={i} className="rounded-xl border border-gray-100 bg-white p-4">
+                      <div key={i} className="rounded-xl border border-primary/20 bg-white p-4">
                         <div className="flex items-center justify-between mb-1">
-                          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">{fee.label}</p>
+                          <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide">{fee.label}</p>
                           <p className="text-base font-bold text-primary">
                             {fee.amount === 'Free' || fee.amount === 0
                               ? 'Free'
@@ -208,7 +208,7 @@ export default async function CourseDetailPage({ params }: Props) {
                             }
                           </p>
                         </div>
-                        {fee.description && <p className="text-xs text-gray-400">{fee.description}</p>}
+                        {fee.description && <p className="text-xs text-gray-600">{fee.description}</p>}
                       </div>
                     ))}
                   </div>
