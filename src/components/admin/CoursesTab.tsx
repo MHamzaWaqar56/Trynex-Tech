@@ -272,7 +272,7 @@ export default function CoursesTab({ onDelete }: Props) {
 
       {/* Header */}
       <div className="flex items-center gap-3">
-        <Button onClick={cancelForm} variant="outline" size="sm" className="gap-1.5">
+        <Button onClick={cancelForm} variant="ghost" size="sm" className="gap-1.5">
           <ArrowLeft className="w-4 h-4" /> Back
         </Button>
         <div>
@@ -375,13 +375,13 @@ export default function CoursesTab({ onDelete }: Props) {
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-gray-900 flex items-center gap-2"><DollarSign className="w-4 h-4 text-primary" /> Fee Structure</h3>
           <Button
-            type="button" size="sm" variant="outline" className="h-7 px-2.5 text-xs gap-1"
+            type="button" size="sm" variant="ghost" className="h-7 px-2.5 text-xs gap-1"
             onClick={() => setForm({ ...form, fees: [...form.fees, { label: '', amount: '', currency: 'PKR', description: '' }] })}
           >
             <Plus className="w-3 h-3" /> Add Fee
           </Button>
         </div>
-        {form.fees.length === 0 && <p className="text-xs text-gray-400">No fee entries yet. Click "Add Fee" to add.</p>}
+        {form.fees.length === 0 && <p className="text-xs text-gray-400">No fee entries yet. Click &quot;Add Fee&quot; to add.</p>}
         {form.fees.map((fee, i) => (
           <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-2 rounded-xl border border-gray-100 p-3 relative">
             <button type="button" onClick={() => setForm({ ...form, fees: form.fees.filter((_, idx) => idx !== i) })}
@@ -399,7 +399,7 @@ export default function CoursesTab({ onDelete }: Props) {
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-gray-900 flex items-center gap-2"><List className="w-4 h-4 text-primary" /> Curriculum</h3>
           <Button
-            type="button" size="sm" variant="outline" className="h-7 px-2.5 text-xs gap-1"
+            type="button" size="sm" variant="ghost" className="h-7 px-2.5 text-xs gap-1"
             onClick={() => setForm({ ...form, curriculum: [...form.curriculum, { week: '', topic: '', details: '' }] })}
           >
             <Plus className="w-3 h-3" /> Add Week
@@ -419,13 +419,13 @@ export default function CoursesTab({ onDelete }: Props) {
 
       {/* Learning Points & Requirements */}
       <div className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5">
-        <h3 className="font-semibold text-gray-900 flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> What You'll Learn & Requirements</h3>
+        <h3 className="font-semibold text-gray-900 flex items-center gap-2"><GraduationCap className="w-4 h-4 text-primary" /> What You will Learn & Requirements</h3>
 
         {/* Learning Points */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-xs font-medium text-gray-600 uppercase tracking-wide">Learning Points</label>
-            <Button type="button" size="sm" variant="outline" className="h-7 px-2.5 text-xs gap-1"
+            <Button type="button" size="sm" variant="ghost" className="h-7 px-2.5 text-xs gap-1"
               onClick={() => setForm({ ...form, learningPoints: [...form.learningPoints, ''] })}>
               <Plus className="w-3 h-3" /> Add
             </Button>
@@ -443,7 +443,7 @@ export default function CoursesTab({ onDelete }: Props) {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-xs font-medium text-gray-600 uppercase tracking-wide">Requirements / Prerequisites</label>
-            <Button type="button" size="sm" variant="outline" className="h-7 px-2.5 text-xs gap-1"
+            <Button type="button" size="sm" variant="ghost" className="h-7 px-2.5 text-xs gap-1"
               onClick={() => setForm({ ...form, requirements: [...form.requirements, ''] })}>
               <Plus className="w-3 h-3" /> Add
             </Button>
@@ -495,7 +495,7 @@ export default function CoursesTab({ onDelete }: Props) {
           {saving ? <Spinner size="sm" /> : <CheckCircle2 className="w-4 h-4" />}
           {editingId ? 'Update Course' : 'Create Course'}
         </Button>
-        <Button onClick={cancelForm} variant="outline">Cancel</Button>
+        <Button onClick={cancelForm} variant="ghost">Cancel</Button>
       </div>
     </div>
   );
@@ -518,7 +518,7 @@ export default function CoursesTab({ onDelete }: Props) {
         <div className="flex flex-col items-center justify-center py-20 text-center gap-3 rounded-2xl border border-dashed border-gray-200">
           <BookOpen className="w-10 h-10 text-gray-300" />
           <p className="text-gray-500 font-medium">No courses yet</p>
-          <p className="text-gray-400 text-sm">Click "Add Course" to create your first course.</p>
+          <p className="text-gray-400 text-sm">Click &quot;Add Course&quot; to create your first course.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -555,13 +555,13 @@ export default function CoursesTab({ onDelete }: Props) {
                     {instructor && <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {instructor.name}</span>}
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button onClick={() => openEdit(course)} variant="outline" size="sm" className="h-7 px-2.5 text-xs gap-1 flex-1">
+                    <Button onClick={() => openEdit(course)} variant="ghost" size="sm" className="h-7 px-2.5 text-xs gap-1 flex-1">
                       <Pencil className="w-3 h-3" /> Edit
                     </Button>
-                    <Button onClick={() => toggleActive(course)} variant="outline" size="sm" className="h-7 px-2.5 text-xs">
+                    <Button onClick={() => toggleActive(course)} variant="ghost" size="sm" className="h-7 px-2.5 text-xs">
                       {course.isActive ? 'Hide' : 'Show'}
                     </Button>
-                    <Button onClick={() => handleDelete(course)} variant="outline" size="sm" className="h-7 px-2.5 text-xs text-red-500 hover:text-red-600 hover:border-red-200">
+                    <Button onClick={() => handleDelete(course)} variant="ghost" size="sm" className="h-7 px-2.5 text-xs text-red-500 hover:text-red-600 hover:border-red-200">
                       <Trash2 className="w-3 h-3" />
                     </Button>
                   </div>
