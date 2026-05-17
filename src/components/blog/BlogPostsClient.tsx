@@ -152,7 +152,7 @@ export default function BlogPostsClient({ posts }: BlogPostsClientProps) {
               </div>
 
               <div className="p-5">
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-end justify-between gap-4">
                   <div className="min-w-0">
                     <h3 className="font-display font-bold text-gray-900 text-base leading-snug line-clamp-2">
                       {post.title}

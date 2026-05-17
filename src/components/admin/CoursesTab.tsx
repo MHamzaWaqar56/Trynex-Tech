@@ -334,9 +334,7 @@ export default function CoursesTab({ onDelete, onViewDetails, onGmailReply }: Pr
               <Button type="button" variant="default" size="sm" onClick={() => setView('list')} className="gap-1.5 text-xs">
                 <ArrowLeft className="w-3.5 h-3.5" /> All Courses
               </Button>
-              <Button type="button" variant="ghost" size="sm" onClick={openRequests} className="gap-1.5 text-xs">
-                <Mail className="w-3.5 h-3.5" /> Enroll requests
-              </Button>
+              
               {editingId && (
                 <Button type="button" variant="ghost" size="sm" onClick={cancelForm} className="text-xs">Cancel</Button>
               )}

@@ -193,7 +193,6 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
 
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="space-y-2">
-              {/* <p className="text-xs text-white/60 uppercase tracking-wider font-semibold mb-3">Newsletter</p> */}
               <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-2 min-[320px]:max-[767px]:text-[20px]">
               Newsletter
             </h3>
