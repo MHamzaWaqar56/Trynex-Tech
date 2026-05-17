@@ -141,7 +141,7 @@ export default function PortfolioProjectsClient({ projects }: PortfolioProjectsC
                   )}
                 </div>
 
-                <div className="p-5 flex items-center justify-between gap-4">
+                <div className="p-5 flex items-end justify-between gap-4">
                   <div className="min-w-0">
                     <h3 className="font-display font-bold text-gray-900 text-base leading-snug truncate">
                       {project.title}

@@ -22,7 +22,6 @@ type CourseDoc = {
   featured: boolean;
   instructor: Instructor;
   tags: string[];
-  fees: { label: string; amount: string | number; currency: string }[];
 };
 
 type CoursesGridClientProps = {
@@ -127,32 +126,22 @@ export default function CoursesGridClient({ courses }: CoursesGridClientProps) {
               </div>
 
               <div className="flex flex-1 flex-col p-5">
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-primary">
-                  {course.category}
-                </p>
-                <h3 className="mb-2 line-clamp-2 font-display text-base font-bold leading-snug text-gray-900  transition-colors">
-                  {course.title}
-                </h3>
-                <p className="mb-4 flex-1 line-clamp-2 text-xs text-gray-900">
-                  {course.summary}
-                </p>
-
-
-                <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-                  <div>
-                    {course.fees?.[0] ? (
-                      <p className="text-sm font-bold text-primary">
-                        {course.fees[0].amount === 'Free' || course.fees[0].amount === 0
-                          ? 'Free'
-                          : `${course.fees[0].currency} ${Number(course.fees[0].amount).toLocaleString()}`}
-                      </p>
-                    ) : (
-                      <p className="text-sm font-bold text-primary">Contact Us</p>
-                    )}
+                <div className="flex items-end justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                      {course.category}
+                    </p>
+                    <h3 className="line-clamp-2 font-display text-base font-bold leading-snug text-gray-900 transition-colors">
+                      {course.title}
+                    </h3>
+                    <p className="mt-1.5 line-clamp-2 text-xs text-gray-900">
+                      {course.summary}
+                    </p>
                   </div>
-                  <span className="flex items-center gap-1 text-xs font-semibold text-primary transition-all group-hover:gap-2">
-                    View Details <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
+
+                  <div className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full border border-primary text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                    <ArrowRight className="h-4 w-4" />
+                  </div>
                 </div>
               </div>
 
