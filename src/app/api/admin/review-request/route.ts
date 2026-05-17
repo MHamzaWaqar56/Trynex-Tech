@@ -103,7 +103,7 @@ function buildReviewRequestEmail({
         <!-- Header -->
         <tr>
           <td style="background:linear-gradient(135deg,#0D1526 0%,#060B18 100%);border-radius:16px 16px 0 0;padding:28px 40px 24px;border:1px solid #1A2540;border-bottom:none;text-align:center;">
-            <div style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#FF6B35);padding:2px;border-radius:10px;margin-bottom:0;">
+            <div style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);padding:2px;border-radius:10px;margin-bottom:0;">
               <div style="background:#060B18;border-radius:8px;padding:8px 20px;">
                 <span style="font-size:16px;font-weight:700;color:#ffffff;letter-spacing:1px;">TRYNEX</span>
                 <span style="font-size:16px;font-weight:700;color:#00D4FF;letter-spacing:1px;">TECH</span>

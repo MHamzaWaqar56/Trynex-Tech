@@ -155,6 +155,8 @@ export default function CoursesGridClient({ courses }: CoursesGridClientProps) {
                   </span>
                 </div>
               </div>
+
+              
             </Link>
           ))}
         </div>

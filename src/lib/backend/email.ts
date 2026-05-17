@@ -55,20 +55,20 @@ function emailBadge(text: string) {
   return `<span style="display:inline-block;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#00D4FF;">${text}</span>`;
 }
 
-function emailWrap(content: string) {
+export function emailWrap(content: string) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/></head>
-<body style="margin:0;padding:0;background:#060B18;font-family:'Segoe UI',Arial,sans-serif;">
+<body style="margin:0;padding:0;background:#060B18;font-family:Inter,Segoe UI,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#060B18;padding:40px 16px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
         <!-- Logo Header -->
         <tr>
-          <td style="background:linear-gradient(135deg,#0D1526 0%,#060B18 100%);border-radius:16px 16px 0 0;padding:28px 40px 24px;border:1px solid #1A2540;border-bottom:none;text-align:center;">
-            <div style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#FF6B35);padding:2px;border-radius:10px;margin-bottom:0;">
-              <div style="background:#060B18;border-radius:8px;padding:8px 20px;">
+          <td style="background:linear-gradient(135deg,#0C1324 0%,#0D1526 100%);border-radius:18px 18px 0 0;padding:28px 40px 24px;border:1px solid #1A2540;border-bottom:none;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.18);">
+            <div style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);padding:2px;border-radius:12px;">
+              <div style="background:#060B18;border-radius:10px;padding:8px 20px;">
                 <span style="font-size:16px;font-weight:700;color:#ffffff;letter-spacing:1px;">TRYNEX</span>
                 <span style="font-size:16px;font-weight:700;color:#00D4FF;letter-spacing:1px;">TECH</span>
               </div>
@@ -80,9 +80,9 @@ function emailWrap(content: string) {
 
         <!-- Footer -->
         <tr>
-          <td style="background:#060B18;border-radius:0 0 16px 16px;padding:20px 40px;border:1px solid #1A2540;border-top:1px solid #1A2540;text-align:center;">
+          <td style="background:#060B18;border-radius:0 0 18px 18px;padding:20px 40px;border:1px solid #1A2540;border-top:1px solid rgba(255,255,255,0.04);text-align:center;">
             <p style="margin:0 0 6px;font-size:12px;color:#8892A4;">This is an automated email from</p>
-            <p style="margin:0;font-size:13px;font-weight:600;color:#ffffff;">
+            <p style="margin:0;font-size:13px;font-weight:600;color:#ffffff;letter-spacing:0.2px;">
               <span style="color:#00D4FF;">Trynex</span> Tech &mdash; trynextech.com
             </p>
           </td>
@@ -140,6 +140,122 @@ export function buildContactEmail(data: {
     </tr>`);
 
   return { html };
+}
+
+export function buildCourseEnrollAdminEmail(data: {
+  courseTitle: string;
+  courseSlug: string;
+  name: string;
+  email: string;
+  phone?: string;
+  city?: string;
+  education?: string;
+  experience?: string;
+  message?: string;
+}) {
+  const courseUrl = `https://trynextech.com/courses/${data.courseSlug}`;
+
+  const html = emailWrap(`
+    <tr>
+      <td style="background:#0D1526;padding:24px 40px 0;border:1px solid #1A2540;border-top:none;border-bottom:none;text-align:center;">
+        <div style="width:48px;height:48px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <span style="font-size:22px;">🎓</span>
+        </div>
+        <h1 style="margin:0 0 6px;font-size:22px;font-weight:700;color:#ffffff;">New Course Enrollment Request</h1>
+        <p style="margin:0 0 20px;font-size:14px;color:#8892A4;">Someone submitted an enrollment request</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background:#0D1526;padding:0 40px 28px;border:1px solid #1A2540;border-top:none;border-bottom:none;">
+        <div style="background:#060B18;border:1px solid #1A2540;border-radius:12px;padding:20px;">
+          <p style="margin:0 0 14px;font-size:11px;font-weight:600;color:#8892A4;letter-spacing:2px;text-transform:uppercase;">Enrollment Details</p>
+          <table width="100%" cellpadding="0" cellspacing="0">
+            ${emailRow('👤 Name', data.name)}
+            ${emailRow('📧 Email', `mailto:${data.email}`, true)}
+            ${data.phone ? emailRow('📱 Phone', data.phone) : ''}
+            ${data.city ? emailRow('📍 City', data.city) : ''}
+            ${data.education ? emailRow('🎓 Education', data.education) : ''}
+            ${data.experience ? emailRow('💼 Experience', data.experience) : ''}
+            ${emailRow('📚 Course', data.courseTitle)}
+            <tr>
+              <td style="padding:9px 0;border-bottom:1px solid #1A2540;">
+                <span style="font-size:13px;color:#8892A4;">🔗 Course Page</span>
+              </td>
+              <td style="padding:9px 0;border-bottom:1px solid #1A2540;text-align:right;">
+                <a href="${courseUrl}" style="font-size:13px;font-weight:600;color:#00D4FF;text-decoration:none;">Open Course</a>
+              </td>
+            </tr>
+          </table>
+          ${data.message ? `
+          <div style="margin-top:16px;border-top:1px solid #1A2540;padding-top:16px;">
+            <p style="margin:0 0 8px;font-size:11px;color:#8892A4;letter-spacing:1px;text-transform:uppercase;">Message</p>
+            <p style="margin:0;font-size:13px;color:#ffffff;line-height:1.7;background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;">${data.message}</p>
+          </div>` : ''}
+        </div>
+        <div style="text-align:center;margin-top:20px;">
+          <a href="mailto:${data.email}?subject=Re: Enrollment Request — ${data.courseTitle}" style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);color:#060B18;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">Reply to Applicant</a>
+        </div>
+      </td>
+    </tr>`);
+
+  return { html };
+}
+
+export function buildCourseEnrollStatusEmail(data: {
+  courseTitle: string;
+  status: 'new' | 'read' | 'contacted' | 'enrolled' | 'rejected';
+  name: string;
+  message?: string;
+}) {
+  const statusLabel: Record<string, string> = {
+    new: 'New',
+    read: 'Read',
+    contacted: 'Contacted',
+    enrolled: 'Enrolled',
+    rejected: 'Rejected',
+  };
+
+  const statusText = statusLabel[data.status] || data.status;
+
+  const html = emailWrap(`
+    <tr>
+      <td style="background:#0D1526;padding:28px 40px 0;border:1px solid #1A2540;border-top:none;border-bottom:none;text-align:center;">
+        <div style="width:48px;height:48px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <span style="font-size:22px;">📣</span>
+        </div>
+        <h1 style="margin:0 0 6px;font-size:22px;font-weight:700;color:#ffffff;">Your Enrollment Request Was Updated</h1>
+        <p style="margin:0 0 20px;font-size:14px;color:#8892A4;">We have updated the status of your request</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background:#0D1526;padding:0 40px 28px;border:1px solid #1A2540;border-top:none;border-bottom:none;">
+        <div style="background:#060B18;border:1px solid #1A2540;border-radius:12px;padding:20px;">
+          <p style="margin:0 0 14px;font-size:11px;font-weight:600;color:#8892A4;letter-spacing:2px;text-transform:uppercase;">Request Update</p>
+          <table width="100%" cellpadding="0" cellspacing="0">
+            ${emailRow('👤 Name', data.name)}
+            ${emailRow('📚 Course', data.courseTitle)}
+            <tr>
+              <td style="padding:9px 0;border-bottom:1px solid #1A2540;">
+                <span style="font-size:13px;color:#8892A4;">📌 Status</span>
+              </td>
+              <td style="padding:9px 0;border-bottom:1px solid #1A2540;text-align:right;">
+                ${emailBadge(statusText)}
+              </td>
+            </tr>
+          </table>
+          ${data.message ? `
+          <div style="margin-top:16px;border-top:1px solid #1A2540;padding-top:16px;">
+            <p style="margin:0 0 8px;font-size:11px;color:#8892A4;letter-spacing:1px;text-transform:uppercase;">Note</p>
+            <p style="margin:0;font-size:13px;color:#ffffff;line-height:1.7;background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;">${data.message}</p>
+          </div>` : ''}
+        </div>
+      </td>
+    </tr>`);
+
+  const subject = `Enrollment Request Updated — ${data.courseTitle} (${statusText})`;
+  const text = `Your enrollment request for ${data.courseTitle} has been updated to ${statusText}.`;
+
+  return { html, subject, text };
 }
 
 export function buildNewsletterEmail(email: string) {
@@ -239,7 +355,7 @@ export function buildQuoteEmail(data: {
   const html = emailWrap(`
     <tr>
       <td style="background:#0D1526;padding:24px 40px 0;border:1px solid #1A2540;border-top:none;border-bottom:none;text-align:center;">
-        <div style="width:48px;height:48px;background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.3);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
+        <div style="width:48px;height:48px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.28);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;">
           <span style="font-size:22px;">${icon}</span>
         </div>
         <h1 style="margin:0 0 6px;font-size:22px;font-weight:700;color:#ffffff;">${title}</h1>
@@ -248,8 +364,8 @@ export function buildQuoteEmail(data: {
     </tr>
     <tr>
       <td style="background:#0D1526;padding:0 40px 28px;border:1px solid #1A2540;border-top:none;border-bottom:none;">
-        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.15);border-radius:12px;padding:20px;margin-bottom:16px;">
-          <p style="margin:0 0 14px;font-size:11px;font-weight:600;color:#FF6B35;letter-spacing:2px;text-transform:uppercase;">Project Details</p>
+        <div style="background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.16);border-radius:12px;padding:20px;margin-bottom:16px;">
+          <p style="margin:0 0 14px;font-size:11px;font-weight:600;color:#00D4FF;letter-spacing:2px;text-transform:uppercase;">Project Details</p>
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr><td style="padding:9px 0;border-bottom:1px solid #1A2540;"><span style="font-size:13px;color:#8892A4;">⚙️ Service</span></td><td style="padding:9px 0;border-bottom:1px solid #1A2540;text-align:right;">${emailBadge(data.service)}</td></tr>
             ${data.budget ? emailRow('💰 Budget', data.budget) : ''}
@@ -271,7 +387,7 @@ export function buildQuoteEmail(data: {
           </div>` : ''}
         </div>
         <div style="text-align:center;margin-top:20px;">
-          <a href="mailto:${data.email}?subject=Re: ${title} - ${data.service}" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#CC4F1F);color:#ffffff;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">Reply to Client</a>
+          <a href="mailto:${data.email}?subject=Re: ${title} - ${data.service}" style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);color:#060B18;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">Reply to Client</a>
         </div>
       </td>
     </tr>`);
@@ -283,9 +399,9 @@ export function buildConsultationStatusEmail(booking: {
   name: string; date: string; time: string; service: string;
 }, status: 'confirmed' | 'cancelled') {
   const isConfirmed = status === 'confirmed';
-  const color = isConfirmed ? '#00D4FF' : '#FF6B35';
-  const bgColor = isConfirmed ? 'rgba(0,212,255,0.1)' : 'rgba(255,107,53,0.1)';
-  const borderColor = isConfirmed ? 'rgba(0,212,255,0.3)' : 'rgba(255,107,53,0.3)';
+  const color = isConfirmed ? '#00D4FF' : '#64748B';
+  const bgColor = isConfirmed ? 'rgba(0,212,255,0.1)' : 'rgba(100,116,139,0.12)';
+  const borderColor = isConfirmed ? 'rgba(0,212,255,0.28)' : 'rgba(100,116,139,0.22)';
   const icon = isConfirmed ? '✅' : '❌';
   const title = isConfirmed ? 'Consultation Confirmed!' : 'Consultation Cancelled';
   const message = isConfirmed
@@ -318,7 +434,7 @@ export function buildConsultationStatusEmail(booking: {
           <a href="https://trynextech.com/consultation" style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);color:#060B18;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">View Consultation Page</a>
         </div>` : `
         <div style="text-align:center;margin-top:20px;">
-          <a href="https://trynextech.com/consultation" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#CC4F1F);color:#ffffff;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">Book Another Slot</a>
+          <a href="https://trynextech.com/consultation" style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);color:#060B18;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">Book Another Slot</a>
         </div>`}
       </td>
     </tr>`);
@@ -330,18 +446,18 @@ export function buildLeadStatusEmail(lead: {
   name: string; service: string; status: string;
 }) {
   const statusMap: Record<string, { icon: string; color: string; bg: string; border: string; title: string; message: string }> = {
-    contacted: {
+      contacted: {
       icon: '📞', color: '#00D4FF', bg: 'rgba(0,212,255,0.1)', border: 'rgba(0,212,255,0.3)',
       title: 'We Received Your Request',
       message: 'Our team has received your inquiry and will contact you soon.',
     },
     'in-progress': {
-      icon: '⚡', color: '#FF6B35', bg: 'rgba(255,107,53,0.1)', border: 'rgba(255,107,53,0.3)',
+      icon: '⚡', color: '#0080FF', bg: 'rgba(0,128,255,0.1)', border: 'rgba(0,128,255,0.24)',
       title: 'Your Request Is In Progress',
       message: 'Our team has started working on your request. We will share updates shortly.',
     },
     done: {
-      icon: '✅', color: '#4ade80', bg: 'rgba(74,222,128,0.1)', border: 'rgba(74,222,128,0.3)',
+      icon: '✅', color: '#00AACC', bg: 'rgba(0,212,255,0.08)', border: 'rgba(0,170,204,0.24)',
       title: 'Your Request Is Completed',
       message: 'The requested work has been completed. Feel free to reply if you need any adjustments.',
     },
@@ -385,8 +501,8 @@ export function buildApplicationStatusEmail(application: {
       title: 'Application Under Review',
       message: 'Our team is currently reviewing your application. We will get back to you soon.',
     },
-    shortlisted: {
-      icon: '🌟', color: '#FF6B35', bg: 'rgba(255,107,53,0.1)', border: 'rgba(255,107,53,0.3)',
+    'shortlisted': {
+      icon: '🌟', color: '#0080FF', bg: 'rgba(0,128,255,0.1)', border: 'rgba(0,128,255,0.24)',
       title: 'You Have Been Shortlisted!',
       message: 'Congratulations! You have been shortlisted for this position. Our team will contact you with next steps.',
     },
@@ -396,7 +512,7 @@ export function buildApplicationStatusEmail(application: {
       message: 'Thank you for your interest. After careful review, we have decided to move forward with other candidates. We encourage you to apply for future openings.',
     },
     hired: {
-      icon: '🎉', color: '#4ade80', bg: 'rgba(74,222,128,0.1)', border: 'rgba(74,222,128,0.3)',
+      icon: '🎉', color: '#00D4FF', bg: 'rgba(0,212,255,0.1)', border: 'rgba(0,212,255,0.28)',
       title: 'Welcome to Trynex Tech!',
       message: 'Congratulations! We are thrilled to offer you this position. Our team will reach out with the next steps to get you onboarded.',
     },
@@ -471,7 +587,7 @@ export function buildNewApplicationAdminEmail(data: {
         </div>` : ''}
         <div style="margin-top:20px;text-align:center;">
           <a href="${data.cvUrl}" style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);color:#060B18;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;margin-right:10px;">⬇ Download CV</a>
-          <a href="mailto:${data.email}?subject=Re: Application for ${data.vacancyTitle}" style="display:inline-block;background:linear-gradient(135deg,#FF6B35,#CC4F1F);color:#ffffff;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">✉ Reply to Applicant</a>
+          <a href="mailto:${data.email}?subject=Re: Application for ${data.vacancyTitle}" style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);color:#060B18;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;">✉ Reply to Applicant</a>
         </div>
       </td>
     </tr>`);

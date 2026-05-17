@@ -250,12 +250,12 @@ export default function AdminDashboard() {
   // ─── URL → tab sync ──────────────────────────────────────────────────────
 
   useEffect(() => {
-    const tab         = searchParams.get('tab') as TabKey | null;
-    const editId      = searchParams.get('edit');
-    const editProject = searchParams.get('editProject');
-    const editService = searchParams.get('editService');
-    const editVacancy = searchParams.get('editVacancy');
-    const editTeam    = searchParams.get('editTeam');
+    const tab         = searchParams?.get('tab') as TabKey | null;
+    const editId      = searchParams?.get('edit');
+    const editProject = searchParams?.get('editProject');
+    const editService = searchParams?.get('editService');
+    const editVacancy = searchParams?.get('editVacancy');
+    const editTeam    = searchParams?.get('editTeam');
 
     if (tab)         setActiveTab(tab);
     if (editId)      { setActiveTab('blogs');     setEditingBlogId(editId); }
@@ -513,7 +513,11 @@ export default function AdminDashboard() {
             )}
 
             {activeTab === 'courses' && (
-                <CoursesTab onDelete={openDeleteDialog} />
+                <CoursesTab
+                  onDelete={openDeleteDialog}
+                  onViewDetails={openDetailDialog}
+                  onGmailReply={openGmailReply}
+                />
               )}
 
             {activeTab === 'team' && (

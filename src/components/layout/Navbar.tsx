@@ -43,7 +43,7 @@ export default function Navbar() {
     }
   }, [mobileOpen]);
 
-  const isAdmin = pathname.startsWith('/admin');
+  const isAdmin = pathname?.startsWith('/admin') ?? false;
 
   return (
     <>

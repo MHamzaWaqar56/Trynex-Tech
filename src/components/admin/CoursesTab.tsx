@@ -5,7 +5,7 @@ import {
   Plus, Trash2, Pencil, ArrowLeft,
   BookOpen, ImagePlus, Clock, Users,
   Tag, List, DollarSign, GraduationCap,
-  Hash, Star, Link2, Globe, CheckCircle2,
+  Hash, Star, Link2, Globe, CheckCircle2, Mail,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button }   from '@/components/ui/button';
@@ -13,6 +13,7 @@ import { Input }    from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Spinner }  from '@/components/ui/spinner';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import EnrollRequestsTab, { type EnrollRequest } from '@/components/admin/EnrollRequestsTab';
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -53,6 +54,8 @@ interface DeleteDialogState {
 
 interface Props {
   onDelete: (dialog: DeleteDialogState) => void;
+  onViewDetails: (dialog: { title: string; subtitle: string; fields: Array<{ label: string; value: string }>; messageLabel: string; message: string }) => void;
+  onGmailReply: (to: string, subject: string, body: string) => void;
 }
 
 // ─── Empty form ────────────────────────────────────────────────────────────────
@@ -90,12 +93,13 @@ async function uploadToCloudinary(file: File, folder: string): Promise<string> {
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 
-export default function CoursesTab({ onDelete }: Props) {
+export default function CoursesTab({ onDelete, onViewDetails, onGmailReply }: Props) {
   const [courses,     setCourses]     = useState<Course[]>([]);
   const [instructors, setInstructors] = useState<Instructor[]>([]);
+  const [enrollRequests, setEnrollRequests] = useState<EnrollRequest[]>([]);
   const [loading,     setLoading]     = useState(true);
   const [saving,      setSaving]      = useState(false);
-  const [view,        setView]        = useState<'list' | 'form'>('list');
+  const [view,        setView]        = useState<'list' | 'form' | 'requests'>('list');
   const [editingId,   setEditingId]   = useState<string | null>(null);
   const [form,        setForm]        = useState({ ...emptyForm });
   const [coverFile,   setCoverFile]   = useState<File | null>(null);
@@ -105,14 +109,17 @@ export default function CoursesTab({ onDelete }: Props) {
   async function loadData() {
     setLoading(true);
     try {
-      const [cRes, tRes] = await Promise.all([
+      const [cRes, tRes, eRes] = await Promise.all([
         fetch('/api/admin/courses'),
         fetch('/api/admin/team'),
+        fetch('/api/admin/enroll'),
       ]);
       const cData = await cRes.json();
       const tData = await tRes.json();
+      const eData = await eRes.json();
       setCourses(cData.courses ?? []);
       setInstructors(tData.members ?? []);
+      setEnrollRequests(eData.requests ?? []);
     } catch {
       toast.error('Failed to load data');
     } finally {
@@ -134,6 +141,14 @@ export default function CoursesTab({ onDelete }: Props) {
     [courses],
   );
 
+  const reloadEnrollRequests = async () => {
+    const res = await fetch('/api/admin/enroll');
+    if (res.ok) {
+      const data = await res.json();
+      setEnrollRequests(data.requests ?? []);
+    }
+  };
+
   // ── Helpers ────────────────────────────────────────────────────────────────
 
   function openAdd() {
@@ -141,6 +156,10 @@ export default function CoursesTab({ onDelete }: Props) {
     setForm({ ...emptyForm, order: courses.length + 1 });
     setCoverFile(null);
     setView('form');
+  }
+
+  function openRequests() {
+    setView('requests');
   }
 
   function openEdit(course: Course) {
@@ -271,6 +290,35 @@ export default function CoursesTab({ onDelete }: Props) {
 
   if (loading) return <div className="flex items-center justify-center py-24"><Spinner size="lg" /></div>;
 
+  if (view === 'requests') {
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-between px-4 pt-2 flex-wrap gap-2">
+          <div className="flex items-center gap-2 text-xs text-gray-900">
+            <Mail className="w-4 h-4" />
+            <span><span className="font-semibold text-gray-900">{enrollRequests.length}</span> enroll requests</span>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="ghost" onClick={() => setView('list')} className="text-xs gap-1.5">
+              <ArrowLeft className="w-3.5 h-3.5" /> Courses
+            </Button>
+            <Button size="sm" variant="ghost" onClick={openAdd} className="text-xs gap-1.5">
+              <Plus className="w-3.5 h-3.5" /> New Course
+            </Button>
+          </div>
+        </div>
+
+        <EnrollRequestsTab
+          requests={enrollRequests}
+          onViewDetails={onViewDetails}
+          onDelete={onDelete}
+          onGmailReply={onGmailReply}
+          onRefresh={reloadEnrollRequests}
+        />
+      </div>
+    );
+  }
+
   // ── FORM VIEW ──────────────────────────────────────────────────────────────
 
   if (view === 'form') return (
@@ -285,6 +333,9 @@ export default function CoursesTab({ onDelete }: Props) {
             <div className="flex gap-2">
               <Button type="button" variant="default" size="sm" onClick={() => setView('list')} className="gap-1.5 text-xs">
                 <ArrowLeft className="w-3.5 h-3.5" /> All Courses
+              </Button>
+              <Button type="button" variant="ghost" size="sm" onClick={openRequests} className="gap-1.5 text-xs">
+                <Mail className="w-3.5 h-3.5" /> Enroll requests
               </Button>
               {editingId && (
                 <Button type="button" variant="ghost" size="sm" onClick={cancelForm} className="text-xs">Cancel</Button>
@@ -536,6 +587,9 @@ export default function CoursesTab({ onDelete }: Props) {
           )}
         </div>
         <div className="flex gap-2">
+          <Button size="sm" variant="ghost" onClick={openRequests} className="text-xs gap-1.5">
+            <Mail className="w-3.5 h-3.5" /> Enroll requests
+          </Button>
           <Button size="sm" variant="ghost" onClick={openAdd} className="text-xs gap-1.5">
             <Plus className="w-3.5 h-3.5" /> New Course
           </Button>

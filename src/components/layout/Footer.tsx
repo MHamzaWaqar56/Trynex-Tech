@@ -32,6 +32,11 @@ const SOCIAL_LINKS = [
     href: 'https://github.com/MHamzaWaqar56/',
     label: 'GitHub',
   },
+  {
+    icon: Github,
+    href: 'https://github.com/MHamzaWaqar56/',
+    label: 'GitHub',
+  },
 ].filter((s) => s.href); // ── Only show if URL is set
 
 export default function Footer({ dbServices = [] }: { dbServices?: FooterService[] }) {

@@ -116,7 +116,7 @@ const htmlEmail = `
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center" style="padding-bottom:20px;">
-                    <div style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#FF6B35);padding:2px;border-radius:12px;">
+                    <div style="display:inline-block;background:linear-gradient(135deg,#00D4FF,#0080FF);padding:2px;border-radius:12px;">
                       <div style="background:#060B18;border-radius:10px;padding:10px 24px;">
                         <span style="font-size:18px;font-weight:700;color:#ffffff;letter-spacing:1px;">TRYNEX</span>
                         <span style="font-size:18px;font-weight:700;color:#00D4FF;letter-spacing:1px;">TECH</span>
