@@ -77,7 +77,7 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center mb-5 min-[320px]:max-[767px]:justify-center">
+            <Link href="/" className="flex items-center mb-5 ">
               <Image
                 src="/Trynex-Logo.png"
                 alt="Trynex Tech"
@@ -86,13 +86,13 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
                 className="h-16 w-auto object-contain brightness-0 invert"
               />
             </Link>
-            <p className="text-white text-sm leading-relaxed mb-6 min-[320px]:max-[767px]:text-center">
+            <p className="text-white text-sm leading-relaxed mb-6 min-[320px]:max-[767px]:text-justify">
               Transforming businesses through cutting-edge technology solutions — SEO, Web Development, Data Science & AI.
             </p>
 
             {/* Social links — only rendered if URL is set in env */}
             {SOCIAL_LINKS.length > 0 && (
-              <div className="flex items-center gap-3 min-[320px]:max-[767px]:justify-center">
+              <div className="flex items-center gap-3">
                 {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                   <a
                     key={label}
@@ -111,10 +111,10 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
 
           {/* Services */}
           <div>
-            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-5 min-[320px]:max-[767px]:text-center">
+            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-5 min-[320px]:max-[767px]:text-[20px]">
               Services
             </h3>
-            <ul className="space-y-3 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col min-[320px]:max-[767px]:items-center">
+            <ul className="space-y-3 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col ">
               {dbServices.map((s) => (
                 <li key={s.slug}>
                   <Link
@@ -134,10 +134,10 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-5 min-[320px]:max-[767px]:text-center">
+            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-5 min-[320px]:max-[767px]:text-[20px]">
               Quick Links
             </h3>
-            <ul className="space-y-3 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col min-[320px]:max-[767px]:items-center">
+            <ul className="space-y-3 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col ">
               {[
                 { label: 'Free Consultation', href: '/consultation' },
                 { label: 'Portfolio',          href: '/portfolio'    },
@@ -161,10 +161,10 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
 
           {/* Contact */}
           <div>
-            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-5 min-[320px]:max-[767px]:text-center">
+            <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-5 min-[320px]:max-[767px]:text-[20px]">
               Contact Us
             </h3>
-            <ul className="space-y-3 mb-6 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col min-[320px]:max-[767px]:items-center">
+            <ul className="space-y-3 mb-6 min-[320px]:max-[767px]:flex min-[320px]:max-[767px]:flex-col ">
               <li>
                 <a
                   href="mailto:trynextech@gmail.com"
@@ -193,7 +193,10 @@ export default function Footer({ dbServices = [] }: { dbServices?: FooterService
 
             {/* Newsletter */}
             <form onSubmit={handleSubscribe} className="space-y-2">
-              <p className="text-xs text-white/60 uppercase tracking-wider font-semibold mb-3">Newsletter</p>
+              {/* <p className="text-xs text-white/60 uppercase tracking-wider font-semibold mb-3">Newsletter</p> */}
+              <h3 className="font-bold text-white text-sm uppercase tracking-wider mb-2 min-[320px]:max-[767px]:text-[20px]">
+              Newsletter
+            </h3>
               <input
                 type="email"
                 required

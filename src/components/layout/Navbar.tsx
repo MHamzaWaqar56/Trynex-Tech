@@ -25,6 +25,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutMobileOpen, setAboutMobileOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState('');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,13 +39,25 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
+    const updateHash = () => setActiveHash(window.location.hash || '');
+
+    updateHash();
+    window.addEventListener('hashchange', updateHash);
+    window.addEventListener('popstate', updateHash);
+
+    return () => {
+      window.removeEventListener('hashchange', updateHash);
+      window.removeEventListener('popstate', updateHash);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!mobileOpen) {
       setAboutMobileOpen(false);
     }
   }, [mobileOpen]);
 
   const isAdmin = pathname?.startsWith('/admin') ?? false;
-
   return (
     <>
       <header
@@ -104,10 +117,7 @@ export default function Navbar() {
                             key={section.href}
                             href={section.href}
                             className={cn(
-                              'block rounded-xl px-4 py-2.5 text-sm transition-colors',
-                              pathname === '/about' && section.href === '/about'
-                                ? 'bg-primary/15 text-white'
-                                : 'text-white/90 hover:bg-white/10 hover:text-white'
+                              'block rounded-xl px-4 py-2.5 text-sm text-white/90 transition-colors hover:bg-white/10 hover:text-white'
                             )}
                           >
                             {section.label}
@@ -180,8 +190,8 @@ export default function Navbar() {
         />
         <div
           className={cn(
-            'absolute top-16 left-0 right-0 bg-white border-b border-gray-100 shadow-lg p-6 transition-transform duration-300',
-            mobileOpen ? 'translate-y-0' : '-translate-y-4'
+            'absolute top-16 right-0 h-[calc(100vh-4rem)] w-[88vw] max-w-sm overflow-y-auto overscroll-contain  border-l border-gray-100 bg-white p-6 shadow-2xl transition-transform duration-300',
+            mobileOpen ? 'translate-x-0' : 'translate-x-full'
           )}
         >
           <ul className="flex flex-col gap-1 mb-6">
@@ -226,17 +236,23 @@ export default function Navbar() {
                     </div>
 
                     {aboutMobileOpen && (
-                      <div className="absolute left-0 right-0 z-50 mb-2 rounded-2xl border border-gray-100 bg-white p-2 shadow-xl shadow-black/10">
-                        {ABOUT_SECTIONS.map((section) => (
-                          <Link
-                            key={section.href}
-                            href={section.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-xl px-3 py-2 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900"
-                          >
-                            {section.label}
-                          </Link>
-                        ))}
+                      <div className="mt-1 ml-3  pl-3 pb-1">
+                        <div className="flex flex-col gap-1">
+                          {ABOUT_SECTIONS.map((section) => {
+                            return (
+                              <Link
+                                key={section.href}
+                                href={section.href}
+                                onClick={() => setMobileOpen(false)}
+                                className={cn(
+                                  'flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-gray-900 transition-all hover:text-gray-900 hover:bg-gray-100'
+                                )}
+                              >
+                                <span className="truncate">{section.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </div>
                     )}
                   </li>
